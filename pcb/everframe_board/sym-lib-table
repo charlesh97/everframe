@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "everframe_library")(type "KiCad")(uri "${KIPRJMOD}/../library/everframe_library.kicad_sym")(options "")(descr ""))
+)
