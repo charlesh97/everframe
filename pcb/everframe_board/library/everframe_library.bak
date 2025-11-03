@@ -27,7 +27,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "62684-501100ALF:AMPHENOL_62684-501100ALF"
+		(property "Footprint" "everframe_library.footprints:AMPHENOL_62684-501100ALF"
 			(at 1.27 -0.254 0)
 			(effects
 				(font
@@ -1549,7 +1549,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "MOUDLE14P-SMD-2.54-21X17.8MM"
+		(property "Footprint" "everframe_library.footprints:MOUDLE14P-SMD-2.54-21X17.8MM"
 			(at 0 0 0)
 			(effects
 				(font
