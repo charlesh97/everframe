@@ -2250,6 +2250,10 @@
 		(uuid "2211c104-f0eb-48af-a585-60f1563a0dac")
 	)
 	(no_connect
+		(at 116.84 41.91)
+		(uuid "25d0157d-e784-4dfa-9fba-cb33e1d09139")
+	)
+	(no_connect
 		(at 152.4 26.67)
 		(uuid "3c49edf6-f93b-4d12-b1ae-9bca4f21fd7b")
 	)
@@ -2260,6 +2264,10 @@
 	(no_connect
 		(at 133.35 26.67)
 		(uuid "61d29b89-e01e-4f0c-b3b7-a22a32d65b04")
+	)
+	(no_connect
+		(at 116.84 45.72)
+		(uuid "65a31520-ec94-49a3-961c-d6fb324ca7d9")
 	)
 	(no_connect
 		(at 140.97 26.67)
