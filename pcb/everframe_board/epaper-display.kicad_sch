@@ -6,7 +6,8 @@
 	(paper "A4")
 	(title_block
 		(title "Everframe Mainboard")
-		(rev "0.0.1")
+		(date "2025-11-24")
+		(rev "1.0.0")
 	)
 	(lib_symbols
 		(symbol "Device:C_Small"
@@ -9062,7 +9063,7 @@
 				)
 			)
 		)
-		(property "Value" "0.47"
+		(property "Value" "0"
 			(at 219.71 64.77 90)
 			(effects
 				(font

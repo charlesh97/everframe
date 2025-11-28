@@ -6,7 +6,8 @@
 	(paper "A4")
 	(title_block
 		(title "Everframe Mainboard")
-		(rev "0.0.1")
+		(date "2025-11-24")
+		(rev "1.0.0")
 	)
 	(lib_symbols
 		(symbol "Connector:Conn_01x02_Pin"
@@ -3331,7 +3332,7 @@
 		)
 		(uuid "2337a86e-4a29-4a99-93c7-2c4e3215ae67")
 	)
-	(label "ESP32_MISO"
+	(label "ESP32_SCK"
 		(at 180.34 63.5 0)
 		(effects
 			(font
@@ -3391,7 +3392,7 @@
 		)
 		(uuid "c1bf653e-e7ed-4a0c-a85b-e0c2d644d1d0")
 	)
-	(label "ESP32_SCK"
+	(label "ESP32_MISO"
 		(at 180.34 60.96 0)
 		(effects
 			(font
@@ -3444,7 +3445,7 @@
 		)
 		(uuid "2094efad-4f03-47f2-bffa-fc195d20fa9d")
 	)
-	(hierarchical_label "SCK"
+	(hierarchical_label "SI1"
 		(shape output)
 		(at 227.33 60.96 0)
 		(effects
@@ -3488,7 +3489,7 @@
 		)
 		(uuid "cfd7b8d2-4445-42ca-823b-5bc7fff48e04")
 	)
-	(hierarchical_label "SI1"
+	(hierarchical_label "SCK"
 		(shape output)
 		(at 227.33 63.5 0)
 		(effects
@@ -6263,7 +6264,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "f5b029a8-2f39-49fe-a548-c50e4bfc38cf")
 		(property "Reference" "R18"
 			(at 207.772 59.944 90)
@@ -6332,7 +6333,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp yes)
+		(dnp no)
 		(uuid "f8cb8636-b0ee-4a50-8fe0-0eedc70447db")
 		(property "Reference" "R19"
 			(at 207.772 62.484 90)

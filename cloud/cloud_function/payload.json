@@ -1,0 +1,8 @@
+{
+  "message": {
+    "data": "hello great new world!",
+    "messageId": "test-message-id-12345",
+    "publishTime": "2025-11-25T16:30:00Z"
+  },
+  "subscription": "projects/everframe-479214/subscriptions/test-subscription"
+}
