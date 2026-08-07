@@ -1,5 +1,21 @@
-idf_component_register(SRCS "main.c"
-                            "ePaper_Config.c"
-                            "EPD_7in3e.c"
-                    PRIV_REQUIRES esp_wifi nvs_flash esp_driver_gpio esp_driver_spi
-                    INCLUDE_DIRS "." "GUI" "Fonts")
+idf_component_register(
+    SRCS
+        "main.c"
+        "ePaper_Config.c"
+        "EPD_7in3e.c"
+        "wifi_prov.c"
+        "wifi_sta.c"
+        "dns_server.c"
+    PRIV_REQUIRES
+        esp_wifi
+        nvs_flash
+        esp_netif
+        esp_event
+        esp_http_server
+        esp_driver_gpio
+        esp_driver_spi
+    INCLUDE_DIRS
+        "."
+        "GUI"
+        "Fonts"
+)
