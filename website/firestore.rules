@@ -1,0 +1,156 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    /**
+     * Core Philosophy: This ruleset enforces a strict user-ownership model. All data is
+     * either directly nested under a user's private document path or contains a 'userId'
+     * field that explicitly grants ownership. This ensures users can only access and
+     * manage their own data.
+     *
+     * Data Structure:
+     * - /users/{userId}: A user's own profile document.
+     * - /images/{imageId}: A top-level collection for the shared gallery. Any authenticated
+     *   user can read, write, and update all images.
+     * - /devices/{deviceId}: A top-level collection where each document must contain
+     *   a `userId` to link it to its owner.
+     * - /abstractArt/{abstractArtId}: Intended to be a top-level collection of generated
+     *   art, but currently firewalled due to a missing ownership field in the schema.
+     *
+     * Key Security Decisions:
+     * - No User Listing: Listing documents in the top-level `/users` collection is
+     *   explicitly disabled to protect user privacy and prevent enumeration attacks.
+     * - Shared Gallery: The `/images` collection is public to all authenticated users,
+     *   fitting the single-user/shared-bucket model.
+     * - Denormalization for Authorization: Collections like `/devices` are at the
+     *   root and must contain a `userId` field. This allows rules to check ownership
+     *   without performing costly `get()` operations on other documents.
+     * - Default Deny: Access is denied by default. Rules are constructed to
+     *   explicitly grant permissions under specific conditions.
+     */
+
+    // --------------------------------------------------------------------------
+    // Helper Functions
+    // --------------------------------------------------------------------------
+
+    /**
+     * Checks if the user is authenticated.
+     */
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    /**
+     * Checks if the authenticated user's UID matches the provided userId from the path.
+     * This is the primary function for establishing document ownership.
+     */
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    /**
+     * Confirms that a document already exists.
+     * Crucial for update and delete operations to prevent acting on non-existent data.
+     */
+    function isExistingDoc() {
+      return resource != null;
+    }
+
+    /**
+     * Combines ownership and existence checks.
+     * Used for update and delete operations on user-owned documents.
+     */
+    function isExistingOwner(userId) {
+      return isOwner(userId) && isExistingDoc();
+    }
+
+    /**
+     * Validates that the 'userId' field in an incoming document matches the owner.
+     * Used on create operations to enforce relational integrity.
+     */
+    function newDocHasCorrectOwner(userId) {
+      return request.resource.data.userId == userId;
+    }
+
+    /**
+     * Validates that the 'userId' field in an existing document matches the accessor.
+     * Used on read, update, and delete for top-level collections.
+     */
+    function existingDocIsOwnedBy(userId) {
+      return resource.data.userId == userId;
+    }
+
+    /**
+     * Ensures critical relational fields like 'userId' cannot be changed after creation.
+     */
+    function isUserIdImmutable() {
+      return request.resource.data.userId == resource.data.userId;
+    }
+
+
+    // --------------------------------------------------------------------------
+    // Collection Rules
+    // --------------------------------------------------------------------------
+
+    /**
+     * @description Manages user profile documents.
+     * @path /users/{userId}
+     * @allow (create) An authenticated user can create their own user profile document.
+     * @deny (list) An authenticated user CANNOT list all documents in the `/users` collection.
+     * @principle A user can create and manage their own profile, but cannot see other users' profiles.
+     */
+    match /users/{userId} {
+      allow get: if isOwner(userId);
+      allow list: if false;
+      allow create: if isOwner(userId) && request.resource.data.id == userId;
+      allow update: if isOwner(userId);
+      allow delete: if isExistingOwner(userId);
+    }
+
+    /**
+     * @description Manages images for the shared gallery.
+     * @path /images/{imageId}
+     * @allow (read, write) Any authenticated user can read, create, update, and delete any image document.
+     * @principle A shared space for the single-login model.
+     */
+    match /images/{imageId} {
+      allow read, write: if isSignedIn();
+    }
+
+    /**
+     * @description Manages Everframe devices, linked to users via a `userId` field.
+     * @path /devices/{deviceId}
+     * @allow (get) An authenticated user can get a device document if its `userId` field matches their own UID.
+     * @deny (list) No user can list all devices in the collection to protect privacy.
+     * @principle Denormalized ownership. Writes are restricted to the owner, and listing is disabled for security.
+     */
+    match /devices/{deviceId} {
+      allow get: if isSignedIn() && existingDocIsOwnedBy(request.auth.uid);
+      allow list: if false;
+      allow create: if isSignedIn() && newDocHasCorrectOwner(request.auth.uid);
+      allow update: if isSignedIn() && isExistingDoc() && existingDocIsOwnedBy(request.auth.uid) && isUserIdImmutable();
+      allow delete: if isSignedIn() && isExistingDoc() && existingDocIsOwnedBy(request.auth.uid);
+    }
+
+    /**
+     * @description Manages abstract art variations generated from user images.
+     * @path /abstractArt/{abstractArtId}
+     * @allow (none) All access is currently denied due to a missing ownership field.
+     * @deny (create) All write operations are blocked until the schema is updated.
+     * @principle Fails-safe security. If a secure rule cannot be written due to a schema issue, all access is denied.
+     */
+    match /abstractArt/{abstractArtId} {
+      // CRITICAL: The 'AbstractArt' entity is missing a 'userId' field.
+      // The application reasoning states that this field should be denormalized onto
+      // this document to allow for secure, independent authorization checks.
+      // Without it, there is no way to securely verify if a user owns this document.
+      // All access is denied until the schema is updated to include 'userId'.
+      allow get: if false; // TODO: Add owner validation once the schema is updated with an ownership field.
+      allow list: if false;
+      allow create: if false; // TODO: Add owner validation once the schema is updated with an ownership field.
+      allow update: if false; // TODO: Add owner validation once the schema is updated with an ownership field.
+      allow delete: if false; // TODO: Add owner validation once the schema is updated with an ownership field.
+    }
+  }
+}

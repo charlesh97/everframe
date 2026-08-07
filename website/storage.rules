@@ -1,0 +1,11 @@
+rules_version = '2';
+
+service firebase.storage {
+  // This rule now explicitly targets your 'everframe-photo-bucket'.
+  match /b/{bucket}/o {
+    // Allow any authenticated user to read and write anywhere in this bucket.
+    match /{allPaths=**} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}

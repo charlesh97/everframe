@@ -1,0 +1,523 @@
+.scrollSequence {
+  height: 380svh;
+  background: #e7e5e0;
+}
+
+.stickyHero {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+  isolation: isolate;
+  background: #e7e5e0;
+}
+
+.scene {
+  --scene-scale: 1;
+  --scene-translate-x: 0%;
+  --scene-translate-y: 0%;
+  --reveal-x: 51.54%;
+  --reveal-y: 44.25%;
+  --lens-width: 0px;
+  --lens-height: 0px;
+  --image-blur: 0.18px;
+  --artwork-blur: 0.24px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: max(100vw, 133.333333svh);
+  aspect-ratio: 4 / 3;
+  transform: translate3d(calc(-50% + var(--scene-translate-x)), calc(-50% + var(--scene-translate-y)), 0) scale(var(--scene-scale));
+  transform-origin: center;
+  will-change: transform;
+}
+
+.frameForeground {
+  --scene-scale: 1;
+  --scene-translate-x: 0%;
+  --scene-translate-y: 0%;
+  --reveal-x: 51.54%;
+  --reveal-y: 44.25%;
+  --lens-width: 0px;
+  --lens-height: 0px;
+  --image-blur: 0.18px;
+  --artwork-blur: 0.24px;
+  position: absolute;
+  z-index: 4;
+  top: 50%;
+  left: 50%;
+  width: max(100vw, 133.333333svh);
+  aspect-ratio: 4 / 3;
+  transform: translate3d(calc(-50% + var(--scene-translate-x)), calc(-50% + var(--scene-translate-y)), 0) scale(var(--scene-scale));
+  transform-origin: center;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.frameForeground .frameHotspot {
+  pointer-events: auto;
+}
+
+.frameComposite {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+}
+
+.frameOriginal,
+.frameFlower {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.frameFlower {
+  --lens-mask: radial-gradient(
+    ellipse var(--lens-width) var(--lens-height) at var(--reveal-x) var(--reveal-y),
+    #000 0%,
+    rgba(0, 0, 0, 0.96) 22%,
+    rgba(0, 0, 0, 0.7) 48%,
+    rgba(0, 0, 0, 0.26) 76%,
+    transparent 100%
+  );
+  -webkit-mask-image: var(--lens-mask);
+  mask-image: var(--lens-mask);
+  filter: blur(var(--artwork-blur)) saturate(1.025);
+  will-change: mask-image;
+}
+
+.roomImage {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  user-select: none;
+  filter: blur(var(--image-blur));
+  transform: scale(1.004);
+}
+
+.flowerImage,
+.frameHotspot {
+  position: absolute;
+}
+
+.flowerImage {
+  z-index: 1;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  -webkit-mask-image: radial-gradient(
+    ellipse var(--lens-width) var(--lens-height) at var(--reveal-x) var(--reveal-y),
+    #000 0%,
+    rgba(0, 0, 0, 0.96) 22%,
+    rgba(0, 0, 0, 0.7) 48%,
+    rgba(0, 0, 0, 0.26) 76%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    ellipse var(--lens-width) var(--lens-height) at var(--reveal-x) var(--reveal-y),
+    #000 0%,
+    rgba(0, 0, 0, 0.96) 22%,
+    rgba(0, 0, 0, 0.7) 48%,
+    rgba(0, 0, 0, 0.26) 76%,
+    transparent 100%
+  );
+  filter: blur(var(--artwork-blur)) saturate(1.025);
+  transform: scale(1.004);
+  transition: opacity 180ms ease;
+  will-change: mask-image;
+}
+
+.frameHotspot {
+  z-index: 2;
+  display: block;
+  appearance: none;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.frameHotspot:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.95);
+  outline-offset: 7px;
+}
+
+.header {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  width: 100%;
+  padding: 22px 30px;
+  box-sizing: border-box;
+  color: #f6f4ee;
+  pointer-events: none;
+  will-change: opacity;
+}
+
+.wordmark,
+.navigation,
+.reserveLink {
+  pointer-events: auto;
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  justify-self: start;
+  color: inherit;
+  font-family: 'Bebas Neue', 'Arial Narrow', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.wordmarkMark {
+  display: block;
+  width: 20px;
+  height: 20px;
+  background: currentColor;
+  -webkit-mask: url('/everframe/everframe-logo.svg') center / contain no-repeat;
+  mask: url('/everframe/everframe-logo.svg') center / contain no-repeat;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  padding: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 999px;
+  background: rgba(22, 24, 24, 0.74);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.16);
+  backdrop-filter: blur(12px);
+}
+
+.navLink,
+.activeNavLink {
+  padding: 8px 14px;
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.74);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: color 180ms ease, background-color 180ms ease;
+}
+
+.activeNavLink {
+  background: #f1efe9;
+  color: #1c1e1d;
+}
+
+.navLink:hover,
+.navLink:focus-visible {
+  color: #fff;
+}
+
+.reserveLink {
+  display: inline-flex;
+  align-items: center;
+  justify-self: end;
+  gap: 5px;
+  color: inherit;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+
+.heroCopy {
+  --copy-translate-x: 0vw;
+  position: absolute;
+  z-index: 2;
+  top: 20%;
+  left: clamp(24px, 5vw, 76px);
+  width: min(800px, calc(100vw - 48px));
+  color: #1a1a18;
+  font-family: 'Bebas Neue', 'Arial Narrow', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.025em;
+  pointer-events: none;
+  transform: translate3d(var(--copy-translate-x), 0, 0);
+  will-change: opacity;
+}
+
+.heroCopy p,
+.heroCopy h1 {
+  margin: 0;
+}
+
+.heroEyebrow {
+  margin-bottom: 12px !important;
+  font-size: 21px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.heroCopy h1 {
+  max-width: 560px;
+  font-size: clamp(82px, 10.4vw, 182px);
+  line-height: 0.82;
+  text-transform: uppercase;
+}
+
+.heroDetail {
+  max-width: 300px;
+  margin-top: 20px !important;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1.35;
+}
+
+.conceptStory {
+  --story-translate-x: 12vw;
+  --story-translate-y: 28px;
+  position: absolute;
+  z-index: 2;
+  top: 19%;
+  left: clamp(24px, 5vw, 76px);
+  width: min(760px, calc(100vw - 48px));
+  color: #1a1a18;
+  opacity: 0;
+  transform: translate3d(var(--story-translate-x), var(--story-translate-y), 0);
+  will-change: opacity, transform;
+}
+
+.conceptStory p,
+.conceptStory h2,
+.conceptStep p,
+.conceptStep h3,
+.conceptStep span {
+  margin: 0;
+}
+
+.conceptStory p,
+.conceptStep p {
+  font-family: 'Bebas Neue', 'Arial Narrow', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.conceptStory h2 {
+  max-width: 700px;
+  margin-top: 12px;
+  font-family: 'Bebas Neue', 'Arial Narrow', sans-serif;
+  font-size: clamp(70px, 8.6vw, 138px);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 0.83;
+  text-transform: uppercase;
+}
+
+.conceptSteps {
+  position: absolute;
+  z-index: 5;
+  right: clamp(24px, 5vw, 76px);
+  bottom: 12%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(160px, 1fr));
+  gap: 10px;
+  width: min(700px, calc(100vw - 48px));
+  opacity: 0;
+  will-change: opacity;
+}
+
+.conceptStep {
+  --step-translate-y: 74px;
+  min-height: 164px;
+  padding: 18px 20px 20px;
+  border: 1px solid rgba(26, 26, 24, 0.34);
+  background: rgba(239, 237, 229, 0.82);
+  opacity: 0;
+  transform: translate3d(0, var(--step-translate-y), 0);
+  backdrop-filter: blur(8px);
+  will-change: opacity, transform;
+}
+
+.conceptStep + .conceptStep {
+  border-left: 1px solid rgba(26, 26, 24, 0.34);
+}
+
+.conceptStep h3 {
+  margin-top: 38px;
+  font-family: 'Bebas Neue', 'Arial Narrow', sans-serif;
+  font-size: clamp(27px, 2.4vw, 38px);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 0.91;
+  text-transform: uppercase;
+}
+
+.conceptStep span {
+  display: block;
+  max-width: 175px;
+  margin-top: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.conceptLogin {
+  --login-translate-y: 28px;
+  position: absolute;
+  z-index: 5;
+  top: 50%;
+  left: 50%;
+  display: inline-flex;
+  min-width: 141px;
+  min-height: 60px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 22px;
+  border: 1px solid #ffffff;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #1b1c19;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  text-decoration: none;
+  opacity: 0;
+  transform: translate3d(-50%, calc(-50% + var(--login-translate-y)), 0);
+  will-change: opacity, transform;
+}
+
+.conceptLogin:hover,
+.conceptLogin:focus-visible {
+  background: #1b1c19;
+  color: #ffffff;
+}
+
+.ambientVignette {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: rgba(20, 21, 19, 0.08);
+  pointer-events: none;
+}
+
+.sequenceEnd {
+  height: 1px;
+  background: #161818;
+}
+
+@media (max-width: 700px) {
+  .scrollSequence {
+    height: 270svh;
+  }
+
+  .scene,
+  .frameForeground {
+    left: calc(50% + clamp(96px, 28vw, 180px));
+  }
+
+  .header {
+    grid-template-columns: 1fr auto;
+    padding: 16px 12px 16px 18px;
+  }
+
+  .navigation {
+    display: none;
+  }
+
+  .reserveLink {
+    font-size: 10px;
+    white-space: nowrap;
+  }
+
+  .heroCopy {
+    top: 18%;
+    left: 20px;
+    width: calc(100vw - 40px);
+  }
+
+  .heroCopy h1 {
+    font-size: clamp(64px, 20vw, 96px);
+  }
+
+  .heroDetail {
+    font-size: 14px;
+  }
+
+  .scrollSequence {
+    height: 330svh;
+  }
+
+  .conceptStory {
+    top: 17%;
+    left: 20px;
+    width: min(310px, calc(100vw - 40px));
+  }
+
+  .conceptStory h2 {
+    font-size: clamp(52px, 14.5vw, 70px);
+  }
+
+  .conceptSteps {
+    right: 20px;
+    bottom: 13%;
+    grid-template-columns: 1fr;
+    width: min(275px, calc(100vw - 40px));
+    gap: 8px;
+  }
+
+  .conceptStep {
+    min-height: 0;
+    padding: 14px 16px 16px;
+  }
+
+  .conceptStep + .conceptStep {
+    border-top: 1px solid rgba(26, 26, 24, 0.34);
+    border-left: 0;
+  }
+
+  .conceptStep h3 {
+    margin-top: 20px;
+    font-size: 31px;
+  }
+
+  .conceptStep span {
+    font-size: 13px;
+  }
+
+  .conceptLogin {
+    left: calc(50% + clamp(96px, 28vw, 180px));
+  }
+}
+
+@media (min-width: 701px) and (max-aspect-ratio: 5 / 4) {
+  .scene,
+  .frameForeground {
+    left: calc(50% + clamp(96px, 12vw, 220px));
+  }
+
+  .conceptLogin {
+    left: calc(50% + clamp(96px, 12vw, 220px));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flowerImage {
+    transition: none;
+  }
+
+  .header,
+  .heroCopy {
+    transition: none;
+  }
+}

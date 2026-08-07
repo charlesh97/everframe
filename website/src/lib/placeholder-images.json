@@ -1,0 +1,10 @@
+{
+  "placeholderImages": [
+    {
+      "id": "1",
+      "description": "A beautiful sunset over a calm ocean.",
+      "imageUrl": "https://images.unsplash.com/photo-1647285764079-0bb401795716?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8c3Vuc2V0JTIwb2NlYW58ZW58MHx8fHwxNzY0MDk3MjM3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "sunset ocean"
+    }
+  ]
+}

@@ -1,0 +1,202 @@
+{
+  "entities": {
+    "User": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "User",
+      "type": "object",
+      "description": "Represents a user of the Everframe Gallery application.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the user, matching the Firebase Auth UID."
+        },
+        "email": {
+          "type": "string",
+          "description": "Email address of the user.",
+          "format": "email"
+        },
+        "name": {
+          "type": "string",
+          "description": "Display name of the user."
+        }
+      },
+      "required": [
+        "id",
+        "email",
+        "name"
+      ]
+    },
+    "Device": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Device",
+      "type": "object",
+      "description": "Represents an Everframe device linked to a user account.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the device."
+        },
+        "userId": {
+          "type": "string",
+          "description": "Reference to User. (Relationship: User 1:N Device)"
+        },
+        "deviceName": {
+          "type": "string",
+          "description": "Name of the device."
+        },
+        "activationCode": {
+          "type": "string",
+          "description": "Activation code to link the device to a user account."
+        }
+      },
+      "required": [
+        "id",
+        "userId",
+        "deviceName",
+        "activationCode"
+      ]
+    },
+    "Image": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Image",
+      "type": "object",
+      "description": "Represents an uploaded image.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the image."
+        },
+        "originalFilename": {
+          "type": "string",
+          "description": "Original filename of the uploaded image."
+        },
+        "storageUrl": {
+          "type": "string",
+          "description": "URL of the image stored in cloud storage.",
+          "format": "uri"
+        },
+        "uploadDate": {
+          "type": "string",
+          "description": "Date and time when the image was uploaded.",
+          "format": "date-time"
+        },
+        "isSelected": {
+          "type": "boolean",
+          "description": "Indicates whether the image is selected for display on the Everframe."
+        }
+      },
+      "required": [
+        "id",
+        "originalFilename",
+        "storageUrl",
+        "uploadDate",
+        "isSelected"
+      ]
+    },
+    "AbstractArt": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "AbstractArt",
+      "type": "object",
+      "description": "Represents an abstract art variation generated from an original image.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the abstract art variation."
+        },
+        "imageId": {
+          "type": "string",
+          "description": "Reference to Image. (Relationship: Image 1:N AbstractArt)"
+        },
+        "storageUrl": {
+          "type": "string",
+          "description": "URL of the abstract art image stored in cloud storage.",
+          "format": "uri"
+        },
+        "generationPrompt": {
+          "type": "string",
+          "description": "The prompt used by Gemini to generate the abstract art."
+        }
+      },
+      "required": [
+        "id",
+        "imageId",
+        "storageUrl",
+        "generationPrompt"
+      ]
+    }
+  },
+  "auth": {
+    "providers": [
+      "google"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/users/{userId}",
+        "definition": {
+          "entityName": "User",
+          "schema": {
+            "$ref": "#/backend/entities/User"
+          },
+          "description": "Stores user profiles, indexed by their unique user ID.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "Unique identifier for the user."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/devices/{deviceId}",
+        "definition": {
+          "entityName": "Device",
+          "schema": {
+            "$ref": "#/backend/entities/Device"
+          },
+          "description": "Stores device information, enabling linking of devices to user accounts via the userId field.",
+          "params": [
+            {
+              "name": "deviceId",
+              "description": "Unique identifier for the device."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/images/{imageId}",
+        "definition": {
+          "entityName": "Image",
+          "schema": {
+            "$ref": "#/backend/entities/Image"
+          },
+          "description": "Stores uploaded images for the shared gallery.",
+          "params": [
+            {
+              "name": "imageId",
+              "description": "Unique identifier for the image."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/abstractArt/{abstractArtId}",
+        "definition": {
+          "entityName": "AbstractArt",
+          "schema": {
+            "$ref": "#/backend/entities/AbstractArt"
+          },
+          "description": "Stores abstract art variations, linked to the original image via imageId and denormalized with userId for authorization independence.",
+          "params": [
+            {
+              "name": "abstractArtId",
+              "description": "Unique identifier for the abstract art variation."
+            }
+          ]
+        }
+      }
+    ],
+    "reasoning": "The Firestore data structure is designed to ensure authorization independence, clarity, and scalability for the Everframe Gallery application. It leverages path-based ownership for user-specific data and avoids hierarchical authorization dependencies to simplify security rules and enable atomic operations.\n\n1.  **Users Collection:** Stores user profiles, identified by their unique user ID. This collection holds essential user information.\n2.  **Devices Collection:** Stores device information linked to a user via the `userId` field. This enables associating devices with user accounts.\n3.  **Images Collection:** A top-level collection to store all images for the shared gallery. Access is controlled at the collection level.\n4.  **AbstractArt Collection:**  Stores abstract art variations derived from the original images. Each abstract art variation is linked to the original image via the `imageId` field. The denormalized `userId` allows rules to quickly determine ownership without needing to `get` the parent `Image` document.\n\nThis structure achieves Authorization Independence by denormalizing the `userId` into the `AbstractArt` documents. This eliminates the need for security rules to perform `get()` operations to verify ownership up the hierarchy, making rules simpler and more efficient. The structure also supports the required QAPs by using path-based ownership to secure access to user-specific data (images and abstract art)."
+  }
+}

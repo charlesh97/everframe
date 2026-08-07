@@ -1,0 +1,208 @@
+{
+  "generatedAt": "2026-08-07T21:58:22.386Z",
+  "model": "gemini-3.1-flash-lite-image",
+  "subjectCount": 20,
+  "styleCount": 100,
+  "images": [
+    {
+      "slug": "vintage-camera-desk",
+      "subject": "a vintage film camera, contact sheets, pencils, and handwritten notes on a walnut desk",
+      "category": "item",
+      "style": "paper cut-out collage",
+      "file": "/everframe/hero/generated/01-vintage-camera-desk.jpg",
+      "model": "gemini-3.1-flash-lite-image",
+      "mimeType": "image/jpeg",
+      "prompt": "Create an original portrait-oriented hero artwork insert for the Everframe landing page: a vintage film camera, contact sheets, pencils, and handwritten notes on a walnut desk. Render it in the style of paper cut-out collage. Make it premium, warm, artful, and suitable for display inside a modern digital picture frame. No text, logos, watermarks, UI, captions, borders, or frames. Use a 4:5 portrait composition. Final target: 1200x1500 pixels."
+    },
+    {
+      "slug": "museum-courtyard",
+      "subject": "a quiet museum courtyard with olive trees, stone benches, and visitors moving through late afternoon light",
+      "category": "place",
+      "style": "clay model still life",
+      "file": "/everframe/hero/generated/02-museum-courtyard.jpg",
+      "model": "gemini-3.1-flash-lite-image",
+      "mimeType": "image/jpeg",
+      "prompt": "Create an original portrait-oriented hero artwork insert for the Everframe landing page: a quiet museum courtyard with olive trees, stone benches, and visitors moving through late afternoon light. Render it in the style of clay model still life. Make it premium, warm, artful, and suitable for display inside a modern digital picture frame. No text, logos, watermarks, UI, captions, borders, or frames. Use a 4:5 portrait composition. Final target: 1200x1500 pixels."
+    },
+    {
+      "slug": "desk-lamp-blueprint",
+      "subject": "an adjustable brass desk lamp illuminating blueprints, calipers, and a small prototype part",
+      "category": "item",
+      "style": "digital pastel drawing",
+      "file": "/everframe/hero/generated/03-desk-lamp-blueprint.jpg",
+      "model": "gemini-3.1-flash-lite-image",
+      "mimeType": "image/jpeg",
+      "prompt": "Create an original portrait-oriented hero artwork insert for the Everframe landing page: an adjustable brass desk lamp illuminating blueprints, calipers, and a small prototype part. Render it in the style of digital pastel drawing. Make it premium, warm, artful, and suitable for display inside a modern digital picture frame. No text, logos, watermarks, UI, captions, borders, or frames. Use a 4:5 portrait composition. Final target: 1200x1500 pixels."
+    },
+    {
+      "slug": "dancer-rehearsal-room",
+      "subject": "a dancer resting between rehearsals in a mirrored room with tape marks on the floor",
+      "category": "person",
+      "style": "soft pastel portrait",
+      "file": "/everframe/hero/generated/04-dancer-rehearsal-room.jpg",
+      "model": "gemini-3.1-flash-lite-image",
+      "mimeType": "image/jpeg",
+      "prompt": "Create an original portrait-oriented hero artwork insert for the Everframe landing page: a dancer resting between rehearsals in a mirrored room with tape marks on the floor. Render it in the style of soft pastel portrait. Make it premium, warm, artful, and suitable for display inside a modern digital picture frame. No text, logos, watermarks, UI, captions, borders, or frames. Use a 4:5 portrait composition. Final target: 1200x1500 pixels."
+    },
+    {
+      "slug": "portrait-red-scarf",
+      "subject": "a calm portrait of an older woman in a red scarf standing near a tiled station entrance",
+      "category": "person",
+      "style": "hand-inked line art",
+      "file": "/everframe/hero/generated/05-portrait-red-scarf.jpg",
+      "model": "gemini-3.1-flash-lite-image",
+      "mimeType": "image/jpeg",
+      "prompt": "Create an original portrait-oriented hero artwork insert for the Everframe landing page: a calm portrait of an older woman in a red scarf standing near a tiled station entrance. Render it in the style of hand-inked line art. Make it premium, warm, artful, and suitable for display inside a modern digital picture frame. No text, logos, watermarks, UI, captions, borders, or frames. Use a 4:5 portrait composition. Final target: 1200x1500 pixels."
+    },
+    {
+      "slug": "chair-reading-corner",
+      "subject": "a sculptural reading chair beside stacked books, a floor lamp, and a textured wool rug",
+      "category": "item",
+      "style": "film grain black and white photograph",
+      "file": "/everframe/hero/generated/06-chair-reading-corner.jpg",
+      "model": "gemini-3.1-flash-lite-image",
+      "mimeType": "image/jpeg",
+      "prompt": "Create an original portrait-oriented hero artwork insert for the Everframe landing page: a sculptural reading chair beside stacked books, a floor lamp, and a textured wool rug. Render it in the style of film grain black and white photograph. Make it premium, warm, artful, and suitable for display inside a modern digital picture frame. No text, logos, watermarks, UI, captions, borders, or frames. Use a 4:5 portrait composition. Final target: 1200x1500 pixels."
+    },
+    {
+      "slug": "architect-with-scale-model",
+      "subject": "a thoughtful architect holding a small wood-and-paper scale model in a bright studio",
+      "category": "person",
+      "style": "plaster bust sculpture",
+      "file": "/everframe/hero/generated/07-architect-with-scale-model.jpg",
+      "model": "gemini-3.1-flash-lite-image",
+      "mimeType": "image/jpeg",
+      "prompt": "Create an original portrait-oriented hero artwork insert for the Everframe landing page: a thoughtful architect holding a small wood-and-paper scale model in a bright studio. Render it in the style of plaster bust sculpture. Make it premium, warm, artful, and suitable for display inside a modern digital picture frame. No text, logos, watermarks, UI, captions, borders, or frames. Use a 4:5 portrait composition. Final target: 1200x1500 pixels."
+    },
+    {
+      "slug": "chef-plating-dessert",
+      "subject": "a chef carefully plating a berry dessert with tweezers in a calm restaurant kitchen",
+      "category": "person",
+      "style": "colorized 1950s photograph",
+      "file": "/everframe/hero/generated/08-chef-plating-dessert.jpg",
+      "model": "gemini-3.1-flash-lite-image",
+      "mimeType": "image/jpeg",
+      "prompt": "Create an original portrait-oriented hero artwork insert for the Everframe landing page: a chef carefully plating a berry dessert with tweezers in a calm restaurant kitchen. Render it in the style of colorized 1950s photograph. Make it premium, warm, artful, and suitable for display inside a modern digital picture frame. No text, logos, watermarks, UI, captions, borders, or frames. Use a 4:5 portrait composition. Final target: 1200x1500 pixels."
+    },
+    {
+      "slug": "botanical-library",
+      "subject": "a botanical library with tall shelves, specimen drawers, ladders, and pressed plants on a worktable",
+      "category": "place",
+      "style": "minimal product render",
+      "file": "/everframe/hero/generated/09-botanical-library.jpg",
+      "model": "gemini-3.1-flash-lite-image",
+      "mimeType": "image/jpeg",
+      "prompt": "Create an original portrait-oriented hero artwork insert for the Everframe landing page: a botanical library with tall shelves, specimen drawers, ladders, and pressed plants on a worktable. Render it in the style of minimal product render. Make it premium, warm, artful, and suitable for display inside a modern digital picture frame. No text, logos, watermarks, UI, captions, borders, or frames. Use a 4:5 portrait composition. Final target: 1200x1500 pixels."
+    },
+    {
+      "slug": "bicycle-leaning-wall",
+      "subject": "a matte black bicycle leaning against a textured plaster wall with afternoon shadows",
+      "category": "item",
+      "style": "gouache painting on paper",
+      "file": "/everframe/hero/generated/10-bicycle-leaning-wall.jpg",
+      "model": "gemini-3.1-flash-lite-image",
+      "mimeType": "image/jpeg",
+      "prompt": "Create an original portrait-oriented hero artwork insert for the Everframe landing page: a matte black bicycle leaning against a textured plaster wall with afternoon shadows. Render it in the style of gouache painting on paper. Make it premium, warm, artful, and suitable for display inside a modern digital picture frame. No text, logos, watermarks, UI, captions, borders, or frames. Use a 4:5 portrait composition. Final target: 1200x1500 pixels."
+    },
+    {
+      "slug": "alpine-cabin-snow",
+      "subject": "a compact alpine cabin after fresh snow, smoke from the chimney, pine trees, and amber interior light",
+      "category": "place",
+      "style": "technical cross-section illustration",
+      "file": "/everframe/hero/generated/11-alpine-cabin-snow.jpg",
+      "model": "gemini-3.1-flash-lite-image",
+      "mimeType": "image/jpeg",
+      "prompt": "Create an original portrait-oriented hero artwork insert for the Everframe landing page: a compact alpine cabin after fresh snow, smoke from the chimney, pine trees, and amber interior light. Render it in the style of technical cross-section illustration. Make it premium, warm, artful, and suitable for display inside a modern digital picture frame. No text, logos, watermarks, UI, captions, borders, or frames. Use a 4:5 portrait composition. Final target: 1200x1500 pixels."
+    },
+    {
+      "slug": "rainy-city-crosswalk",
+      "subject": "a rainy city crosswalk with umbrellas, taxi headlights, storefront reflections, and motion blur",
+      "category": "place",
+      "style": "hand-painted watercolor pattern",
+      "file": "/everframe/hero/generated/12-rainy-city-crosswalk.jpg",
+      "model": "gemini-3.1-flash-lite-image",
+      "mimeType": "image/jpeg",
+      "prompt": "Create an original portrait-oriented hero artwork insert for the Everframe landing page: a rainy city crosswalk with umbrellas, taxi headlights, storefront reflections, and motion blur. Render it in the style of hand-painted watercolor pattern. Make it premium, warm, artful, and suitable for display inside a modern digital picture frame. No text, logos, watermarks, UI, captions, borders, or frames. Use a 4:5 portrait composition. Final target: 1200x1500 pixels."
+    },
+    {
+      "slug": "ceramic-vase-wildflowers",
+      "subject": "a handmade ceramic vase filled with loose wildflowers on a clean linen-covered table",
+      "category": "item",
+      "style": "collage mixed-media layout",
+      "file": "/everframe/hero/generated/13-ceramic-vase-wildflowers.jpg",
+      "model": "gemini-3.1-flash-lite-image",
+      "mimeType": "image/jpeg",
+      "prompt": "Create an original portrait-oriented hero artwork insert for the Everframe landing page: a handmade ceramic vase filled with loose wildflowers on a clean linen-covered table. Render it in the style of collage mixed-media layout. Make it premium, warm, artful, and suitable for display inside a modern digital picture frame. No text, logos, watermarks, UI, captions, borders, or frames. Use a 4:5 portrait composition. Final target: 1200x1500 pixels."
+    },
+    {
+      "slug": "desert-gas-station",
+      "subject": "a lonely desert gas station at blue hour with a parked classic car and neon reflections",
+      "category": "place",
+      "style": "digital blueprint wireframe",
+      "file": "/everframe/hero/generated/14-desert-gas-station.jpg",
+      "model": "gemini-3.1-flash-lite-image",
+      "mimeType": "image/jpeg",
+      "prompt": "Create an original portrait-oriented hero artwork insert for the Everframe landing page: a lonely desert gas station at blue hour with a parked classic car and neon reflections. Render it in the style of digital blueprint wireframe. Make it premium, warm, artful, and suitable for display inside a modern digital picture frame. No text, logos, watermarks, UI, captions, borders, or frames. Use a 4:5 portrait composition. Final target: 1200x1500 pixels."
+    },
+    {
+      "slug": "family-breakfast-window",
+      "subject": "a candid family breakfast at a sunlit kitchen window, coffee cups, toast, and soft morning light",
+      "category": "people",
+      "style": "oil painting with thick impasto",
+      "file": "/everframe/hero/generated/15-family-breakfast-window.jpg",
+      "model": "gemini-3.1-flash-lite-image",
+      "mimeType": "image/jpeg",
+      "prompt": "Create an original portrait-oriented hero artwork insert for the Everframe landing page: a candid family breakfast at a sunlit kitchen window, coffee cups, toast, and soft morning light. Render it in the style of oil painting with thick impasto. Make it premium, warm, artful, and suitable for display inside a modern digital picture frame. No text, logos, watermarks, UI, captions, borders, or frames. Use a 4:5 portrait composition. Final target: 1200x1500 pixels."
+    },
+    {
+      "slug": "fruit-bowl-market",
+      "subject": "a bowl of citrus, figs, grapes, and pears on a market stall with patterned cloth",
+      "category": "item",
+      "style": "early 1900s portrait photograph",
+      "file": "/everframe/hero/generated/16-fruit-bowl-market.jpg",
+      "model": "gemini-3.1-flash-lite-image",
+      "mimeType": "image/jpeg",
+      "prompt": "Create an original portrait-oriented hero artwork insert for the Everframe landing page: a bowl of citrus, figs, grapes, and pears on a market stall with patterned cloth. Render it in the style of early 1900s portrait photograph. Make it premium, warm, artful, and suitable for display inside a modern digital picture frame. No text, logos, watermarks, UI, captions, borders, or frames. Use a 4:5 portrait composition. Final target: 1200x1500 pixels."
+    },
+    {
+      "slug": "mountain-observatory",
+      "subject": "a remote mountain observatory above clouds under a clear indigo sky",
+      "category": "place",
+      "style": "tinted cyanotype photograph",
+      "file": "/everframe/hero/generated/17-mountain-observatory.jpg",
+      "model": "gemini-3.1-flash-lite-image",
+      "mimeType": "image/jpeg",
+      "prompt": "Create an original portrait-oriented hero artwork insert for the Everframe landing page: a remote mountain observatory above clouds under a clear indigo sky. Render it in the style of tinted cyanotype photograph. Make it premium, warm, artful, and suitable for display inside a modern digital picture frame. No text, logos, watermarks, UI, captions, borders, or frames. Use a 4:5 portrait composition. Final target: 1200x1500 pixels."
+    },
+    {
+      "slug": "moonlit-coastal-town",
+      "subject": "a small coastal town at dusk with warm windows, wet stone streets, and a moonlit harbor",
+      "category": "place",
+      "style": "architectural blueprint drawing",
+      "file": "/everframe/hero/generated/18-moonlit-coastal-town.jpg",
+      "model": "gemini-3.1-flash-lite-image",
+      "mimeType": "image/jpeg",
+      "prompt": "Create an original portrait-oriented hero artwork insert for the Everframe landing page: a small coastal town at dusk with warm windows, wet stone streets, and a moonlit harbor. Render it in the style of architectural blueprint drawing. Make it premium, warm, artful, and suitable for display inside a modern digital picture frame. No text, logos, watermarks, UI, captions, borders, or frames. Use a 4:5 portrait composition. Final target: 1200x1500 pixels."
+    },
+    {
+      "slug": "gardener-glasshouse",
+      "subject": "a gardener misting rare plants inside an old glasshouse filled with condensation and green light",
+      "category": "person",
+      "style": "engraved copperplate illustration",
+      "file": "/everframe/hero/generated/19-gardener-glasshouse.jpg",
+      "model": "gemini-3.1-flash-lite-image",
+      "mimeType": "image/jpeg",
+      "prompt": "Create an original portrait-oriented hero artwork insert for the Everframe landing page: a gardener misting rare plants inside an old glasshouse filled with condensation and green light. Render it in the style of engraved copperplate illustration. Make it premium, warm, artful, and suitable for display inside a modern digital picture frame. No text, logos, watermarks, UI, captions, borders, or frames. Use a 4:5 portrait composition. Final target: 1200x1500 pixels."
+    },
+    {
+      "slug": "musician-green-room",
+      "subject": "a musician tuning an old hollow-body guitar backstage beside a mirror framed with warm bulbs",
+      "category": "person",
+      "style": "posterized photo illustration",
+      "file": "/everframe/hero/generated/20-musician-green-room.jpg",
+      "model": "gemini-3.1-flash-lite-image",
+      "mimeType": "image/jpeg",
+      "prompt": "Create an original portrait-oriented hero artwork insert for the Everframe landing page: a musician tuning an old hollow-body guitar backstage beside a mirror framed with warm bulbs. Render it in the style of posterized photo illustration. Make it premium, warm, artful, and suitable for display inside a modern digital picture frame. No text, logos, watermarks, UI, captions, borders, or frames. Use a 4:5 portrait composition. Final target: 1200x1500 pixels."
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+.demoSequence {
+  height: 220svh;
+  background: #171816;
+}
+
+.stickyDemo {
+  position: sticky;
+  top: 0;
+  display: grid;
+  height: 100svh;
+  place-items: center;
+  overflow: hidden;
+}
+
+.demoCue {
+  --cue-translate-y: 0px;
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  color: #f0ede5;
+  opacity: 1;
+  transform: translate3d(0, var(--cue-translate-y), 0);
+  will-change: opacity, transform;
+}
+
+.demoCue p {
+  margin: 0;
+  font-family: 'Bebas Neue', 'Arial Narrow', sans-serif;
+  font-size: clamp(30px, 3vw, 44px);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.videoFrame {
+  --video-blur: 20px;
+  --video-scale: 0.94;
+  position: absolute;
+  width: min(1120px, calc(100vw - 60px));
+  aspect-ratio: 16 / 9;
+  opacity: 0;
+  filter: blur(var(--video-blur));
+  transform: scale(var(--video-scale));
+  will-change: opacity, filter, transform;
+}
+
+.videoFrame video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #0c0d0c;
+  object-fit: cover;
+}
+
+@media (max-width: 700px) {
+  .demoSequence {
+    height: 190svh;
+  }
+
+  .videoFrame {
+    width: calc(100vw - 28px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .demoCue,
+  .videoFrame {
+    transition: none;
+  }
+}
