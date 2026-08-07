@@ -1,5 +1,7 @@
 #include "ePaper_Config.h"
 #include "esp_err.h"
+#include <stdlib.h>
+#include <string.h>
 
 // SPI device handle
 spi_device_handle_t spi_handle = NULL;
@@ -33,7 +35,8 @@ void EPD_Task(void *pvParameter)
         .sclk_io_num = EPD_CLK_PIN,
         .quadwp_io_num = -1,  // Not used
         .quadhd_io_num = -1,  // Not used
-        .max_transfer_sz = 1,  // Max size for 480x800 image (192000 bytes)
+        .max_transfer_sz = EPD_SPI_MAX_TRANSFER,  // S3 DMA cap: SPI_LL_DMA_MAX_BIT_LEN = 1<<18 bits = 32 KB
+                                                  // Frame buffer (192,000 B) is sent in 6 chunks, CS held low
     };
 
     // Initialize SPI bus (SPI2_HOST is typically used for general purpose SPI)
@@ -45,9 +48,12 @@ void EPD_Task(void *pvParameter)
 
     // Configure SPI device for e-paper display
     spi_device_interface_config_t devcfg = {
-        .clock_speed_hz = 1000000,  // 1 MHz clock speed
+        .clock_speed_hz = 20000000,  // 20 MHz clock speed (panel ref runs 1.1 MHz; e-paper
+                                     // controllers spec 20 MHz max — drop to 10 MHz if glitchy)
         .mode = 0,  // SPI_MODE_0 (CPOL=0, CPHA=0)
-        .spics_io_num = EPD_CS_PIN,
+        .spics_io_num = -1,  // CS is manually driven by EPD_Digital_Write in EPD_7in3e.c
+                            // (matches Waveshare reference; avoids double-driving the pin
+                            //  against the SPI peripheral's hardware CS)
         .queue_size = 1,
         .flags = 0,
         .pre_cb = NULL,
@@ -65,16 +71,35 @@ void EPD_Task(void *pvParameter)
     // Display image data
     EPD_Module_Init();
 
-    printf("e-Paper Init and Clear...\r\n");
-    EPD_7IN3F_Init();
-    EPD_7IN3F_Clear(EPD_7IN3F_WHITE); // WHITE 
+    printf("e-Paper Init and Clear...\n");
+    EPD_7IN3E_Init();
+    EPD_7IN3E_Clear(EPD_7IN3E_BLUE); // WHITE 
     vTaskDelay(pdMS_TO_TICKS(1000));
 
-    printf("Displaying image data...\r\n");
-    EPD_7IN3F_Display(gImage_7in3f);
+    printf("Displaying color bands...\n");
+    uint8_t *frame = (uint8_t *)malloc(EPD_7IN3E_WIDTH * EPD_7IN3E_HEIGHT / 2);
+    if (frame == NULL) {
+        ESP_LOGE(EPD_TAG, "Failed to allocate frame buffer");
+        vTaskDelete(NULL);
+    }
+    // Full frame: 6 horizontal color bands (E palette, 800x480, 4bpp)
+    const uint8_t colors[6] = {
+        EPD_7IN3E_BLACK, EPD_7IN3E_YELLOW, EPD_7IN3E_RED,
+        EPD_7IN3E_BLUE,  EPD_7IN3E_GREEN,  EPD_7IN3E_WHITE
+    };
+    uint16_t row_bytes = EPD_7IN3E_WIDTH / 2;   // 400 bytes/row
+    uint16_t band_rows = EPD_7IN3E_HEIGHT / 6;  // 80 rows per band
+    for (uint8_t b = 0; b < 6; b++) {
+        for (uint16_t r = 0; r < band_rows; r++) {
+            memset(frame + (b * band_rows + r) * row_bytes,
+                   (colors[b] << 4) | colors[b], row_bytes);
+        }
+    }
+    EPD_7IN3E_Display(frame);
+    free(frame);
 
-    printf("Sleeping...\r\n");
-    EPD_7IN3F_Sleep();
+    printf("Sleeping...\n");
+    EPD_7IN3E_Sleep();
 
     printf("Exiting...\r\n");
     EPD_Module_Exit();
@@ -82,28 +107,12 @@ void EPD_Task(void *pvParameter)
     // Log
     ESP_LOGI(EPD_TAG, "Epaper peripheral driver initialized");
 
-    // while (1)
-    // {
-    //     // Wait for image data from queue
-    //     uint32_t *image_data = NULL;
-    //     if (xQueueReceive(xQueue, &image_data, portMAX_DELAY) == pdPASS) {
-    //         // Display image data
-    //         EPD_Module_Init();
-
-    //         printf("e-Paper Init and Clear...\r\n");
-	//         EPD_7IN3F_Init();
-    //         EPD_7IN3F_Clear(EPD_7IN3F_WHITE); // WHITE 
-    //         vTaskDelay(pdMS_TO_TICKS(1000));
-
-    //         printf("Displaying image data...\r\n");
-    //         EPD_7IN3F_Display(image_data);
-    //         printf("Sleeping...\r\n");
-    //         EPD_7IN3F_Sleep();
-
-    //         printf("Exiting...\r\n");
-    //         EPD_Module_Exit();
-    //     }
-    // }
+    // Never return: one-shot display cycle done. Park the task.
+    // (Future: wait here for image data from queue)
+    while (1)
+    {
+        vTaskDelay(pdMS_TO_TICKS(1000));
+    }
 }
 
 void EPD_SPI_WriteByte(uint8_t value)
@@ -113,7 +122,29 @@ void EPD_SPI_WriteByte(uint8_t value)
         .tx_buffer = &value,
         .rx_buffer = NULL,
     };
-    spi_device_transmit(spi_handle, &t);
+    // Polling transmit: no ISR/queue hop, ~2 us overhead for single bytes.
+    spi_device_polling_transmit(spi_handle, &t);
+}
+
+// Bulk write: len bytes in one CS frame (caller asserts CS). Chunks at the
+// S3 DMA cap (EPD_SPI_MAX_TRANSFER) — 192 KB frame = 6 transactions, not 192,000.
+esp_err_t EPD_SPI_WriteData(const uint8_t *data, size_t len)
+{
+    while (len > 0) {
+        size_t chunk = (len > EPD_SPI_MAX_TRANSFER) ? EPD_SPI_MAX_TRANSFER : len;
+        spi_transaction_t t = {
+            .length = chunk * 8,
+            .tx_buffer = data,
+            .rx_buffer = NULL,
+        };
+        esp_err_t ret = spi_device_polling_transmit(spi_handle, &t);
+        if (ret != ESP_OK) {
+            return ret;
+        }
+        data += chunk;
+        len -= chunk;
+    }
+    return ESP_OK;
 }
 
 int EPD_Module_Init(void)
