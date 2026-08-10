@@ -113,7 +113,7 @@ export default function DashboardPage() {
       await Promise.all(
         selectedImages.map(async (item) => {
           const imageName = `${item.original.name.split('.')[0]}-art-${Date.now()}`;
-          const storagePath = `images/${imageName}.png`;
+          const storagePath = `users/${user.uid}/images/${imageName}.png`;
           const imageRef = storageRef(storage, storagePath);
 
           // Upload the base64 data URI to Firebase Storage

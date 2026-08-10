@@ -1,5 +1,6 @@
 import { Toaster } from '@/components/ui/toaster';
 import { FirebaseClientProvider } from '@/firebase';
+import { AuthGate } from '@/components/auth/auth-gate';
 
 export default function DashboardLayout({
   children,
@@ -8,7 +9,7 @@ export default function DashboardLayout({
 }) {
   return (
     <FirebaseClientProvider>
-      {children}
+      <AuthGate>{children}</AuthGate>
       <Toaster />
     </FirebaseClientProvider>
   );
