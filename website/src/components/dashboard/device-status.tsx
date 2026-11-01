@@ -208,8 +208,10 @@ export default function DeviceStatus({ refreshKey, onCurrentPathChange }: Device
                 : WifiOff;
         return (
           <section className={styles.deviceStatusCard} key={device.id}>
-            <StatusIcon className={device.state === 'processing' ? styles.statusSpinner : undefined} />
-            <div>
+            <div className={styles.deviceStatusIcon}>
+              <StatusIcon className={device.state === 'processing' ? styles.statusSpinner : undefined} />
+            </div>
+            <div className={styles.deviceStatusSummary}>
               <div className={styles.deviceStatusHeading}>
                 <strong>Everframe {device.id.slice(-6).toUpperCase()}</strong>
                 <span className={device.online || device.awake ? styles.statusOnline : styles.statusSleeping}>
@@ -218,50 +220,50 @@ export default function DeviceStatus({ refreshKey, onCurrentPathChange }: Device
               </div>
               <p>{statusCopy(device)}</p>
               <p className={styles.deviceFirmware}>
-                Firmware {device.firmwareVersion ?? 'not reported'}
+                {device.firmwareVersion
+                  ? `Firmware ${device.firmwareVersion}`
+                  : "Firmware details available after the frame's next wake"}
                 {device.firmwareBuild ? ` · build ${device.firmwareBuild.slice(0, 8)}` : ''}
               </p>
-              <div className={styles.deviceScheduleControl}>
-                <label htmlFor={`schedule-${device.id}`}>Update schedule</label>
-                <select
-                  id={`schedule-${device.id}`}
-                  value={device.schedule}
-                  disabled={savingScheduleId !== null}
-                  onChange={(event) => void updateSchedule(
-                    device,
-                    event.target.value as DeviceSummary['schedule'],
-                  )}
-                >
-                  <option value="manual">Manual only</option>
-                  <option value="12h">12 hours</option>
-                  <option value="daily">Daily</option>
-                  <option value="weekly">Weekly</option>
-                </select>
-                <small>
-                  {device.schedulePending
-                    ? 'Pending on frame — press its button to apply now.'
-                    : device.nextWakeAt
-                      ? `Next check ${new Date(device.nextWakeAt).toLocaleString()}`
-                      : 'Timer wake is off; use the frame button.'}
-                </small>
-              </div>
             </div>
-            <Button
-              type="button"
-              variant="outline"
-              size="sm"
-              disabled={removingId !== null}
-              onClick={() => void removeDevice(device)}
-            >
-              {removingId === device.id ? <LoaderCircle className={styles.statusSpinner} /> : <Unlink />}
-              {removingId === device.id ? 'Removing…' : 'Remove'}
-            </Button>
+            <div className={styles.deviceControls}>
+              <label htmlFor={`schedule-${device.id}`}>New art checks</label>
+              <select
+                id={`schedule-${device.id}`}
+                value={device.schedule}
+                disabled={savingScheduleId !== null}
+                onChange={(event) => void updateSchedule(
+                  device,
+                  event.target.value as DeviceSummary['schedule'],
+                )}
+              >
+                <option value="manual">Manual only</option>
+                <option value="12h">Every 12 hours</option>
+                <option value="daily">Daily</option>
+                <option value="weekly">Weekly</option>
+              </select>
+              <small>
+                {device.schedulePending
+                  ? 'Pending — press the frame button to apply.'
+                  : device.nextWakeAt
+                    ? `Next check ${new Date(device.nextWakeAt).toLocaleString()}`
+                    : 'Refresh with the frame button.'}
+              </small>
+              <Button
+                type="button"
+                variant="ghost"
+                size="sm"
+                className={styles.deviceRemoveAction}
+                disabled={removingId !== null}
+                onClick={() => void removeDevice(device)}
+              >
+                {removingId === device.id ? <LoaderCircle className={styles.statusSpinner} /> : <Unlink />}
+                {removingId === device.id ? 'Removing…' : 'Remove frame'}
+              </Button>
+            </div>
           </section>
         );
       })}
-      <Button asChild variant="ghost" size="sm" className={styles.addDeviceButton}>
-        <Link href="/activate"><Link2 />Add another frame</Link>
-      </Button>
     </div>
   );
 }

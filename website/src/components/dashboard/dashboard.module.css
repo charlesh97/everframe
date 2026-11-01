@@ -229,14 +229,14 @@
 
 .deviceStatusCard {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 14px;
-  margin: 0 0 22px;
-  padding: 16px 18px;
+  grid-template-columns: auto minmax(0, 1fr) minmax(230px, 290px);
+  align-items: start;
+  gap: 20px;
+  margin: 0;
+  padding: 22px;
   border: 1px solid rgba(28, 30, 29, 0.12);
-  border-radius: 8px;
-  background: rgba(241, 239, 233, 0.72);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.38);
 }
 
 .deviceStatusList {
@@ -247,14 +247,24 @@
   margin-bottom: 10px;
 }
 
-.addDeviceButton {
-  margin-left: auto;
-  display: flex;
+.deviceStatusIcon {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border-radius: 50%;
+  color: #f6f4ee;
+  background: #1c1e1d;
 }
 
-.deviceStatusCard > svg {
-  width: 22px;
-  height: 22px;
+.deviceStatusIcon svg {
+  width: 21px;
+  height: 21px;
+}
+
+.deviceStatusSummary {
+  min-width: 0;
+  padding-top: 2px;
 }
 
 .deviceStatusCard p {
@@ -269,34 +279,50 @@
   font-size: 11px;
 }
 
-.deviceScheduleControl {
+.deviceControls {
   display: grid;
-  grid-template-columns: auto minmax(140px, 190px);
-  align-items: center;
-  gap: 6px 10px;
-  margin-top: 12px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 7px 10px;
+  padding-left: 20px;
+  border-left: 1px solid rgba(28, 30, 29, 0.12);
 }
 
-.deviceScheduleControl label {
+.deviceControls label {
+  grid-column: 1 / -1;
   color: rgba(28, 30, 29, 0.72);
   font-size: 12px;
   font-weight: 700;
 }
 
-.deviceScheduleControl select {
-  min-height: 36px;
+.deviceControls select {
+  grid-column: 1 / -1;
+  min-height: 38px;
   padding: 0 34px 0 10px;
   border: 1px solid rgba(28, 30, 29, 0.18);
-  border-radius: 6px;
+  border-radius: 8px;
   background: #f6f4ee;
   color: #1c1e1d;
   font: inherit;
 }
 
-.deviceScheduleControl small {
-  grid-column: 1 / -1;
+.deviceControls small {
   color: rgba(28, 30, 29, 0.58);
   font-size: 11px;
+}
+
+.deviceRemoveAction {
+  min-height: 30px;
+  height: 30px;
+  justify-self: end;
+  padding: 0 4px;
+  color: rgba(28, 30, 29, 0.58);
+  font-size: 11px;
+}
+
+.deviceRemoveAction:hover {
+  color: #1c1e1d;
+  background: transparent;
 }
 
 .deviceStatusHeading {
@@ -716,19 +742,16 @@
 @media (max-width: 760px) {
   .deviceStatusCard {
     grid-template-columns: auto minmax(0, 1fr);
+    gap: 14px;
+    padding: 18px;
   }
 
-  .deviceStatusCard > button {
+  .deviceControls {
     grid-column: 1 / -1;
-    justify-self: stretch;
-  }
-
-  .deviceScheduleControl {
-    grid-template-columns: 1fr;
-  }
-
-  .deviceScheduleControl small {
-    grid-column: 1;
+    margin-top: 2px;
+    padding: 16px 0 0;
+    border-top: 1px solid rgba(28, 30, 29, 0.12);
+    border-left: 0;
   }
 
   .header {
