@@ -29,6 +29,7 @@ idf_component_register(
         esp_event
         esp_http_server
         esp_http_client
+        esp_app_format
         esp_driver_gpio
         esp_driver_spi
         mbedtls

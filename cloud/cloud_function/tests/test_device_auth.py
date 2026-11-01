@@ -204,17 +204,27 @@ class DeviceAuthTests(unittest.TestCase):
         device_id = "22" * 16
         secret = "11" * 32
         token_hash = hashlib.sha256(bytes.fromhex(secret)).hexdigest()
-        register = FakeRequest(method="POST", body={
-            "deviceId": device_id,
-            "tokenHash": token_hash,
-            "activationCode": "ABC123",
-        })
+        register = FakeRequest(
+            method="POST",
+            headers={
+                "X-Firmware-Version": "0.1.0",
+                "X-Firmware-Build": "ab" * 32,
+                "X-Firmware-Idf": "v6.0.2",
+            },
+            body={
+                "deviceId": device_id,
+                "tokenHash": token_hash,
+                "activationCode": "ABC123",
+            },
+        )
 
         with patch.object(device_auth, "_db_client", return_value=database):
             body, status, _ = device_auth.register_device(register)
         self.assertEqual(status, 200)
         self.assertTrue(json.loads(body)["ok"])
         self.assertEqual(database.devices.records[device_id]["status"], "pending")
+        self.assertEqual(database.devices.records[device_id]["firmwareVersion"], "0.1.0")
+        self.assertEqual(database.devices.records[device_id]["firmwareBuild"], "ab" * 32)
 
         claim = FakeRequest(method="POST", body={"activationCode": "ABC123"})
         with patch.object(device_auth, "_db_client", return_value=database), \
@@ -336,6 +346,9 @@ class DeviceAuthTests(unittest.TestCase):
             "X-Current-Image-Hash": frame_hash,
             "X-Wake-Window": "button",
             "X-Schedule-Version": "schedule-v1",
+            "X-Firmware-Version": "0.1.0",
+            "X-Firmware-Build": "cd" * 32,
+            "X-Firmware-Idf": "v6.0.2",
         })
         record["wakeSchedule"] = "daily"
         record["scheduleVersion"] = "schedule-v1"
@@ -352,6 +365,8 @@ class DeviceAuthTests(unittest.TestCase):
         self.assertIn("lastSeen", reference.updates[0])
         self.assertIn("awakeUntil", reference.updates[0])
         self.assertEqual(reference.updates[0]["appliedScheduleVersion"], "schedule-v1")
+        self.assertEqual(reference.updates[0]["firmwareVersion"], "0.1.0")
+        self.assertEqual(reference.updates[0]["firmwareBuild"], "cd" * 32)
         self.assertEqual(reference.updates[-1]["refreshState"], "displayed")
         window = reference.updates[0]["awakeUntil"] - reference.updates[0]["lastSeen"]
         self.assertGreaterEqual(window, datetime.timedelta(minutes=4, seconds=59))
@@ -435,6 +450,9 @@ class DeviceAuthTests(unittest.TestCase):
             "refreshState": "queued",
             "lastSeen": now,
             "awakeUntil": now + datetime.timedelta(minutes=5),
+            "firmwareVersion": "0.1.0",
+            "firmwareBuild": "ef" * 32,
+            "firmwareIdfVersion": "v6.0.2",
         }
         snapshot = FakeDeviceSnapshot("device-1", record)
         query = SimpleNamespace(stream=lambda: iter([snapshot]))
@@ -451,6 +469,8 @@ class DeviceAuthTests(unittest.TestCase):
         payload = json.loads(body)
         self.assertEqual(status, 200)
         self.assertTrue(payload["devices"][0]["awake"])
+        self.assertEqual(payload["devices"][0]["firmwareVersion"], "0.1.0")
+        self.assertEqual(payload["devices"][0]["firmwareBuild"], "ef" * 32)
         self.assertNotIn("tokenHash", body)
         self.assertNotIn("activationCode", body)
 

@@ -17,6 +17,9 @@ interface DeviceSummary {
   lastSeen: string | null;
   displayedHash: string | null;
   lastError: string | null;
+  firmwareVersion: string | null;
+  firmwareBuild: string | null;
+  firmwareIdfVersion: string | null;
   schedule: 'manual' | '12h' | 'daily' | 'weekly';
   scheduleVersion: string;
   appliedScheduleVersion: string | null;
@@ -214,6 +217,10 @@ export default function DeviceStatus({ refreshKey, onCurrentPathChange }: Device
                 </span>
               </div>
               <p>{statusCopy(device)}</p>
+              <p className={styles.deviceFirmware}>
+                Firmware {device.firmwareVersion ?? 'not reported'}
+                {device.firmwareBuild ? ` · build ${device.firmwareBuild.slice(0, 8)}` : ''}
+              </p>
               <div className={styles.deviceScheduleControl}>
                 <label htmlFor={`schedule-${device.id}`}>Update schedule</label>
                 <select

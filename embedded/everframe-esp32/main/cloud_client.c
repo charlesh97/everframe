@@ -7,6 +7,7 @@
 #include <string.h>
 
 #include "esp_crt_bundle.h"
+#include "esp_app_desc.h"
 #include "esp_http_client.h"
 #include "esp_log.h"
 #include "psa/crypto.h"
@@ -32,6 +33,31 @@ typedef struct {
 } response_buffer_t;
 
 static cloud_client_state_t s_client;
+
+static esp_err_t set_firmware_headers(esp_http_client_handle_t client)
+{
+    const esp_app_desc_t *description = esp_app_get_description();
+    if (description == NULL) {
+        return ESP_FAIL;
+    }
+
+    char build_id[(sizeof(description->app_elf_sha256) * 2U) + 1U];
+    for (size_t index = 0; index < sizeof(description->app_elf_sha256); ++index) {
+        snprintf(build_id + (index * 2U), 3U, "%02x",
+                 description->app_elf_sha256[index]);
+    }
+
+    esp_err_t error = esp_http_client_set_header(
+        client, "X-Firmware-Version", description->version);
+    if (error == ESP_OK) {
+        error = esp_http_client_set_header(client, "X-Firmware-Build", build_id);
+    }
+    if (error == ESP_OK) {
+        error = esp_http_client_set_header(
+            client, "X-Firmware-Idf", description->idf_ver);
+    }
+    return error;
+}
 
 static bool is_hex_string(const char *value, size_t length)
 {
@@ -146,6 +172,9 @@ static esp_err_t execute_json(const char *url, esp_http_client_method_t method,
     if (error == ESP_OK && schedule_version != NULL && schedule_version[0] != '\0') {
         error = esp_http_client_set_header(client, "X-Schedule-Version",
                                            schedule_version);
+    }
+    if (error == ESP_OK) {
+        error = set_firmware_headers(client);
     }
     if (error == ESP_OK) {
         error = esp_http_client_perform(client);

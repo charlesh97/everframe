@@ -263,6 +263,12 @@
   font-size: 13px;
 }
 
+.deviceStatusCard .deviceFirmware {
+  color: rgba(28, 30, 29, 0.48);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 11px;
+}
+
 .deviceScheduleControl {
   display: grid;
   grid-template-columns: auto minmax(140px, 190px);

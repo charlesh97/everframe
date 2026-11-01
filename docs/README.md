@@ -7,6 +7,7 @@
 | **Set up cloud + website** (run the thing) | [`cloud-auth-setup.md`](cloud-auth-setup.md) — console clicks, Google sign-in, deploy functions |
 | **See the live GCP deployment record** | [`gcp-deployment-2026-10-17.md`](gcp-deployment-2026-10-17.md) — resources, IAM, commands, tests, rollback IDs |
 | **Build or change firmware** (button, QR, display, auth) | [`esp32-provisioning-redesign.md`](esp32-provisioning-redesign.md) — state machine, NVS, file checklist |
+| **Release firmware or check known issues** | [`firmware-errata.md`](firmware-errata.md) — version policy, supported hardware, errata, and limitations |
 | **Acceptance-test the complete product** | [`end-to-end-test-sop.md`](end-to-end-test-sop.md) — physical frame, website, cloud, recovery, removal, and evidence checklist |
 | **See how it all fits together** | [Website activation flowchart](https://excalidraw.com/#json=arr4bjbIGcGfSb-QoUbpL,07p7lUawkm2_jj5j_VflbQ) + [Secure device auth flowchart](https://excalidraw.com/#json=Izs2P1VGbzmWCG6pmb7t5,dg3ddAt_Qn7-ZQipjy-0iw) — open in browser, also saved as `.excalidraw` in this folder |
 | **Deploy without reading both specs** | [Runbook](#runbook) below — copy-paste sequence |

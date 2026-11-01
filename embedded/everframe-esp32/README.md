@@ -7,6 +7,11 @@ This project provisions Wi-Fi, links a frame to an Everframe account, pulls a
 SHA-verified 800 x 480 six-color artifact, refreshes the e-paper panel, and
 sleeps according to the dashboard schedule.
 
+The current release version is read from `version.txt`. Each cloud request also
+reports the ESP application ELF fingerprint and ESP-IDF version, allowing the
+dashboard to identify the exact build installed on a frame. Release policy and
+known issues are maintained in `../../docs/firmware-errata.md`.
+
 ## Quick flash
 
 Connect one ESP by USB, then run:

@@ -11,6 +11,7 @@ import json
 import datetime
 import logging
 import os
+import re
 import uuid
 
 import functions_framework
@@ -114,6 +115,25 @@ def _verify_firebase_user(request):  # type: ignore[no-untyped-def]
 
 def _timestamp_json(value):  # type: ignore[no-untyped-def]
     return value.isoformat() if isinstance(value, datetime.datetime) else None
+
+
+def _firmware_metadata(request, now=None) -> dict:  # type: ignore[no-untyped-def]
+    """Accept bounded, non-secret ESP application identity headers."""
+    version = request.headers.get("X-Firmware-Version", "").strip()
+    build = request.headers.get("X-Firmware-Build", "").strip().lower()
+    idf_version = request.headers.get("X-Firmware-Idf", "").strip()
+    if not re.fullmatch(r"[0-9A-Za-z][0-9A-Za-z.+-]{0,31}", version):
+        return {}
+    if not re.fullmatch(r"[0-9a-f]{64}", build):
+        return {}
+    if not re.fullmatch(r"[0-9A-Za-z][0-9A-Za-z.+-]{0,31}", idf_version):
+        return {}
+    return {
+        "firmwareVersion": version,
+        "firmwareBuild": build,
+        "firmwareIdfVersion": idf_version,
+        "firmwareSeenAt": now or firestore.SERVER_TIMESTAMP,
+    }
 
 
 def _schedule_values(record: dict, now: datetime.datetime) -> dict:
@@ -433,6 +453,9 @@ def device_status(request):  # type: ignore[no-untyped-def]
             "lastSeen": _timestamp_json(last_seen),
             "displayedHash": record.get("lastImageHash"),
             "lastError": record.get("lastError"),
+            "firmwareVersion": record.get("firmwareVersion"),
+            "firmwareBuild": record.get("firmwareBuild"),
+            "firmwareIdfVersion": record.get("firmwareIdfVersion"),
             "schedule": schedule["schedule"],
             "scheduleVersion": schedule["scheduleVersion"],
             "appliedScheduleVersion": applied_version,
@@ -559,14 +582,19 @@ def register_device(request):  # type: ignore[no-untyped-def]
         existing_hash = (snap.get("tokenHash") or "").lower()
         if existing_hash and existing_hash != token_hash:
             return _json({"error": "tokenHash mismatch — factory reset?"}, 409)
+        metadata = _firmware_metadata(request)
+        if metadata:
+            ref.update(metadata)
         return _json({"ok": True, "deviceId": device_id, "code": snap.get("activationCode") or code}, 200)
 
-    ref.set({
+    record = {
         "activationCode": code,
         "tokenHash": token_hash,
         "status": "pending",
         "createdAt": firestore.SERVER_TIMESTAMP,
-    })
+    }
+    record.update(_firmware_metadata(request))
+    ref.set(record)
     return _json({"ok": True, "deviceId": device_id, "code": code}, 200)
 
 
@@ -634,6 +662,7 @@ def device_poll(request):  # type: ignore[no-untyped-def]
 
     now = datetime.datetime.now(datetime.timezone.utc)
     presence = {"lastSeen": now}
+    presence.update(_firmware_metadata(request, now))
     if valid_last_hash:
         presence["lastImageHash"] = last_hash.lower()
     if request.headers.get("X-Wake-Window", "").lower() == "button":

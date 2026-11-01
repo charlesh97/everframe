@@ -105,6 +105,11 @@ fresh remaining deep-sleep duration so RTC drift does not accumulate. The
 twice-daily dispatcher runs at 00:00 and 12:00 UTC and generates only for due
 owners; device wake targets are 15 minutes later. Weekly runs use Sunday.
 
+Every registration and authenticated poll also reports the semantic firmware
+version, immutable ESP application ELF fingerprint, and ESP-IDF version. The
+device record stores these as `firmwareVersion`, `firmwareBuild`, and
+`firmwareIdfVersion`; `deviceStatus` exposes them without exposing credentials.
+
 ## Artifact contract
 
 `manifest.json` is replaced only after the frame upload succeeds:
