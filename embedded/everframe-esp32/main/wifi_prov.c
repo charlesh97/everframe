@@ -21,6 +21,7 @@
 #include "lwip/inet.h"
 
 #include "dns_server.h"
+#include "display_provisioning.h"
 
 #define EVERFRAME_NAMESPACE "everframe"
 
@@ -28,12 +29,10 @@
 #define LED_ON_LEVEL 0
 #define LED_OFF_LEVEL 1
 
-#define FORM_BODY_MAX_LEN 2048
+#define FORM_BODY_MAX_LEN 600
 #define WIFI_SSID_MAX_LEN 32
 #define WIFI_PASSWORD_MAX_LEN 64
-#define BUCKET_NAME_MAX_LEN 63
-#define BUCKET_TOKEN_MAX_LEN 512
-#define DEVICE_NAME_MAX_LEN 63
+#define WIFI_SCAN_MAX_RECORDS 30
 
 static const char *TAG = "wifi_prov";
 
@@ -42,8 +41,9 @@ static const char *TAG = "wifi_prov";
  * avoids filesystem and binary-embedding machinery for this first Wi-Fi-only
  * iteration.
  *
- * The bucket token is saved for future private-bucket support. Nothing in this
- * iteration reads or uses the token after provisioning.
+ * The portal deliberately collects only Wi-Fi credentials. Device ownership
+ * and image routing are established after the frame is online; no cloud
+ * credentials belong in the portal or in NVS.
  */
 static const char SETUP_HTML[] =
     "<!doctype html>"
@@ -58,29 +58,53 @@ static const char SETUP_HTML[] =
     "border-radius:16px;box-shadow:0 8px 28px #0002}"
     "h1{margin:0 0 8px}p{color:#666;margin:0 0 24px}"
     "label{display:block;font-weight:600;margin:16px 0 6px}"
-    "input{box-sizing:border-box;width:100%;padding:12px;border:1px solid #bbb;"
+    "input,select{box-sizing:border-box;width:100%;padding:12px;border:1px solid #bbb;"
     "border-radius:8px;font-size:16px}"
     "button{width:100%;margin-top:24px;padding:13px;border:0;border-radius:8px;"
     "background:#24231f;color:white;font-size:16px;font-weight:700}"
+    "button.secondary{margin-top:8px;background:#e9e7e0;color:#24231f}"
     "small{display:block;color:#777;margin-top:5px}"
     "</style></head><body><main class=\"card\">"
     "<h1>EverFrame Setup</h1>"
-    "<p>Connect this frame to your home Wi-Fi and photo bucket.</p>"
+    "<p>Connect this frame to your home Wi-Fi.</p>"
     "<form method=\"POST\" action=\"/config\">"
-    "<label for=\"wifi_ssid\">Wi-Fi SSID</label>"
+    "<label for=\"network_list\">Nearby networks</label>"
+    "<select id=\"network_list\" disabled><option>Scanning...</option></select>"
+    "<button id=\"rescan\" class=\"secondary\" type=\"button\">Rescan</button>"
+    "<small id=\"scan_status\" aria-live=\"polite\">Looking for Wi-Fi networks...</small>"
+    "<label for=\"wifi_ssid\">Network name</label>"
     "<input id=\"wifi_ssid\" name=\"wifi_ssid\" type=\"text\" maxlength=\"32\" required>"
+    "<small>Select a network above or enter a hidden network manually.</small>"
     "<label for=\"wifi_pass\">Wi-Fi password</label>"
     "<input id=\"wifi_pass\" name=\"wifi_pass\" type=\"password\" maxlength=\"64\" required>"
-    "<label for=\"bucket_name\">Bucket name</label>"
-    "<input id=\"bucket_name\" name=\"bucket_name\" type=\"text\" maxlength=\"63\" "
-    "placeholder=\"everframe-photo-bucket\" required>"
-    "<label for=\"bucket_token\">Bucket token (optional)</label>"
-    "<input id=\"bucket_token\" name=\"bucket_token\" type=\"text\" maxlength=\"512\">"
-    "<small>Leave empty for a public bucket.</small>"
-    "<label for=\"device_name\">Device name (optional)</label>"
-    "<input id=\"device_name\" name=\"device_name\" type=\"text\" maxlength=\"63\">"
-    "<button type=\"submit\">Save and restart</button>"
-    "</form></main></body></html>";
+    "<small>Your password stays on this frame.</small>"
+    "<button type=\"submit\">Save Wi-Fi</button>"
+    "</form></main><script>"
+    "const list=document.getElementById('network_list');"
+    "const ssid=document.getElementById('wifi_ssid');"
+    "const status=document.getElementById('scan_status');"
+    "async function scan(){"
+    "list.disabled=true;list.innerHTML='<option>Scanning...</option>';"
+    "status.textContent='Looking for Wi-Fi networks...';"
+    "try{const response=await fetch('/networks',{cache:'no-store'});"
+    "if(!response.ok)throw new Error('scan failed');"
+    "const networks=await response.json();list.innerHTML='';"
+    "const prompt=document.createElement('option');prompt.value='';"
+    "prompt.textContent=networks.length?'Choose a network':'No networks found';"
+    "list.appendChild(prompt);"
+    "for(const network of networks){const option=document.createElement('option');"
+    "option.value=network.ssid;option.disabled=!network.secure;"
+    "option.textContent=network.ssid+' ('+network.rssi+' dBm, '+"
+    "(network.secure?'secured':'open - unsupported')+')';list.appendChild(option);}"
+    "list.disabled=false;status.textContent=networks.length?"
+    "networks.length+' network'+(networks.length===1?'':'s')+' found.':"
+    "'No networks found. Enter the network name manually.';"
+    "}catch(error){list.innerHTML='<option>Scan unavailable</option>';"
+    "status.textContent='Could not scan. Enter the network name manually.';}"
+    "}"
+    "list.addEventListener('change',()=>{if(list.value)ssid.value=list.value;});"
+    "document.getElementById('rescan').addEventListener('click',scan);scan();"
+    "</script></body></html>";
 
 static const char SAVED_HTML[] =
     "<!doctype html><html lang=\"en\"><head>"
@@ -88,8 +112,8 @@ static const char SAVED_HTML[] =
     "content=\"width=device-width,initial-scale=1\">"
     "<title>EverFrame Setup</title></head>"
     "<body style=\"font-family:system-ui,sans-serif;text-align:center;padding:48px\">"
-    "<h1>Configuration saved!</h1>"
-    "<p>Rebooting EverFrame and connecting to Wi-Fi...</p>"
+    "<h1>Wi-Fi saved!</h1>"
+    "<p>Restarting EverFrame and connecting to Wi-Fi...</p>"
     "</body></html>";
 
 /** Return the numeric value of one hexadecimal character, or -1. */
@@ -190,11 +214,8 @@ static esp_err_t get_form_value(const char *body, const char *wanted_key,
     return ESP_ERR_NOT_FOUND;
 }
 
-/** Save every submitted value and the provisioning-complete flag atomically. */
-static esp_err_t save_configuration(const char *ssid, const char *password,
-                                    const char *bucket_name,
-                                    const char *bucket_token,
-                                    const char *device_name)
+/** Save Wi-Fi credentials and the provisioning-complete flag atomically. */
+static esp_err_t save_configuration(const char *ssid, const char *password)
 {
     nvs_handle_t nvs_handle;
     esp_err_t error = nvs_open(EVERFRAME_NAMESPACE, NVS_READWRITE, &nvs_handle);
@@ -204,20 +225,11 @@ static esp_err_t save_configuration(const char *ssid, const char *password,
 
     /*
      * prov_done is written last. nvs_commit() makes the complete group durable,
-     * so app_main never chooses station mode with only half the fields saved.
+     * so app_main never chooses station mode with only partial credentials.
      */
     error = nvs_set_str(nvs_handle, "wifi_ssid", ssid);
     if (error == ESP_OK) {
         error = nvs_set_str(nvs_handle, "wifi_pass", password);
-    }
-    if (error == ESP_OK) {
-        error = nvs_set_str(nvs_handle, "bucket_name", bucket_name);
-    }
-    if (error == ESP_OK) {
-        error = nvs_set_str(nvs_handle, "bucket_token", bucket_token);
-    }
-    if (error == ESP_OK) {
-        error = nvs_set_str(nvs_handle, "device_name", device_name);
     }
     if (error == ESP_OK) {
         error = nvs_set_u8(nvs_handle, "prov_done", 1);
@@ -236,6 +248,155 @@ static esp_err_t root_get_handler(httpd_req_t *request)
     ESP_LOGI(TAG, "Serving setup form");
     httpd_resp_set_type(request, "text/html");
     return httpd_resp_send(request, SETUP_HTML, HTTPD_RESP_USE_STRLEN);
+}
+
+/** Sort scan results strongest-first before duplicate SSIDs are removed. */
+static int compare_scan_records(const void *left, const void *right)
+{
+    const wifi_ap_record_t *left_record = left;
+    const wifi_ap_record_t *right_record = right;
+    return (int)right_record->rssi - (int)left_record->rssi;
+}
+
+/** Encode an SSID safely inside a JSON string. */
+static esp_err_t json_escape_ssid(const uint8_t *ssid, char *escaped,
+                                  size_t escaped_size)
+{
+    size_t output = 0;
+    size_t length = strnlen((const char *)ssid, WIFI_SSID_MAX_LEN);
+    for (size_t index = 0; index < length; ++index) {
+        uint8_t value = ssid[index];
+        const char *replacement = NULL;
+        if (value == '"') {
+            replacement = "\\\"";
+        } else if (value == '\\') {
+            replacement = "\\\\";
+        }
+
+        if (replacement != NULL) {
+            if (output + 2U >= escaped_size) {
+                return ESP_ERR_INVALID_SIZE;
+            }
+            escaped[output++] = replacement[0];
+            escaped[output++] = replacement[1];
+        } else if (value < 0x20U) {
+            if (output + 6U >= escaped_size) {
+                return ESP_ERR_INVALID_SIZE;
+            }
+            int written = snprintf(escaped + output, escaped_size - output,
+                                   "\\u%04x", value);
+            if (written != 6) {
+                return ESP_ERR_INVALID_SIZE;
+            }
+            output += 6U;
+        } else {
+            if (output + 1U >= escaped_size) {
+                return ESP_ERR_INVALID_SIZE;
+            }
+            escaped[output++] = (char)value;
+        }
+    }
+    escaped[output] = '\0';
+    return ESP_OK;
+}
+
+/** Scan nearby access points and return a compact, strongest-first JSON list. */
+static esp_err_t networks_get_handler(httpd_req_t *request)
+{
+    wifi_scan_config_t scan_config = {
+        .show_hidden = false,
+        .scan_type = WIFI_SCAN_TYPE_ACTIVE,
+        .scan_time.active = {
+            .min = 40,
+            .max = 120,
+        },
+    };
+    ESP_LOGI(TAG, "Scanning for nearby Wi-Fi networks");
+    esp_err_t error = esp_wifi_scan_start(&scan_config, true);
+    if (error != ESP_OK) {
+        ESP_LOGW(TAG, "Wi-Fi scan failed: %s", esp_err_to_name(error));
+        httpd_resp_set_status(request, "503 Service Unavailable");
+        httpd_resp_set_type(request, "application/json");
+        return httpd_resp_send(request, "{\"error\":\"scan unavailable\"}",
+                               HTTPD_RESP_USE_STRLEN);
+    }
+
+    uint16_t available = 0;
+    error = esp_wifi_scan_get_ap_num(&available);
+    if (error != ESP_OK) {
+        httpd_resp_send_500(request);
+        return error;
+    }
+    uint16_t count = available > WIFI_SCAN_MAX_RECORDS ?
+        WIFI_SCAN_MAX_RECORDS : available;
+    wifi_ap_record_t *records =
+        count == 0 ? NULL : calloc(count, sizeof(*records));
+    if (count > 0 && records == NULL) {
+        httpd_resp_send_500(request);
+        return ESP_ERR_NO_MEM;
+    }
+    if (count > 0) {
+        error = esp_wifi_scan_get_ap_records(&count, records);
+        if (error != ESP_OK) {
+            free(records);
+            httpd_resp_send_500(request);
+            return error;
+        }
+        qsort(records, count, sizeof(*records), compare_scan_records);
+    }
+
+    httpd_resp_set_type(request, "application/json");
+    httpd_resp_set_hdr(request, "Cache-Control", "no-store");
+    error = httpd_resp_send_chunk(request, "[", 1);
+    unsigned unique_count = 0;
+    for (uint16_t index = 0; error == ESP_OK && index < count; ++index) {
+        if (records[index].ssid[0] == '\0') {
+            continue;
+        }
+        bool duplicate = false;
+        for (uint16_t prior = 0; prior < index; ++prior) {
+            if (strncmp((const char *)records[index].ssid,
+                        (const char *)records[prior].ssid,
+                        WIFI_SSID_MAX_LEN) == 0) {
+                duplicate = true;
+                break;
+            }
+        }
+        if (duplicate) {
+            continue;
+        }
+
+        char escaped[WIFI_SSID_MAX_LEN * 6U + 1U];
+        error = json_escape_ssid(records[index].ssid, escaped, sizeof(escaped));
+        if (error != ESP_OK) {
+            break;
+        }
+        char item[sizeof(escaped) + 80U];
+        int written = snprintf(item, sizeof(item),
+                               "%s{\"ssid\":\"%s\",\"rssi\":%d,"
+                               "\"secure\":%s}",
+                               unique_count > 0 ? "," : "", escaped,
+                               (int)records[index].rssi,
+                               records[index].authmode == WIFI_AUTH_OPEN ?
+                                   "false" : "true");
+        if (written < 0 || (size_t)written >= sizeof(item)) {
+            error = ESP_ERR_INVALID_SIZE;
+            break;
+        }
+        error = httpd_resp_send_chunk(request, item, written);
+        if (error == ESP_OK) {
+            ++unique_count;
+        }
+    }
+    if (error == ESP_OK) {
+        error = httpd_resp_send_chunk(request, "]", 1);
+    }
+    if (error == ESP_OK) {
+        error = httpd_resp_send_chunk(request, NULL, 0);
+    }
+    ESP_LOGI(TAG, "Wi-Fi scan returned %u unique network(s)", unique_count);
+    free(records);
+    return error;
 }
 
 /** Read, validate, and save a submitted setup form. */
@@ -271,45 +432,22 @@ static esp_err_t config_post_handler(httpd_req_t *request)
 
     char ssid[WIFI_SSID_MAX_LEN + 1];
     char password[WIFI_PASSWORD_MAX_LEN + 1];
-    char bucket_name[BUCKET_NAME_MAX_LEN + 1];
-    char bucket_token[BUCKET_TOKEN_MAX_LEN + 1];
-    char device_name[DEVICE_NAME_MAX_LEN + 1];
 
     esp_err_t ssid_error = get_form_value(body, "wifi_ssid", ssid,
                                           sizeof(ssid));
     esp_err_t password_error = get_form_value(body, "wifi_pass", password,
                                               sizeof(password));
-    esp_err_t bucket_error = get_form_value(body, "bucket_name", bucket_name,
-                                            sizeof(bucket_name));
-
-    /* Missing optional fields are equivalent to fields submitted empty. */
-    esp_err_t token_error = get_form_value(body, "bucket_token", bucket_token,
-                                           sizeof(bucket_token));
-    if (token_error == ESP_ERR_NOT_FOUND) {
-        bucket_token[0] = '\0';
-        token_error = ESP_OK;
-    }
-    esp_err_t device_error = get_form_value(body, "device_name", device_name,
-                                            sizeof(device_name));
-    if (device_error == ESP_ERR_NOT_FOUND) {
-        device_name[0] = '\0';
-        device_error = ESP_OK;
-    }
-
     free(body);
 
     /* Required values must be present, validly encoded, and non-empty. */
     if (ssid_error != ESP_OK || password_error != ESP_OK ||
-        bucket_error != ESP_OK || token_error != ESP_OK ||
-        device_error != ESP_OK || ssid[0] == '\0' || password[0] == '\0' ||
-        bucket_name[0] == '\0') {
+        ssid[0] == '\0' || password[0] == '\0') {
         httpd_resp_send_err(request, HTTPD_400_BAD_REQUEST,
-                            "SSID, password, and bucket name are required");
+                            "Wi-Fi SSID and password are required");
         return ESP_FAIL;
     }
 
-    esp_err_t error = save_configuration(ssid, password, bucket_name,
-                                         bucket_token, device_name);
+    esp_err_t error = save_configuration(ssid, password);
     if (error != ESP_OK) {
         ESP_LOGE(TAG, "Failed to save configuration: %s",
                  esp_err_to_name(error));
@@ -317,9 +455,8 @@ static esp_err_t config_post_handler(httpd_req_t *request)
         return error;
     }
 
-    /* Never log the submitted password or future private-bucket token. */
-    ESP_LOGI(TAG, "Configuration saved for Wi-Fi SSID '%s' and bucket '%s'",
-             ssid, bucket_name);
+    /* Never log the submitted password. */
+    ESP_LOGI(TAG, "Configuration saved for Wi-Fi SSID '%s'", ssid);
     httpd_resp_set_type(request, "text/html");
     httpd_resp_send(request, SAVED_HTML, HTTPD_RESP_USE_STRLEN);
 
@@ -372,8 +509,14 @@ static httpd_handle_t start_webserver(void)
         .method = HTTP_POST,
         .handler = config_post_handler,
     };
+    const httpd_uri_t networks_uri = {
+        .uri = "/networks",
+        .method = HTTP_GET,
+        .handler = networks_get_handler,
+    };
 
     if (httpd_register_uri_handler(server, &root_uri) != ESP_OK ||
+        httpd_register_uri_handler(server, &networks_uri) != ESP_OK ||
         httpd_register_uri_handler(server, &config_uri) != ESP_OK ||
         httpd_register_err_handler(server, HTTPD_404_NOT_FOUND,
                                    http_404_error_handler) != ESP_OK) {
@@ -429,7 +572,8 @@ esp_err_t wifi_prov_start(void)
 
     /* Create the default AP network interface (192.168.4.1 with DHCP). */
     esp_netif_t *ap_netif = esp_netif_create_default_wifi_ap();
-    if (ap_netif == NULL) {
+    esp_netif_t *station_netif = esp_netif_create_default_wifi_sta();
+    if (ap_netif == NULL || station_netif == NULL) {
         return ESP_ERR_NO_MEM;
     }
 
@@ -452,7 +596,7 @@ esp_err_t wifi_prov_start(void)
     wifi_config.ap.max_connection = 4;
     wifi_config.ap.authmode = WIFI_AUTH_OPEN;
 
-    error = esp_wifi_set_mode(WIFI_MODE_AP);
+    error = esp_wifi_set_mode(WIFI_MODE_APSTA);
     if (error == ESP_OK) {
         error = esp_wifi_set_config(WIFI_IF_AP, &wifi_config);
     }
@@ -495,6 +639,13 @@ esp_err_t wifi_prov_start(void)
     }
 
     ESP_LOGI(TAG, "Captive portal is ready at http://%s/", ip_address);
+
+    error = display_show_qr_ap(softap_ssid);
+    if (error != ESP_OK) {
+        /* Keep the web setup usable even if the panel is disconnected. */
+        ESP_LOGE(TAG, "Could not render provisioning QR: %s",
+                 esp_err_to_name(error));
+    }
 
     /*
      * GPIO21 drives the XIAO ESP32S3's onboard LED active-low. Blinking here

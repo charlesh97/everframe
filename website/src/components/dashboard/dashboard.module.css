@@ -55,9 +55,12 @@
 
 .navLink,
 .activeNavLink {
+  border: 0;
   padding: 8px 14px;
   border-radius: 999px;
+  background: transparent;
   color: rgba(255, 255, 255, 0.72);
+  cursor: pointer;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 12px;
   letter-spacing: 0.02em;
@@ -68,6 +71,12 @@
 .activeNavLink {
   background: #f1efe9;
   color: #1c1e1d;
+}
+
+.navLink:disabled,
+.activeNavLink:disabled {
+  cursor: wait;
+  opacity: 0.58;
 }
 
 .navLink:hover,
@@ -168,6 +177,13 @@
   line-height: 1.45;
 }
 
+.fileHint {
+  margin: -4px 0 0;
+  color: rgba(28, 30, 29, 0.5);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+}
+
 .actions {
   display: flex;
   flex-wrap: wrap;
@@ -211,6 +227,104 @@
   gap: clamp(14px, 2vw, 22px);
 }
 
+.deviceStatusCard {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 22px;
+  padding: 16px 18px;
+  border: 1px solid rgba(28, 30, 29, 0.12);
+  border-radius: 8px;
+  background: rgba(241, 239, 233, 0.72);
+}
+
+.deviceStatusList {
+  margin: 0 0 22px;
+}
+
+.deviceStatusList .deviceStatusCard {
+  margin-bottom: 10px;
+}
+
+.addDeviceButton {
+  margin-left: auto;
+  display: flex;
+}
+
+.deviceStatusCard > svg {
+  width: 22px;
+  height: 22px;
+}
+
+.deviceStatusCard p {
+  margin: 4px 0 0;
+  color: rgba(28, 30, 29, 0.64);
+  font-size: 13px;
+}
+
+.deviceScheduleControl {
+  display: grid;
+  grid-template-columns: auto minmax(140px, 190px);
+  align-items: center;
+  gap: 6px 10px;
+  margin-top: 12px;
+}
+
+.deviceScheduleControl label {
+  color: rgba(28, 30, 29, 0.72);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.deviceScheduleControl select {
+  min-height: 36px;
+  padding: 0 34px 0 10px;
+  border: 1px solid rgba(28, 30, 29, 0.18);
+  border-radius: 6px;
+  background: #f6f4ee;
+  color: #1c1e1d;
+  font: inherit;
+}
+
+.deviceScheduleControl small {
+  grid-column: 1 / -1;
+  color: rgba(28, 30, 29, 0.58);
+  font-size: 11px;
+}
+
+.deviceStatusHeading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.deviceStatusHeading span {
+  padding: 2px 7px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.statusOnline {
+  background: #dcebdc;
+  color: #245b31;
+}
+
+.statusSleeping {
+  background: rgba(28, 30, 29, 0.09);
+  color: rgba(28, 30, 29, 0.68);
+}
+
+.statusSpinner {
+  animation: status-spin 900ms linear infinite;
+}
+
+@keyframes status-spin {
+  to { transform: rotate(360deg); }
+}
+
 .emptyState,
 .errorState {
   min-height: 360px;
@@ -241,6 +355,165 @@
   backdrop-filter: blur(12px);
 }
 
+.stylesDialog {
+  max-height: min(760px, calc(100svh - 32px));
+  overflow-y: auto;
+}
+
+.stylesNotice {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid rgba(28, 30, 29, 0.1);
+  border-radius: 6px;
+  background: rgba(241, 239, 233, 0.75);
+  color: rgba(28, 30, 29, 0.72);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.stylesNotice p {
+  margin: 0;
+}
+
+.stylesNotice svg {
+  flex: 0 0 auto;
+  margin-top: 1px;
+}
+
+.styleEditor,
+.savedStyles {
+  display: grid;
+  gap: 12px;
+}
+
+.styleEditor {
+  padding: 16px;
+  border: 1px solid rgba(28, 30, 29, 0.14);
+  border-radius: 7px;
+}
+
+.styleEditorHeading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.styleEditorHeading h3,
+.styleEditorHeading span {
+  margin: 0;
+  font-size: 14px;
+}
+
+.styleEditorHeading span {
+  color: rgba(28, 30, 29, 0.55);
+}
+
+.styleField {
+  display: grid;
+  gap: 6px;
+  color: rgba(28, 30, 29, 0.78);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.styleField textarea {
+  min-height: 88px;
+  resize: vertical;
+}
+
+.styleField small {
+  color: rgba(28, 30, 29, 0.5);
+  font-size: 11px;
+  font-weight: 400;
+  text-align: right;
+}
+
+.savedStyles {
+  min-height: 100px;
+}
+
+.includedStyles {
+  padding: 10px 12px;
+  border: 1px solid rgba(28, 30, 29, 0.1);
+  border-radius: 6px;
+  background: rgba(241, 239, 233, 0.5);
+}
+
+.includedStyles summary {
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.includedStyles[open] summary {
+  margin-bottom: 10px;
+}
+
+.styleList {
+  display: grid;
+  gap: 8px;
+  max-height: 270px;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  list-style: none;
+}
+
+.styleList li {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 11px 8px 11px 12px;
+  border: 1px solid rgba(28, 30, 29, 0.1);
+  border-radius: 6px;
+  background: rgba(241, 239, 233, 0.5);
+}
+
+.styleList strong {
+  font-size: 13px;
+}
+
+.styleList p {
+  margin: 3px 0 0;
+  color: rgba(28, 30, 29, 0.62);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.styleRowActions {
+  display: flex;
+  flex: 0 0 auto;
+}
+
+.styleRowActions button:last-child {
+  color: hsl(var(--destructive));
+}
+
+.emptyStyles {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px;
+  border: 1px dashed rgba(28, 30, 29, 0.2);
+}
+
+.emptyStyles p,
+.styleError {
+  margin: 0;
+  color: rgba(28, 30, 29, 0.68);
+  font-size: 13px;
+}
+
+.styleError {
+  color: hsl(var(--destructive));
+}
+
 .artCard {
   overflow: hidden;
   border-color: rgba(28, 30, 29, 0.12);
@@ -261,6 +534,20 @@
 
 .artCard:hover .artImage {
   transform: scale(1.035);
+}
+
+.currentImageBadge {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  z-index: 10;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(22, 24, 24, 0.86);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  backdrop-filter: blur(8px);
 }
 
 .cardFooter {
@@ -326,6 +613,85 @@
   border-radius: 4px;
 }
 
+.cropHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.cropHeader .bodyText {
+  margin-top: 12px;
+}
+
+.cropFileName {
+  max-width: 40%;
+  margin: 0;
+  overflow: hidden;
+  color: rgba(28, 30, 29, 0.62);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cropPanel {
+  width: min(100%, 820px);
+  margin: 0 auto;
+  overflow: hidden;
+  border: 1px solid rgba(28, 30, 29, 0.14);
+  border-radius: 8px;
+  background: rgba(241, 239, 233, 0.72);
+  box-shadow: 0 24px 70px rgba(22, 24, 24, 0.1);
+}
+
+.cropCanvas {
+  position: relative;
+  width: 100%;
+  height: min(68svh, 680px);
+  min-height: 360px;
+  background: #161818;
+}
+
+.cropControls {
+  display: grid;
+  gap: 22px;
+  padding: 20px;
+}
+
+.zoomControl {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 16px;
+  color: #1c1e1d;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+}
+
+.zoomControl input {
+  width: 100%;
+  accent-color: #161818;
+}
+
+.cropActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.cropNote {
+  max-width: 620px;
+  margin: 18px auto 0;
+  color: rgba(28, 30, 29, 0.56);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
+}
+
 .loadingSpinner {
   width: 48px;
   height: 48px;
@@ -342,6 +708,23 @@
 }
 
 @media (max-width: 760px) {
+  .deviceStatusCard {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .deviceStatusCard > button {
+    grid-column: 1 / -1;
+    justify-self: stretch;
+  }
+
+  .deviceScheduleControl {
+    grid-template-columns: 1fr;
+  }
+
+  .deviceScheduleControl small {
+    grid-column: 1;
+  }
+
   .header {
     grid-template-columns: 1fr auto;
     padding: 16px 14px 16px 18px;
@@ -378,5 +761,23 @@
 
   .reviewGrid {
     grid-template-columns: 1fr;
+  }
+
+  .cropHeader {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .cropFileName {
+    max-width: 100%;
+  }
+
+  .cropCanvas {
+    height: min(58svh, 520px);
+    min-height: 320px;
+  }
+
+  .cropActions > * {
+    flex: 1 1 auto;
   }
 }

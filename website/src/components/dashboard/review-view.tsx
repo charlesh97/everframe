@@ -1,145 +1,141 @@
 'use client';
 
-import { ArrowRight, CheckCircle } from 'lucide-react';
-import Image from 'next/image';
-import { useState } from 'react';
-import type { ReviewItem } from '@/app/dashboard/page';
+import { ArrowLeft, ArrowRight, Upload } from 'lucide-react';
+import { useMemo, useState } from 'react';
+import Cropper, { type Area } from 'react-easy-crop';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { Checkbox } from '@/components/ui/checkbox';
+import { FRAME_ASPECT, type CropSelection, type ImportItem } from '@/lib/image-import';
 import styles from './dashboard.module.css';
 
-interface ReviewViewProps {
-  items: ReviewItem[];
-  onComplete: (
-    selected: { original: ReviewItem['original']; variationUrl: string }[]
-  ) => void;
+interface CropEdit {
+  crop: { x: number; y: number };
+  zoom: number;
+  pixels?: Area;
 }
 
-export default function ReviewView({ items, onComplete }: ReviewViewProps) {
-  const [selectedVariations, setSelectedVariations] = useState<{
-    [originalUrl: string]: string | undefined;
-  }>(() => {
-    const initialState: { [originalUrl: string]: string } = {};
-    items.forEach((item) => {
-      initialState[item.original.url] = item.variation.url; // Pre-select all
-    });
-    return initialState;
-  });
+interface ReviewViewProps {
+  items: ImportItem[];
+  onComplete: (selected: CropSelection[]) => void;
+  onCancel: () => void;
+}
 
-  const handleSelectionChange = (
-    originalUrl: string,
-    variationUrl: string,
-    isChecked: boolean
-  ) => {
-    setSelectedVariations((prev) => ({
-      ...prev,
-      [originalUrl]: isChecked ? variationUrl : undefined,
-    }));
+export default function ReviewView({ items, onComplete, onCancel }: ReviewViewProps) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [edits, setEdits] = useState<Record<string, CropEdit>>({});
+  const current = items[currentIndex];
+  const currentEdit = edits[current?.id] ?? { crop: { x: 0, y: 0 }, zoom: 1 };
+
+  const allCropsReady = useMemo(
+    () => items.every((item) => Boolean(edits[item.id]?.pixels)),
+    [edits, items]
+  );
+
+  if (!current) return null;
+
+  const updateCurrent = (update: Partial<CropEdit>) => {
+    setEdits((previous) => {
+      const existing = previous[current.id];
+      return {
+        ...previous,
+        [current.id]: {
+          crop: existing?.crop ?? { x: 0, y: 0 },
+          zoom: existing?.zoom ?? 1,
+          pixels: existing?.pixels,
+          ...update,
+        },
+      };
+    });
   };
 
-  const handleFinalize = () => {
-    const flattenedSelection: {
-      original: ReviewItem['original'];
-      variationUrl: string;
-    }[] = [];
-    items.forEach((item) => {
-      const originalUrl = item.original.url;
-      const selectedVariation = selectedVariations[originalUrl];
-      if (selectedVariation) {
-        flattenedSelection.push({
-          original: item.original,
-          variationUrl: selectedVariation,
-        });
-      }
-    });
-    onComplete(flattenedSelection);
+  const upload = () => {
+    if (!allCropsReady) return;
+    onComplete(
+      items.map((item) => ({
+        item,
+        cropPixels: edits[item.id].pixels!,
+      }))
+    );
   };
-
-  const totalSelected = Object.values(selectedVariations).filter(
-    Boolean
-  ).length;
 
   return (
     <main className={`${styles.main} animate-in fade-in`}>
-      <div className="mb-8 text-center">
-        <p className={styles.eyebrow}>My Device</p>
-        <h1 className={styles.sectionTitle}>Review Art</h1>
-        <p className={styles.bodyText}>
-          Select the versions you want to keep on Everframe.
-        </p>
+      <div className={styles.cropHeader}>
+        <div>
+          <p className={styles.eyebrow}>Photo {currentIndex + 1} of {items.length}</p>
+          <h1 className={styles.sectionTitle}>Choose the crop</h1>
+          <p className={styles.bodyText}>
+            Drag to reposition. Pinch or use the slider to zoom.
+          </p>
+        </div>
+        <p className={styles.cropFileName}>{current.name}</p>
       </div>
 
-      <div className={styles.reviewStack}>
-        {items.map((item) => (
-          <Card key={item.original.url} className={styles.reviewCard}>
-            <CardContent className="p-4 sm:p-6">
-              <div className={styles.reviewGrid}>
-                <div className={styles.reviewFrame}>
-                  <h3 className={styles.eyebrow}>Original</h3>
-                  <div className={styles.reviewImage}>
-                    <Image
-                      src={item.original.url}
-                      alt={item.original.name}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                </div>
+      <div className={styles.cropPanel}>
+        <div className={styles.cropCanvas}>
+          <Cropper
+            image={current.previewUrl}
+            crop={currentEdit.crop}
+            zoom={currentEdit.zoom}
+            aspect={FRAME_ASPECT}
+            objectFit="contain"
+            showGrid
+            onCropChange={(crop) => updateCurrent({ crop })}
+            onZoomChange={(zoom) => updateCurrent({ zoom })}
+            onCropComplete={(_, pixels) => updateCurrent({ pixels })}
+          />
+        </div>
 
-                <div className="group relative">
-                  <label
-                    htmlFor={`check-${item.original.url}`}
-                    className="block h-full cursor-pointer"
-                  >
-                    <div className={styles.reviewFrame}>
-                      <h3 className={styles.eyebrow}>
-                        {item.variation.style}
-                      </h3>
-                      <div className={styles.reviewImage}>
-                        <Image
-                          src={item.variation.url}
-                          alt={`Variation of ${item.original.name}`}
-                          fill
-                          className="object-cover transition-transform duration-300 group-hover:scale-105"
-                        />
-                        <div className="absolute inset-0 bg-black/50 opacity-0 transition-opacity group-hover:opacity-100" />
-                      </div>
-                    </div>
-                    <div className="absolute top-6 right-6">
-                      <Checkbox
-                        id={`check-${item.original.url}`}
-                        className="h-6 w-6 border-white bg-black/20 data-[state=checked]:bg-[#161818] data-[state=checked]:text-white"
-                        checked={!!selectedVariations[item.original.url]}
-                        onCheckedChange={(checked) =>
-                          handleSelectionChange(
-                            item.original.url,
-                            item.variation.url,
-                            !!checked
-                          )
-                        }
-                      />
-                    </div>
-                  </label>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
+        <div className={styles.cropControls}>
+          <label className={styles.zoomControl}>
+            <span>Zoom</span>
+            <input
+              aria-label="Crop zoom"
+              type="range"
+              min={1}
+              max={2.5}
+              step={0.01}
+              value={currentEdit.zoom}
+              onChange={(event) => updateCurrent({ zoom: Number(event.target.value) })}
+            />
+          </label>
+
+          <div className={styles.cropActions}>
+            <Button type="button" variant="ghost" onClick={onCancel}>Cancel</Button>
+            {currentIndex > 0 && (
+              <Button
+                type="button"
+                variant="secondary"
+                onClick={() => setCurrentIndex((index) => index - 1)}
+              >
+                <ArrowLeft strokeWidth={1.5} /> Back
+              </Button>
+            )}
+            {currentIndex < items.length - 1 ? (
+              <Button
+                type="button"
+                className={styles.primaryButton}
+                disabled={!currentEdit.pixels}
+                onClick={() => setCurrentIndex((index) => index + 1)}
+              >
+                Next <ArrowRight strokeWidth={1.5} />
+              </Button>
+            ) : (
+              <Button
+                type="button"
+                className={styles.primaryButton}
+                disabled={!allCropsReady}
+                onClick={upload}
+              >
+                <Upload strokeWidth={1.5} /> Upload {items.length === 1 ? 'photo' : `${items.length} photos`}
+              </Button>
+            )}
+          </div>
+        </div>
       </div>
 
-      <div className="sticky bottom-0 mt-8 flex justify-center py-4">
-        <Button
-          size="lg"
-          onClick={handleFinalize}
-          disabled={totalSelected === 0}
-          className={styles.primaryButton}
-        >
-          <CheckCircle strokeWidth={1.5} />
-          Keep {totalSelected > 0 ? `${totalSelected} ` : ''}Selected
-          <ArrowRight className="ml-2" strokeWidth={1.5} />
-        </Button>
-      </div>
+      <p className={styles.cropNote}>
+        This portrait crop matches Everframe. The cloud rotates it into the panel's native 800 × 480 buffer.
+      </p>
     </main>
   );
 }

@@ -30,6 +30,8 @@
 ******************************************************************************/
 #include "EPD_7in3e.h"
 
+#define EPD_BUSY_TIMEOUT_MS 60000U
+
 /******************************************************************************
 function :  Software reset
 parameter:
@@ -76,36 +78,48 @@ parameter:
     Data : buffer pointer
     Len  : byte count
 ******************************************************************************/
-static void EPD_7IN3E_SendDataN(const uint8_t *Data, uint32_t Len)
+static esp_err_t EPD_7IN3E_SendDataN(const uint8_t *Data, uint32_t Len)
 {
     EPD_Digital_Write(EPD_DC_PIN, 1);
     EPD_Digital_Write(EPD_CS_PIN, 0);
-    EPD_SPI_WriteData(Data, Len);
+    esp_err_t error = EPD_SPI_WriteData(Data, Len);
     EPD_Digital_Write(EPD_CS_PIN, 1);
+    return error;
 }
 
 /******************************************************************************
 function :  Wait until the busy_pin goes LOW
 parameter:
 ******************************************************************************/
-static void EPD_7IN3E_ReadBusyH(void)
+static esp_err_t EPD_7IN3E_ReadBusyH(void)
 {
     ESP_LOGI(EPD_TAG, "e-Paper busy H\r\n");
+    const TickType_t start = xTaskGetTickCount();
+    const TickType_t timeout = pdMS_TO_TICKS(EPD_BUSY_TIMEOUT_MS);
     while(!EPD_Digital_Read(EPD_BUSY_PIN)) {      //LOW: busy, HIGH: idle
+        if (xTaskGetTickCount() - start >= timeout) {
+            ESP_LOGE(EPD_TAG, "e-Paper BUSY remained low for %u ms",
+                     (unsigned)EPD_BUSY_TIMEOUT_MS);
+            return ESP_ERR_TIMEOUT;
+        }
         EPD_Delay_ms(1);
     }
     ESP_LOGI(EPD_TAG, "e-Paper busy H release\r\n");
+    return ESP_OK;
 }
 
 /******************************************************************************
 function :  Turn On Display
 parameter:
 ******************************************************************************/
-static void EPD_7IN3E_TurnOnDisplay(void)
+static esp_err_t EPD_7IN3E_TurnOnDisplay(void)
 {
     
     EPD_7IN3E_SendCommand(0x04); // POWER_ON
-    EPD_7IN3E_ReadBusyH();
+    esp_err_t error = EPD_7IN3E_ReadBusyH();
+    if (error != ESP_OK) {
+        return error;
+    }
 
     //Second setting 
     EPD_7IN3E_SendCommand(0x06);
@@ -116,21 +130,27 @@ static void EPD_7IN3E_TurnOnDisplay(void)
 
     EPD_7IN3E_SendCommand(0x12); // DISPLAY_REFRESH
     EPD_7IN3E_SendData(0x00);
-    EPD_7IN3E_ReadBusyH();
+    error = EPD_7IN3E_ReadBusyH();
+    if (error != ESP_OK) {
+        return error;
+    }
     
     EPD_7IN3E_SendCommand(0x02); // POWER_OFF
     EPD_7IN3E_SendData(0X00);
-    EPD_7IN3E_ReadBusyH();
+    return EPD_7IN3E_ReadBusyH();
 }
 
 /******************************************************************************
 function :  Initialize the e-Paper register
 parameter:
 ******************************************************************************/
-void EPD_7IN3E_Init(void)
+esp_err_t EPD_7IN3E_Init(void)
 {
     EPD_7IN3E_Reset();
-    EPD_7IN3E_ReadBusyH();
+    esp_err_t error = EPD_7IN3E_ReadBusyH();
+    if (error != ESP_OK) {
+        return error;
+    }
     EPD_Delay_ms(30);
 
     EPD_7IN3E_SendCommand(0xAA);    // CMDH
@@ -195,7 +215,7 @@ void EPD_7IN3E_Init(void)
     EPD_7IN3E_SendData(0x2F);
 
     EPD_7IN3E_SendCommand(0x04);     //PWR on  
-    EPD_7IN3E_ReadBusyH();          //waiting for the electronic paper IC to release the idle signal
+    return EPD_7IN3E_ReadBusyH(); //waiting for the electronic paper IC to release the idle signal
 
 }
 
@@ -221,7 +241,7 @@ void EPD_7IN3E_Clear(uint8_t color)
     }
     EPD_Digital_Write(EPD_CS_PIN, 1);
 
-    EPD_7IN3E_TurnOnDisplay();
+    (void)EPD_7IN3E_TurnOnDisplay();
 }
 
 /******************************************************************************
@@ -247,7 +267,7 @@ void EPD_7IN3E_Show7Block(void)
         }
     }
     EPD_Digital_Write(EPD_CS_PIN, 1);
-    EPD_7IN3E_TurnOnDisplay();
+    (void)EPD_7IN3E_TurnOnDisplay();
 }
 
 void EPD_7IN3E_Show(void)
@@ -288,31 +308,105 @@ void EPD_7IN3E_Show(void)
         if(o >= Height)
             o = 0;
     }
-    EPD_7IN3E_TurnOnDisplay();
+    (void)EPD_7IN3E_TurnOnDisplay();
 }
 
 /******************************************************************************
 function :  Sends the image buffer in RAM to e-Paper and displays
 parameter:
 ******************************************************************************/
-void EPD_7IN3E_Display(const uint8_t *Image)
+esp_err_t EPD_7IN3E_Display(const uint8_t *Image)
 {
     EPD_7IN3E_SendCommand(0x10);
-    EPD_7IN3E_SendDataN(Image, (uint32_t)EPD_7IN3E_WIDTH * EPD_7IN3E_HEIGHT / 2);
-    EPD_7IN3E_TurnOnDisplay();
+    esp_err_t error = EPD_7IN3E_SendDataN(
+        Image, (uint32_t)EPD_7IN3E_WIDTH * EPD_7IN3E_HEIGHT / 2);
+    if (error != ESP_OK) {
+        ESP_LOGE(EPD_TAG, "Frame SPI transfer failed: %s", esp_err_to_name(error));
+        return error;
+    }
+    return EPD_7IN3E_TurnOnDisplay();
+}
+
+/******************************************************************************
+function :  Send an embedded frame one scanline at a time with pacing
+parameter:
+    Image        : exact 192 KB native panel frame
+    image_len    : must equal the native frame size
+    image_rows   : number of source rows to send; remaining rows are white
+    source_row_step : 1 sends every source row; 2 sends alternating rows
+    row_delay_ms : delay after each 400-byte scanline
+    active_x_start/end : native pixel columns copied from Image; others white
+******************************************************************************/
+esp_err_t EPD_7IN3E_DisplayRowPaced(const uint8_t *Image, size_t image_len,
+                                    uint16_t image_rows,
+                                    uint8_t source_row_step,
+                                    uint32_t row_delay_ms,
+                                    uint16_t active_x_start,
+                                    uint16_t active_x_end)
+{
+    const size_t row_bytes = EPD_7IN3E_WIDTH / 2U;
+    const size_t frame_bytes = row_bytes * EPD_7IN3E_HEIGHT;
+    uint8_t row[EPD_7IN3E_WIDTH / 2U];
+
+    if (Image == NULL || image_len != frame_bytes ||
+        image_rows > EPD_7IN3E_HEIGHT || source_row_step == 0U ||
+        active_x_start >= active_x_end || active_x_end > EPD_7IN3E_WIDTH ||
+        (active_x_start % 2U) != 0U || (active_x_end % 2U) != 0U) {
+        return ESP_ERR_INVALID_ARG;
+    }
+
+    ESP_LOGW(EPD_TAG,
+             "Row-paced test: %u rows, step %u, %lu ms/row, native x [%u,%u)",
+             (unsigned)image_rows,
+             (unsigned)source_row_step,
+             (unsigned long)row_delay_ms,
+             (unsigned)active_x_start,
+             (unsigned)active_x_end);
+
+    EPD_7IN3E_SendCommand(0x10);
+    for (uint16_t y = 0; y < EPD_7IN3E_HEIGHT; ++y) {
+        memset(row, (EPD_7IN3E_WHITE << 4) | EPD_7IN3E_WHITE, row_bytes);
+        if (y < image_rows && (y % source_row_step) == 0U) {
+            const size_t first_byte = active_x_start / 2U;
+            const size_t active_bytes = (active_x_end - active_x_start) / 2U;
+            memcpy(row + first_byte,
+                   Image + ((size_t)y * row_bytes) + first_byte,
+                   active_bytes);
+        }
+
+        esp_err_t error = EPD_7IN3E_SendDataN(row, row_bytes);
+        if (error != ESP_OK) {
+            ESP_LOGE(EPD_TAG, "Slow transfer failed at row %u: %s",
+                     (unsigned)y, esp_err_to_name(error));
+            return error;
+        }
+        if (((y + 1U) % 40U) == 0U || y + 1U == EPD_7IN3E_HEIGHT) {
+            ESP_LOGI(EPD_TAG, "Slow transfer: %u/%u rows submitted",
+                     (unsigned)(y + 1U), (unsigned)EPD_7IN3E_HEIGHT);
+        }
+        if (row_delay_ms > 0U) {
+            EPD_Delay_ms(row_delay_ms);
+        }
+    }
+
+    ESP_LOGI(EPD_TAG, "Row-paced transfer complete; refreshing panel");
+    return EPD_7IN3E_TurnOnDisplay();
 }
 
 /******************************************************************************
 function :  Enter sleep mode
 parameter:
 ******************************************************************************/
-void EPD_7IN3E_Sleep(void)
+esp_err_t EPD_7IN3E_Sleep(void)
 {
     EPD_7IN3E_SendCommand(0X02); // DEEP_SLEEP
     EPD_7IN3E_SendData(0x00);
-    EPD_7IN3E_ReadBusyH();
+    esp_err_t error = EPD_7IN3E_ReadBusyH();
+    if (error != ESP_OK) {
+        return error;
+    }
 
     EPD_7IN3E_SendCommand(0x07); // DEEP_SLEEP
     EPD_7IN3E_SendData(0XA5);
+    return ESP_OK;
 }
-

@@ -48,12 +48,18 @@ Color Index
 #define EPD_7IN3E_BLUE    0x5   /// 101
 #define EPD_7IN3E_GREEN   0x6   /// 110
 
-void EPD_7IN3E_Init(void);
+esp_err_t EPD_7IN3E_Init(void);
 void EPD_7IN3E_Init_Fast(void);
 void EPD_7IN3E_Clear(uint8_t color);
 void EPD_7IN3E_Show7Block(void);
 void EPD_7IN3E_Show(void);
-void EPD_7IN3E_Display(const uint8_t *Image);
-void EPD_7IN3E_Sleep(void);
+esp_err_t EPD_7IN3E_Display(const uint8_t *Image);
+esp_err_t EPD_7IN3E_DisplayRowPaced(const uint8_t *Image, size_t image_len,
+                                    uint16_t image_rows,
+                                    uint8_t source_row_step,
+                                    uint32_t row_delay_ms,
+                                    uint16_t active_x_start,
+                                    uint16_t active_x_end);
+esp_err_t EPD_7IN3E_Sleep(void);
 
 #endif

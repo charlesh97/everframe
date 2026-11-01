@@ -1,11 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useUser, useFirestore } from '@/firebase';
 import {
   collection,
   doc,
-  addDoc,
+  setDoc,
   updateDoc,
   deleteDoc,
   serverTimestamp,
@@ -13,18 +13,24 @@ import {
 import {
   getStorage,
   ref as storageRef,
-  uploadString,
+  uploadBytes,
   getDownloadURL,
   deleteObject,
 } from 'firebase/storage';
 
-import { transformImageToAbstractArt } from '@/ai/flows/transform-image-to-abstract-art';
 import GalleryView from '@/components/dashboard/gallery-view';
 import LoadingView from '@/components/dashboard/loading-view';
 import ReviewView from '@/components/dashboard/review-view';
 import UploadView from '@/components/dashboard/upload-view';
 import Header from '@/components/layout/header';
 import { useToast } from '@/hooks/use-toast';
+import {
+  cropImageToJpeg,
+  prepareImportFile,
+  releaseImportItems,
+  type CropSelection,
+  type ImportItem,
+} from '@/lib/image-import';
 import styles from '@/components/dashboard/dashboard.module.css';
 
 export interface GalleryItem {
@@ -36,66 +42,77 @@ export interface GalleryItem {
   originalImage?: string; // This will be a data URI for preview, not stored in Firestore
 }
 
-export interface ReviewItem {
-  original: {
-    name: string;
-    url: string; // data URI
-  };
-  variation: {
-    url: string; // data URI
-    style: string;
-  };
+export type AppState = 'UPLOAD' | 'PREPARING' | 'LOADING_SAVE' | 'REVIEW' | 'GALLERY';
+
+interface RefreshQueueResult {
+  queued: boolean;
+  replaced: boolean;
 }
-
-export type AppState = 'UPLOAD' | 'LOADING_AI' | 'LOADING_SAVE' | 'REVIEW' | 'GALLERY';
-
-const fileToDataUri = (file: File) =>
-  new Promise<string>((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      resolve(event.target?.result as string);
-    };
-    reader.onerror = reject;
-    reader.readAsDataURL(file);
-  });
 
 export default function DashboardPage() {
   const [appState, setAppState] = useState<AppState>('UPLOAD');
-  const [reviewItems, setReviewItems] = useState<ReviewItem[]>([]);
+  const [reviewItems, setReviewItems] = useState<ImportItem[]>([]);
   const { toast } = useToast();
   const { user } = useUser();
   const firestore = useFirestore();
 
-  const handleFilesUpload = async (files: File[]) => {
-    setAppState('LOADING_AI');
-    try {
-      const imageProcessingPromises = files.map(async (file) => {
-        const photoDataUri = await fileToDataUri(file);
-        const result = await transformImageToAbstractArt({ photoDataUri });
-        return {
-          original: { name: file.name, url: photoDataUri },
-          variation: { url: result.abstractArtUrl, style: result.style },
-        };
-      });
+  const queueDeviceRefresh = async (imagePath: string): Promise<RefreshQueueResult> => {
+    if (!user) throw new Error('You must be signed in to send a photo.');
+    const token = await user.getIdToken();
+    const endpoint = process.env.NEXT_PUBLIC_REFRESH_DEVICE_URL
+      ?? 'https://us-central1-everframe-479214.cloudfunctions.net/refreshDevice';
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ imagePath }),
+    });
+    const result: unknown = await response.json().catch(() => ({}));
+    if (!response.ok) {
+      const message = typeof result === 'object' && result !== null && 'error' in result
+        && typeof result.error === 'string'
+        ? result.error
+        : `refresh queue returned HTTP ${response.status}`;
+      throw new Error(message);
+    }
+    return {
+      queued: true,
+      replaced: typeof result === 'object' && result !== null && 'replaced' in result
+        && result.replaced === true,
+    };
+  };
 
-      const newReviewItems = await Promise.all(imageProcessingPromises);
-      setReviewItems(newReviewItems);
+  useEffect(() => {
+    if (new URLSearchParams(window.location.search).get('view') === 'device') {
+      setAppState('GALLERY');
+      window.history.replaceState(null, '', '/dashboard');
+    }
+  }, []);
+
+  const handleFilesUpload = async (files: File[]) => {
+    setAppState('PREPARING');
+    const preparedItems: ImportItem[] = [];
+    try {
+      for (const file of files) {
+        preparedItems.push(await prepareImportFile(file));
+      }
+      setReviewItems(preparedItems);
       setAppState('REVIEW');
     } catch (error) {
-      console.error('Error transforming images:', error);
+      releaseImportItems(preparedItems);
+      console.error('Error preparing images:', error);
       toast({
-        title: 'Transformation Error',
-        description:
-          'There was a problem generating abstract art. Please try again.',
+        title: 'Could not open photo',
+        description: error instanceof Error ? error.message : 'The selected photo could not be prepared.',
         variant: 'destructive',
       });
-      setAppState('UPLOAD'); // Revert to upload state on error
+      setAppState('UPLOAD');
     }
   };
 
-  const handleReviewComplete = async (
-    selectedImages: { original: ReviewItem['original']; variationUrl: string }[]
-  ) => {
+  const handleReviewComplete = async (selectedImages: CropSelection[]) => {
     if (!user || !firestore) {
       toast({
         title: 'Authentication Error',
@@ -108,34 +125,68 @@ export default function DashboardPage() {
 
     const storage = getStorage();
     const imagesCollectionRef = collection(firestore, 'images');
+    let lastUploadedPath = '';
+    let refreshQueued = true;
+    let refreshReplaced = false;
 
     try {
-      await Promise.all(
-        selectedImages.map(async (item) => {
-          const imageName = `${item.original.name.split('.')[0]}-art-${Date.now()}`;
-          const storagePath = `users/${user.uid}/images/${imageName}.png`;
-          const imageRef = storageRef(storage, storagePath);
+      // Process sequentially to avoid holding several full-resolution canvases
+      // in memory at once on phones. Stable IDs make a retry idempotent.
+      for (const item of selectedImages) {
+        const croppedImage = await cropImageToJpeg(item.item.previewUrl, item.cropPixels);
+        const baseName = item.item.name.replace(/\.[^.]+$/, '').replace(/[^a-zA-Z0-9_-]+/g, '-');
+        const imageName = `${baseName || 'photo'}-${item.item.id}`;
+        const storagePath = `users/${user.uid}/images/${imageName}.jpg`;
+        const imageRef = storageRef(storage, storagePath);
 
-          // Upload the base64 data URI to Firebase Storage
-          await uploadString(imageRef, item.variationUrl, 'data_url');
-          const downloadURL = await getDownloadURL(imageRef);
+        await uploadBytes(imageRef, croppedImage, {
+          contentType: 'image/jpeg',
+          customMetadata: {
+            sourceType: item.item.sourceType,
+            cropAspect: '3:5',
+            cropVersion: '1',
+          },
+        });
+        const downloadURL = await getDownloadURL(imageRef);
 
-          // Save the metadata to Firestore
-          await addDoc(imagesCollectionRef, {
-            name: imageName,
-            storagePath: storagePath, // Make sure this is being saved
-            url: downloadURL,
-            isDisplayed: true,
-            createdAt: serverTimestamp(),
-            userId: user.uid,
-          });
-        })
-      );
+        await setDoc(doc(imagesCollectionRef, item.item.id), {
+          name: imageName,
+          storagePath,
+          url: downloadURL,
+          isDisplayed: true,
+          createdAt: serverTimestamp(),
+          userId: user.uid,
+          sourceType: item.item.sourceType,
+          crop: {
+              aspect: '3:5',
+              outputWidth: 960,
+              outputHeight: 1600,
+          },
+        });
+        lastUploadedPath = storagePath;
+      }
+
+      if (lastUploadedPath) {
+        try {
+          const queued = await queueDeviceRefresh(lastUploadedPath);
+          refreshReplaced = queued.replaced;
+        } catch (refreshError) {
+          console.error('Image saved but device refresh could not be queued:', refreshError);
+          refreshQueued = false;
+        }
+      }
 
       toast({
         title: 'Success!',
-        description: `${selectedImages.length} new image(s) have been saved to My Device.`,
+        description: refreshQueued
+          ? refreshReplaced
+            ? `${selectedImages.length} new image(s) saved. The previous pending frame request was replaced.`
+            : `${selectedImages.length} new image(s) saved. Your frame refresh is queued.`
+          : `${selectedImages.length} new image(s) saved. The frame will use the next scheduled sync.`,
       });
+      releaseImportItems(reviewItems);
+      setReviewItems([]);
+      setAppState('GALLERY');
     } catch (error) {
       console.error('Error saving images:', error);
       toast({
@@ -144,10 +195,18 @@ export default function DashboardPage() {
           'There was a problem saving your images to My Device. Please try again.',
         variant: 'destructive',
       });
-    } finally {
-      setReviewItems([]);
-      setAppState('GALLERY');
+      setAppState('REVIEW');
     }
+  };
+
+  const handleImportError = (message: string) => {
+    toast({ title: 'Unsupported photo', description: message, variant: 'destructive' });
+  };
+
+  const handleCancelReview = () => {
+    releaseImportItems(reviewItems);
+    setReviewItems([]);
+    setAppState('UPLOAD');
   };
 
   const handleUpdateImage = async (updatedImage: GalleryItem) => {
@@ -215,15 +274,35 @@ export default function DashboardPage() {
 
 
   const handleUploadMore = () => {
+    releaseImportItems(reviewItems);
+    setReviewItems([]);
     setAppState('UPLOAD');
   };
 
   const handleGoToGallery = () => {
+    releaseImportItems(reviewItems);
+    setReviewItems([]);
     setAppState('GALLERY');
   };
 
-  const handleLogoClick = () => {
-    setAppState('GALLERY');
+  const handleSendImage = async (image: GalleryItem) => {
+    try {
+      const queued = await queueDeviceRefresh(image.storagePath);
+      toast({
+        title: queued.replaced ? 'Pending photo replaced' : 'Photo queued',
+        description: queued.replaced
+          ? 'Only this newer selection can be published to your frame.'
+          : 'If your frame is sleeping, press its button once. It will listen for five minutes.',
+      });
+    } catch (error) {
+      console.error('Could not send image to frame:', error);
+      toast({
+        title: 'Could not queue photo',
+        description: error instanceof Error ? error.message : 'Please try again.',
+        variant: 'destructive',
+      });
+      throw error;
+    }
   };
 
   const renderContent = () => {
@@ -233,13 +312,14 @@ export default function DashboardPage() {
           <UploadView
             onUpload={handleFilesUpload}
             onGoToGallery={handleGoToGallery}
+            onError={handleImportError}
           />
         );
-      case 'LOADING_AI':
+      case 'PREPARING':
         return (
           <LoadingView
-            title="Preparing Art"
-            description="Your image is being shaped for Everframe."
+            title="Opening Photos"
+            description="Preparing your photos for cropping."
           />
         );
       case 'LOADING_SAVE':
@@ -251,7 +331,11 @@ export default function DashboardPage() {
         );
       case 'REVIEW':
         return (
-          <ReviewView items={reviewItems} onComplete={handleReviewComplete} />
+          <ReviewView
+            items={reviewItems}
+            onComplete={handleReviewComplete}
+            onCancel={handleCancelReview}
+          />
         );
       case 'GALLERY':
         return (
@@ -260,6 +344,7 @@ export default function DashboardPage() {
             onUpdateImage={handleUpdateImage}
             onDeleteImage={handleDeleteImage}
             onDeleteMany={handleDeleteMany}
+            onSendImage={handleSendImage}
           />
         );
       default:
@@ -269,7 +354,13 @@ export default function DashboardPage() {
 
   return (
     <div className={styles.appShell}>
-      <Header onLogoClick={handleLogoClick} />
+      <Header
+        onLogoClick={handleGoToGallery}
+        onAddPhotos={handleUploadMore}
+        onMyDevice={handleGoToGallery}
+        activeSection={appState === 'GALLERY' ? 'device' : 'photos'}
+        navigationDisabled={appState === 'PREPARING' || appState === 'LOADING_SAVE'}
+      />
       {renderContent()}
     </div>
   );

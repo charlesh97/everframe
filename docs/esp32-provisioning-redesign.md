@@ -1,6 +1,6 @@
 # EverFrame ESP32 — Provisioning Redesign Spec
 
-> Status: **Spec / build checklist** — no code changed yet. Updated 2026-08-09
+> Status: **Partially implemented / board-tested build checklist**. Updated 2026-10-17
 > to the **Bearer-secret model** (see §1 Security). Previous revision was
 > `ae0a395`; this supersedes its auth sections.
 > Firmware: `embedded/everframe-esp32` (IDF 6.0.2) on XIAO ESP32S3 + 800×480
@@ -49,9 +49,9 @@ BOOT (any wake)
   │                                                   │ POST /config SSID+pass
   │                                          ┌────────▼─────────────┐
   │                                          │ 4. Try STA connect    │
-  │                                          │    5 fast retries,    │
-  │                                          │    then 5 s slow      │
-  │                                          │    timeout 15 s       │
+  │                                          │    bounded attempt    │
+  │                                          │    with status events │
+  │                                          │    timeout 30 s       │
   │                                          └────────┬─────────────┘
   │                                                   │
   │                              fail ┌───────────────┴───────────────┐ success
@@ -69,11 +69,11 @@ BOOT (any wake)
   │                                                         │ Activation code: │
   │                                                         │   A7F3K9         │
   │                                                         │ [QR: https://    │
-  │                                                         │  everframe.app/  │
+  │                                                         │  everframe.hood  │
   │                                                         │  activate?code=  │
   │                                                         │  A7F3K9 ]        │
   │                                                         │ "Enter this at    │
-  │                                                         │  everframe.app/  │
+  │                                                         │  charlesd.me/    │
   │                                                         │  activate"       │
   │                                                         └────────┬─────────┘
   │                                                                  │
@@ -116,7 +116,7 @@ BOOT (any wake)
 | Firestore stores | `tokenHash = SHA256(secret)` hex, never the secret | Dump of Firestore doesn't let an attacker impersonate a device (one-way hash). Same as password hashing. |
 | Every poll | `Authorization: Bearer <secret>` over `esp_http_client` + mbedTLS cert bundle (TLS 1.2, 1–2 s handshake) | Server recomputes `SHA256(secret)` and compares to stored `tokenHash`. Mismatch → `401`. No enumeration. |
 | Image fetch | Server-side signed URL `?Expires=…&Signature=RSA…`, 15-min expiry, no auth header needed | Capability URL: unguessable, short-lived. Log leak is harmless after expiry. |
-| Claim | Website (Google-authed) does `updateDoc({userId, status:'claimed'})` on a `pending` doc — guarded by `isActivationClaim()` rule | Website never sees the device secret. Device discovers claim on its next authenticated poll (`{claimed:true, hash, url}`). |
+| Claim | Website sends its Firebase ID token + activation code to `claimDevice`; the function atomically changes `pending` → `claimed` | Website never sees the device secret and clients cannot list device records. Device discovers claim on its next authenticated poll (`{claimed:true, hash, url}`). |
 
 Attacker table:
 
@@ -130,24 +130,27 @@ Attacker table:
 
 ---
 
-## 2) Hardware hooks to confirm before coding
+## 2) Verified hardware hooks
 
 | Item | Where | What to verify |
 |------|-------|----------------|
-| **SW1** (Y78B23110FP, `Button_Switch_SMD:SW_Push_1P1T`) | pcb/everframe_board at 59.69,38.1, wires `(53.34,30.48)-(53.34,38.1)` etc. | Net name at SW1 pins — not labeled in sch dump. Meter SW1 → XIAO header pin. Likely `GPIO0 / BOOT` (standard on XIAO). Confirm pin number, active level (expect **active-low**, pulled up). |
-| Wake capable | ESP32-S3 | Whatever pin SW1 lands on must be RTC GPIO for `esp_sleep_enable_ext0/1_wakeup`. GPIO0 qualifies. If SW1 is not RTC, add `gpio_hold` or move wiring in next spin. |
+| **SW1** (Y78B23110FP, `Button_Switch_SMD:SW_Push_1P1T`) | PCB + continuity/net audit | **XIAO D0 / GPIO1**, active-high through 1 kΩ to 3V3. No external pull-down is visible, so firmware enables the internal pull-down. |
+| Wake capable | ESP32-S3 | GPIO1 is RTC-capable. Use EXT0 wake at **high** level. |
 | LED | `GPIO21` active-low | Already used as provisioning/connected indicator. Keep. |
 | Display | 800×480, 4 bpp = 192 KB, `EPD_SPI_MAX_TRANSFER` 32 KB, S3 `SPI_LL_DMA_MAX_BIT_LEN = 1<<18` bits | QR must be rendered to framebuffer via `GUI_Paint` / `Fonts` (existing `Fonts/*.c`, `GUI/GUI_Paint.c`). |
+| PSRAM | XIAO ESP32-S3R8 | 8 MB octal PSRAM at 80 MHz is enabled. The attached board completed the ESP-IDF boot memory test. |
 
-If SW1 is confirmed GPIO0 active-low, the spec below uses that. If it is a
-different GPIO, change one `#define` — no logic change.
+The firmware defaults in `button.h` match this board. A future board revision
+can override `BUTTON_GPIO` and `BUTTON_ACTIVE_LEVEL` at build time.
 
 ---
 
 ## 3) NVS layout (namespace `everframe`)
 
-Current keys: `wifi_ssid`, `wifi_pass`, `bucket_name`, `bucket_token`,
-`device_name`, `prov_done`, `last.image.hash` (planned).
+Current keys used by firmware: `wifi_ssid`, `wifi_pass`, `prov_done`,
+`device_id`, `device_secret`, and `activation_code`. `last_image_hash` is still
+planned. Legacy bucket/device-name keys may remain in existing NVS but are no
+longer read or written by the portal.
 
 **After this redesign**
 
@@ -177,18 +180,19 @@ All paths under `embedded/everframe-esp32/main/`.
 
 - **`button.h/.c`** — `button_init()`, `button_was_held_on_boot(ms)`,
   `button_poll_held(ms)` (debounced), `button_enable_wakeup()` for deep sleep.
-  Handles active-low + internal pull-up, 50 ms debounce, 3000 ms threshold.
-  Deep-sleep wake via `esp_sleep_enable_ext0_wakeup(BUTTON_GPIO, 0)`.
+  Handles active-high + internal pull-down, 50 ms debounce, 3000 ms threshold.
+  Deep-sleep wake via `esp_sleep_enable_ext0_wakeup(BUTTON_GPIO, 1)`.
 
 - **`display_provisioning.h/.c`** — owns all e-paper screens in this flow.
-  Depends on `ePaper_Config.h`, `GUI_Paint.h`, `Fonts/fonts.h`, and a vendored
-  QR generator (see 4c). Screens:
+  It uses the managed `espressif/qrcode` component and a compact built-in 3×5
+  uppercase font, rendering directly into the native 4-bpp PSRAM frame. Screens:
   - `display_show_qr_ap(ssid)` — white background, centered QR (Wi-Fi), SSID
     text, "→ http://192.168.4.1"
   - `display_show_connecting(ssid)` — spinner/text "Connecting to <SSID>…"
+    *(still missing)*
   - `display_show_connected(code)` — "Connected ✓", activation code large font,
-    claim QR (`https://everframe.app/activate?code=CODE`)
-  - `display_show_connect_failed(ssid)` — error banner + QR again
+    claim QR (`https://everframe.hoodcharlesd.me/activate?code=CODE`)
+  - `display_show_connect_failed(ssid)` — error banner + QR again *(still missing)*
   Uses existing `EPD_Task` pattern but called synchronously: `EPD_Module_Init()`,
   `EPD_7IN3E_Init()` / `EPD_7IN3E_Clear(WHITE)` / `EPD_7IN3E_Display(frame)` with
   `EPD_SPI_WriteData` 32 KB chunks, then `EPD_7IN3E_Sleep()` / `EPD_Module_Exit()`
@@ -206,7 +210,7 @@ All paths under `embedded/everframe-esp32/main/`.
 - **`main.c`**
   - At top of `app_main()` (after `nvs_flash_init()`), call
     `button_init()` + `device_ensure_identity()`.
-  - Check `gpio_get_level(BUTTON_GPIO) == 0` for 3 s **before** the
+  - Check `gpio_get_level(BUTTON_GPIO) == 1` for 3 s **before** the
     `provisioning_is_complete()` branch. If held, set `force_provisioning`
     and branch to `wifi_prov_start()` regardless of NVS. 10 s long-hold →
     `nvs_flash_erase()` + regenerate identity (factory reset).
@@ -223,7 +227,8 @@ All paths under `embedded/everframe-esp32/main/`.
     1. `wifi_sta_try_once(ssid, pass, timeout_ms)` to validate.
     2. On success: `cloud_register_device(deviceId, tokenHash, activationCode)`
        via `esp_http_client` POST `.../registerDevice` (TLS + cert bundle).
-       On `200` or `409 already exists` → `display_show_connected(code)`.
+       On `200` → `display_show_connected(code)`. `409` means the same
+       `deviceId` exists with a different token hash and requires a factory reset.
     3. Enter poll loop: `GET /devicePoll` with `Authorization: Bearer <secret>`
        every 30 s until `claimed==true` or 30 min timeout → deep sleep.
   - On Wi-Fi failure → `display_show_connect_failed(ssid)` + loop back to QR+AP
@@ -242,7 +247,9 @@ All paths under `embedded/everframe-esp32/main/`.
     infinite retry loop.
   - Keep existing `wifi_sta_start()` for normal boots, but add bounded fallback:
     if no IP within 30 s, return `ESP_ERR_TIMEOUT` so `main.c` can fall through
-    to provisioning UI. Add `Authorization` header helper for cloud polls.
+    to provisioning UI. This initial timeout is implemented; post-connect link
+    loss keeps the existing retry loop. Add `Authorization` header helper for
+    cloud polls.
   - Shared helper: `cloud_poll_device(deviceId, secret, out_claimed, out_hash, out_url)`
     — does `GET /devicePoll` with `Authorization: Bearer <secret>` +
     `X-Device-Id: <deviceId>`, parses JSON, handles `401`.
@@ -250,7 +257,8 @@ All paths under `embedded/everframe-esp32/main/`.
 - **`cloud_client.h/.c`** *(new, or inside wifi_prov)*
   - `cloud_register_device()` — `POST /registerDevice` JSON
     `{deviceId, tokenHash, activationCode}` (no auth — idempotent create).
-    Server stores `tokenHash` hashed; `409` if already registered is success.
+    Server stores `tokenHash`; idempotent same-identity registration returns
+    `200`. `409` is an identity conflict, not success.
   - `cloud_poll_device()` — `GET /devicePoll` with Bearer, returns
     `{claimed, hash, signedUrl}` or `{claimed:false}`.
   - `cloud_fetch_image(signedUrl, out_buf)` — plain `GET` to
@@ -263,27 +271,27 @@ All paths under `embedded/everframe-esp32/main/`.
     shared — provision display runs before Wi-Fi or with STA stopped.
 
 - **`CMakeLists.txt`** — add new sources:
-  `button.c`, `display_provisioning.c`, `device_identity.c`, `cloud_client.c`,
-  `qrcodegen.c`. Add `PRIV_REQUIRES esp_driver_gpio mbedtls`. No other
-  component deps.
+  `button.c`, `display_provisioning.c`, `device_identity.c`, `cloud_client.c`.
+  Add `PRIV_REQUIRES esp_driver_gpio mbedtls espressif__qrcode`; pin
+  `espressif/qrcode ~0.1.0` in `idf_component.yml`.
 
 - **`sdkconfig`** — enable `CONFIG_ESP_WIFI_AUTH_WPA2_PSK` already set. Ensure
   `CONFIG_MBEDTLS_HAVE_TIME` for `esp_crt_bundle_attach` and cert bundle.
   `CONFIG_FREERTOS_HZ` sufficient for button polling.
 
-### 4c) QR generation (vendored, no component)
+### 4c) QR generation
 
-Vendor `qrcodegen.c/.h` from [nayuki/QR-Code-generator](https://github.com/nayuki/QR-Code-generator)
-(C, public domain, ~1 file + header). Alternatives like `esp_qrcode` pull `qrcode`
-component with heap assumptions — nayuki is simpler for e-paper.
+Use Espressif's managed `espressif/qrcode` component, which wraps Nayuki's
+[QR-Code-generator](https://github.com/nayuki/QR-Code-generator). The dependency
+is locked in `dependencies.lock`; its callback API lets the firmware paint each
+module directly into the panel framebuffer.
 
 - Version: QR v3–v5 for short payloads (`WIFI:T:nopass;S:EverFrame-XXXX;;` ~30 B
-  and `https://everframe.app/activate?code=A7F3K9` ~40 B). ECC `M`.
-- Rendering: `qrcodegen_encodeText(..., temp, qr, ECC_MEDIUM, ...)` →
-  `qrcodegen_getSize(qr)` → paint black squares via `Paint_DrawPoint` /
-  `Paint_DrawRectangle` at `scale = (available_px / qr_size)`, centered, white
-  quiet zone 4 modules. Frame is 1-bit logical but packed 4 bpp for 7in3e — for QR
-  screens just fill with `EPD_7IN3E_WHITE`/`BLACK` via existing palette.
+  and `https://everframe.hoodcharlesd.me/activate?code=A7F3K9` ~55 B). ECC `M`.
+- Rendering: `esp_qrcode_generate()` invokes a display callback; use
+  `esp_qrcode_get_size()` / `esp_qrcode_get_module()` and paint scaled black
+  rectangles, centered with a four-module white quiet zone. The final frame is
+  packed two 4-bit 7in3e palette pixels per byte.
 
 ### 4d) QR payloads
 
@@ -299,7 +307,7 @@ is acceptable — phone joins manually then scans URL. Primary is Wi-Fi QR.
 Claim QR (activation code display):
 
 ```
-https://everframe.app/activate?code=A7F3K9
+https://everframe.hoodcharlesd.me/activate?code=A7F3K9
 ```
 
 Frontend route `/activate` reads `code` query, prompts Google login if needed,
@@ -326,7 +334,7 @@ Claimed                  Every wake (or 30 s during setup window after claim):
                   → verify 192000 bytes → display → save last_image_hash
 
 Fail paths               No Wi-Fi → back to QR+AP (never blank)
-                         401 → re-POST /registerDevice (idempotent, 409 ok)
+                         401 → re-POST /registerDevice; 409 → factory reset
                          No manifest → {hasImage:false} → keep last image, sleep 1 h
 ```
 
@@ -344,23 +352,27 @@ Server MUST use constant-time comparison for the hash.
 ## 6) Button behavior detail
 
 - **Normal boot, no press:** `provisioning_is_complete()` decides STA vs AP as today.
+- **Short button press from deep sleep:** continue through the normal saved-Wi-Fi
+  path, poll the cloud immediately, refresh if the hash changed, then sleep again.
 - **Button held 3 s at boot (or anytime before wifi init):** force `wifi_prov_start()`
-  + render QR. Debounce 50 ms, require continuous low for 3000 ms.
+  + render QR. Debounce 50 ms, require continuous high for 3000 ms.
 - **10 s hold (factory):** `nvs_flash_erase()` + regenerate `deviceId+secret`,
   reboot into provisioning. Log `factory reset`.
 - **Deep sleep:** before every `esp_deep_sleep_start()`, call
-  `esp_sleep_enable_ext0_wakeup(BUTTON_GPIO, 0)` (or `ext1` with mask). On wake,
-  `esp_sleep_get_wakeup_cause() == ESP_SLEEP_WAKEUP_EXT0` → treat as button wake,
-  go straight to provisioning.
+  `esp_sleep_enable_ext0_wakeup(BUTTON_GPIO, 1)` (or `ext1` with mask). On wake,
+  `esp_sleep_get_wakeup_cause() == ESP_SLEEP_WAKEUP_EXT0` → inspect the hold
+  duration. A released/short press performs a normal cloud check; a continuous
+  3 s hold enters provisioning.
 
 Test matrix:
 
-- [ ] Short tap (<500 ms) does NOT enter provisioning.
+- [x] Short tap from deep sleep wakes, polls immediately, skips the unchanged
+  hash, and returns to sleep (verified on the attached board).
 - [ ] 3 s hold from deep sleep wakes and shows QR.
 - [ ] 3 s hold from running STA forces AP+QR without erasing creds (form pre-filled
   if `wifi_ssid` exists — nice to have).
 - [ ] 10 s hold erases and shows new activation code (different `deviceId`+`secret`).
-- [ ] No button → normal STA connect still works (`Wi-FightTheFeeling2` in last log).
+- [x] No button → normal STA connect works (`Wi-FightTheFeeling2` verified on the attached board).
 - [ ] Pending poll with correct secret → `200 {claimed:false}`. Wrong secret → `401`.
 - [ ] After website claim, next poll → `200 {claimed:true, hash, url}`.
 
@@ -368,7 +380,7 @@ Test matrix:
 
 ## 7) UI copy / e-paper notes
 
-All text via `Fonts/font24.c` / `font20.c`. Keep Wi-Fi QR ≥ 180 px.
+The current implementation uses a compact built-in 3×5 font so the provisioning renderer has no dependency on the demo font tables. Keep the Wi-Fi QR ≥ 180 px.
 
 ```
 [QR]                  ← Wi-Fi join
@@ -380,8 +392,8 @@ Enter your home Wi-Fi
 
 Connected ✓  (large, centered)
 Your code:  A7F3K9   (font24, 2× scale)
-[QR]  everframe.app/activate?code=A7F3K9
-Enter this code at everframe.app/activate
+[QR]  everframe.hoodcharlesd.me/activate?code=A7F3K9
+Enter this code at everframe.hoodcharlesd.me/activate
 (while signed in with Google)
 
 — after failure —
@@ -393,7 +405,7 @@ Check password and try again.     ← small
 — pending (polling) banner —
 
 Waiting for link…
-Enter A7F3K9 at everframe.app/activate
+Enter A7F3K9 at everframe.hoodcharlesd.me/activate
 ```
 
 The e-paper holds its last image with zero power — failed states must still
@@ -402,24 +414,30 @@ before each screen.
 
 ---
 
-## 8) Implementation order (one afternoon per bullet)
+## 8) Implementation status and remaining order
 
-1. `device_identity` + `button` + wake (no display yet) — verify
-   `deviceId`+`secret` generation and `tokenHash` via logs (redact secret).
-2. Vendor `qrcodegen`, add `display_provisioning` with QR render to framebuffer —
-   verify a QR on the 7in3e by flashing a test screen.
-3. Add `cloud_client` with `registerDevice` + `poll` (Bearer + SHA256 verify
-   against a stub — test with `curl -H "Authorization: Bearer …"`).
-4. Trim `wifi_prov` form to SSID/pass only, hook `wifi_sta_try_once`, wire the
-   four screens + failure loopback + poll loop.
-5. Wire `main.c` force-provisioning on button, AP 30-min sleep, pre-fill.
+1. [x] `device_identity` + button boot paths. Identity and PSRAM are verified on
+   the attached board; physical 3 s/10 s and EXT0 wake tests remain.
+2. [x] Add a standalone `cloud_client` for register, Bearer poll, signed download,
+   exact-size validation, and streaming SHA-256 validation. It builds but is not
+   called by `main.c` yet.
+3. [x] Trim the portal to SSID/password and add `wifi_sta_try_once()`.
+4. [x] Add `display_provisioning` + Espressif QR generation. The Wi-Fi QR was
+   encoded into a 192 KB PSRAM frame and refreshed successfully on the 7in3e;
+   the activation screen builds but still needs flow-level exercise.
+5. [ ] Replace portal restart with AP teardown → bounded STA try → AP recovery.
+6. [ ] Add the device state-machine owner that configures cloud endpoints,
+   registers, polls, downloads into PSRAM, displays, commits `last_image_hash`
+   only after success, stops Wi-Fi, arms GPIO1-high wake, and deep-sleeps.
+7. [ ] With cloud access, deploy functions/rules and run pending → claim → image
+   end-to-end tests, including 401, 409, bad hash, truncated frame, and timeout.
 
 ---
 
 ## 9) Open questions (answer before PR)
 
-- [ ] Confirm SW1 GPIO and active level. Update `BUTTON_GPIO` define.
-- [ ] QR quiet-zone / centering on 800×480 — pick `scale` that leaves 1 cm border.
+- [x] Confirm SW1 GPIO and active level: GPIO1/D0, active-high, internal pull-down.
+- [x] QR quiet-zone / centering on 800×480 — runtime scaling preserves the four-module quiet zone and leaves a wide display border.
 - [ ] AP lifetime: 30 min vs never-sleep while on USB power? `VBAT` detect could
   choose. Simplest: 30 min always, button re-wakes.
 - [ ] `device_secret` entropy: 256-bit hex vs 128-bit? 256-bit chosen for

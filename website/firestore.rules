@@ -28,29 +28,8 @@ service cloud.firestore {
       return isOwner(userId) && isExistingDoc();
     }
 
-    function newDocHasCorrectOwner(userId) {
-      return request.resource.data.userId == userId;
-    }
-
     function existingDocIsOwnedBy(userId) {
       return resource.data.userId == userId;
-    }
-
-    function isUserIdImmutable() {
-      return request.resource.data.userId == resource.data.userId;
-    }
-
-    /**
-     * Activation claim: a pending device has no owner yet (userId missing or
-     * empty) and the caller is claiming it for themselves in this write.
-     * The /activate page uses this transition: pending -> claimed + userId = caller.
-     */
-    function isActivationClaim() {
-      return isSignedIn()
-        && isExistingDoc()
-        && resource.data.status == 'pending'
-        && request.resource.data.status == 'claimed'
-        && request.resource.data.userId == request.auth.uid;
     }
 
     // --------------------------------------------------------------------------
@@ -63,42 +42,75 @@ service cloud.firestore {
       allow create: if isOwner(userId) && request.resource.data.id == userId;
       allow update: if isOwner(userId);
       allow delete: if isExistingOwner(userId);
+
+      /**
+       * Owner-managed visual-style clauses used by the optional image
+       * generation stage. A style is deliberately a small structured record,
+       * rather than one mutable array on the user document, so edits do not
+       * overwrite another tab's additions and each record can be validated.
+       */
+      match /generationStyles/{styleId} {
+        function isValidStyle() {
+          return request.resource.data.keys().hasOnly([
+              'userId', 'label', 'prompt', 'createdAt', 'updatedAt'
+            ])
+            && request.resource.data.userId == userId
+            && request.resource.data.label is string
+            && request.resource.data.label.size() > 0
+            && request.resource.data.label.size() <= 60
+            && request.resource.data.prompt is string
+            && request.resource.data.prompt.size() > 0
+            && request.resource.data.prompt.size() <= 160
+            && request.resource.data.createdAt is timestamp
+            && request.resource.data.updatedAt is timestamp;
+        }
+
+        allow read: if isOwner(userId);
+        allow create: if isOwner(userId) && isValidStyle();
+        allow update: if isOwner(userId)
+          && isValidStyle()
+          && request.resource.data.userId == resource.data.userId
+          && request.resource.data.createdAt == resource.data.createdAt
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+            'label', 'prompt', 'updatedAt'
+          ]);
+        allow delete: if isOwner(userId);
+      }
     }
 
     /**
      * Images — per-user storage paths are users/{uid}/images/... but the
      * collection is still top-level /images for query simplicity.
-     * Any signed-in user may read/write; userId field records ownership.
+     * Clients may read and mutate only their own records.
      * The dashboard writes with userId == auth.uid and storagePath under
      * users/{uid}/images/....
      */
     match /images/{imageId} {
-      allow read, write: if isSignedIn();
+      allow read: if isSignedIn() && resource.data.userId == request.auth.uid;
+      allow create: if isSignedIn()
+        && request.resource.data.userId == request.auth.uid
+        && request.resource.data.storagePath.matches('users/' + request.auth.uid + '/images/.*');
+      allow update: if isSignedIn()
+        && resource.data.userId == request.auth.uid
+        && request.resource.data.userId == resource.data.userId
+        && request.resource.data.storagePath == resource.data.storagePath;
+      allow delete: if isSignedIn() && resource.data.userId == request.auth.uid;
     }
 
     /**
-     * Devices — supports both normal owner access and the one-time
-     * pending -> claimed activation claim via /activate?code=XXXXXX.
+     * Devices — clients can directly get/delete only an already-owned device.
+     * Registration, activation lookup, and claim writes use server-side Admin SDK.
      * - get: owner only (existingDocIsOwnedBy)
-     * - list: disabled; /activate uses targeted query by activationCode which
-     *         requires a Firestore index and is evaluated as a list — therefore
-     *         list is allowed when the query filters to the caller's pending claim.
-     *         For the minimal v1 we keep list false and have /activate do a
-     *         direct doc get when deviceId is known, OR allow list for the
-     *         activationCode query. We allow list for the claim query below.
-     * - create: owner
-     * - update: owner (immutable userId) OR activation claim
+     * - list/create/update: disabled for clients
      * - delete: owner
      */
     match /devices/{deviceId} {
       // Owner can read their own device
       allow get: if isSignedIn() && existingDocIsOwnedBy(request.auth.uid);
-      // Allow the /activate claim query: list where activationCode == X and status == pending.
-      // This is intentionally narrow — it only matches the claim lookup, not a broad scan.
-      allow list: if isSignedIn();
-      allow create: if isSignedIn() && newDocHasCorrectOwner(request.auth.uid);
-      allow update: if (isSignedIn() && isExistingDoc() && existingDocIsOwnedBy(request.auth.uid) && isUserIdImmutable())
-                    || isActivationClaim();
+      // Activation lookup and mutation happen in claimDevice using Admin SDK.
+      allow list: if false;
+      allow create: if false;
+      allow update: if false;
       allow delete: if isSignedIn() && isExistingDoc() && existingDocIsOwnedBy(request.auth.uid);
     }
 

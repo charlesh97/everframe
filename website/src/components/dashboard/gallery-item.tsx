@@ -55,6 +55,7 @@ interface GalleryItemCardProps {
   onSelectionChange: (id: string, selected: boolean) => void;
   onUpdate: (item: GalleryItem) => void;
   onDelete: (item: GalleryItem) => void;
+  isCurrent?: boolean;
 }
 
 const renameFormSchema = z.object({
@@ -67,6 +68,7 @@ export default function GalleryItemCard({
   onSelectionChange,
   onUpdate,
   onDelete,
+  isCurrent = false,
 }: GalleryItemCardProps) {
   const [isRenameOpen, setIsRenameOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
@@ -104,7 +106,7 @@ export default function GalleryItemCard({
           isSelected && styles.artCardSelected
         )}
       >
-        <div className="relative aspect-[3/4] w-full">
+        <div className="relative aspect-[3/5] w-full">
           <Image
             src={item.url}
             alt={item.name}
@@ -150,6 +152,7 @@ export default function GalleryItemCard({
               </DropdownMenuContent>
             </DropdownMenu>
           </div>
+          {isCurrent && <span className={styles.currentImageBadge}>On display</span>}
         </div>
         <CardFooter className={styles.cardFooter}>
           <p
@@ -160,7 +163,7 @@ export default function GalleryItemCard({
           </p>
           <div className={styles.cardMetaRow}>
             <Label htmlFor={`display-${item.id}`} className="text-sm text-muted-foreground">
-              On frame
+              In rotation
             </Label>
             <Switch
               id={`display-${item.id}`}

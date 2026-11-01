@@ -1,13 +1,23 @@
 #include "ePaper_Config.h"
 #include "esp_err.h"
+#include "psa/crypto.h"
 #include <stdlib.h>
 #include <string.h>
 
+#define EPD_FRAME_BYTES ((size_t)EPD_7IN3E_WIDTH * EPD_7IN3E_HEIGHT / 2U)
+
+#define EPD_SPI_CLOCK_HZ 20000000
+
 // SPI device handle
 spi_device_handle_t spi_handle = NULL;
+static bool epd_hardware_initialized;
 
-void EPD_Task(void *pvParameter)
+esp_err_t EPD_Hardware_Init(void)
 {
+    if (epd_hardware_initialized) {
+        return ESP_OK;
+    }
+
     // Setup all the GPIO outputs (RST, CS, DC, PWR)
     gpio_config_t io_conf = {
         .pin_bit_mask = (1ULL << EPD_RST_PIN) | (1ULL << EPD_CS_PIN) | (1ULL << EPD_DC_PIN) | (1ULL << EPD_PWR_PIN),
@@ -16,7 +26,10 @@ void EPD_Task(void *pvParameter)
         .pull_down_en = GPIO_PULLDOWN_DISABLE,
         .intr_type = GPIO_INTR_DISABLE,
     };
-    gpio_config(&io_conf);
+    esp_err_t ret = gpio_config(&io_conf);
+    if (ret != ESP_OK) {
+        return ret;
+    }
 
     // Configure BUSY pin as input
     gpio_config_t busy_conf = {
@@ -26,7 +39,10 @@ void EPD_Task(void *pvParameter)
         .pull_down_en = GPIO_PULLDOWN_DISABLE,
         .intr_type = GPIO_INTR_DISABLE,
     };
-    gpio_config(&busy_conf);
+    ret = gpio_config(&busy_conf);
+    if (ret != ESP_OK) {
+        return ret;
+    }
 
     // Configure SPI bus
     spi_bus_config_t buscfg = {
@@ -40,16 +56,15 @@ void EPD_Task(void *pvParameter)
     };
 
     // Initialize SPI bus (SPI2_HOST is typically used for general purpose SPI)
-    esp_err_t ret = spi_bus_initialize(SPI2_HOST, &buscfg, SPI_DMA_CH_AUTO);
+    ret = spi_bus_initialize(SPI2_HOST, &buscfg, SPI_DMA_CH_AUTO);
     if (ret != ESP_OK) {
         ESP_LOGE(EPD_TAG, "Failed to initialize SPI bus: %s", esp_err_to_name(ret));
-        return;
+        return ret;
     }
 
     // Configure SPI device for e-paper display
     spi_device_interface_config_t devcfg = {
-        .clock_speed_hz = 20000000,  // 20 MHz clock speed (panel ref runs 1.1 MHz; e-paper
-                                     // controllers spec 20 MHz max — drop to 10 MHz if glitchy)
+        .clock_speed_hz = EPD_SPI_CLOCK_HZ,
         .mode = 0,  // SPI_MODE_0 (CPOL=0, CPHA=0)
         .spics_io_num = -1,  // CS is manually driven by EPD_Digital_Write in EPD_7in3e.c
                             // (matches Waveshare reference; avoids double-driving the pin
@@ -63,10 +78,23 @@ void EPD_Task(void *pvParameter)
     ret = spi_bus_add_device(SPI2_HOST, &devcfg, &spi_handle);
     if (ret != ESP_OK) {
         ESP_LOGE(EPD_TAG, "Failed to add SPI device: %s", esp_err_to_name(ret));
-        return;
+        spi_bus_free(SPI2_HOST);
+        return ret;
     }
 
-    ESP_LOGI(EPD_TAG, "SPI bus initialized successfully");
+    epd_hardware_initialized = true;
+    ESP_LOGI(EPD_TAG, "SPI bus initialized successfully at %u Hz",
+             (unsigned)EPD_SPI_CLOCK_HZ);
+    return ESP_OK;
+}
+
+void EPD_Task(void *pvParameter)
+{
+    (void)pvParameter;
+    if (EPD_Hardware_Init() != ESP_OK) {
+        vTaskDelete(NULL);
+        return;
+    }
 
     // Display image data
     EPD_Module_Init();
@@ -81,6 +109,7 @@ void EPD_Task(void *pvParameter)
     if (frame == NULL) {
         ESP_LOGE(EPD_TAG, "Failed to allocate frame buffer");
         vTaskDelete(NULL);
+        return;
     }
     // Full frame: 6 horizontal color bands (E palette, 800x480, 4bpp)
     const uint8_t colors[6] = {
@@ -95,8 +124,12 @@ void EPD_Task(void *pvParameter)
                    (colors[b] << 4) | colors[b], row_bytes);
         }
     }
-    EPD_7IN3E_Display(frame);
+    esp_err_t display_error = EPD_7IN3E_Display(frame);
     free(frame);
+    if (display_error != ESP_OK) {
+        ESP_LOGE(EPD_TAG, "Self-test frame transfer failed: %s",
+                 esp_err_to_name(display_error));
+    }
 
     printf("Sleeping...\n");
     EPD_7IN3E_Sleep();
@@ -107,12 +140,8 @@ void EPD_Task(void *pvParameter)
     // Log
     ESP_LOGI(EPD_TAG, "Epaper peripheral driver initialized");
 
-    // Never return: one-shot display cycle done. Park the task.
-    // (Future: wait here for image data from queue)
-    while (1)
-    {
-        vTaskDelay(pdMS_TO_TICKS(1000));
-    }
+    ESP_LOGI(EPD_TAG, "E-paper self-test completed; deleting task");
+    vTaskDelete(NULL);
 }
 
 void EPD_SPI_WriteByte(uint8_t value)
@@ -130,6 +159,17 @@ void EPD_SPI_WriteByte(uint8_t value)
 // S3 DMA cap (EPD_SPI_MAX_TRANSFER) — 192 KB frame = 6 transactions, not 192,000.
 esp_err_t EPD_SPI_WriteData(const uint8_t *data, size_t len)
 {
+    const bool is_frame = len == EPD_FRAME_BYTES;
+    psa_hash_operation_t sha = PSA_HASH_OPERATION_INIT;
+    if (is_frame &&
+        (psa_crypto_init() != PSA_SUCCESS ||
+         psa_hash_setup(&sha, PSA_ALG_SHA_256) != PSA_SUCCESS)) {
+        psa_hash_abort(&sha);
+        ESP_LOGE(EPD_TAG, "Could not initialize SPI frame verification hash");
+        return ESP_FAIL;
+    }
+
+    const size_t original_len = len;
     while (len > 0) {
         size_t chunk = (len > EPD_SPI_MAX_TRANSFER) ? EPD_SPI_MAX_TRANSFER : len;
         spi_transaction_t t = {
@@ -139,10 +179,38 @@ esp_err_t EPD_SPI_WriteData(const uint8_t *data, size_t len)
         };
         esp_err_t ret = spi_device_polling_transmit(spi_handle, &t);
         if (ret != ESP_OK) {
+            if (is_frame) {
+                psa_hash_abort(&sha);
+            }
             return ret;
+        }
+        if (is_frame && psa_hash_update(&sha, data, chunk) != PSA_SUCCESS) {
+            psa_hash_abort(&sha);
+            return ESP_FAIL;
         }
         data += chunk;
         len -= chunk;
+    }
+
+    if (is_frame) {
+        uint8_t digest[32];
+        size_t digest_len = 0U;
+        if (psa_hash_finish(&sha, digest, sizeof(digest), &digest_len) != PSA_SUCCESS ||
+            digest_len != sizeof(digest)) {
+            psa_hash_abort(&sha);
+            return ESP_FAIL;
+        }
+
+        static const char hex[] = "0123456789abcdef";
+        char digest_hex[sizeof(digest) * 2U + 1U];
+        for (size_t i = 0; i < sizeof(digest); ++i) {
+            digest_hex[i * 2U] = hex[digest[i] >> 4];
+            digest_hex[i * 2U + 1U] = hex[digest[i] & 0x0fU];
+        }
+        digest_hex[sizeof(digest) * 2U] = '\0';
+        ESP_LOGI(EPD_TAG,
+                 "Submitted SPI frame: %u bytes across DMA transactions, SHA-256 %s",
+                 (unsigned)original_len, digest_hex);
     }
     return ESP_OK;
 }

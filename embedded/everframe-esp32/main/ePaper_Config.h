@@ -16,6 +16,9 @@
 /* Function Prototypes */
 void EPD_Task(void *pvParameter);
 
+/** Initialize panel GPIO and SPI. Safe to call more than once. */
+esp_err_t EPD_Hardware_Init(void);
+
 /**
  * e-Paper GPIO
 **/

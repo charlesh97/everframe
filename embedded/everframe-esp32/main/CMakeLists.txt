@@ -1,3 +1,13 @@
+set(everframe_embed_files)
+if(CONFIG_EVERFRAME_EMBEDDED_HALF_FRAME_TEST)
+    list(APPEND everframe_embed_files
+        "testdata/dither_comparison/option_1_no_dither.bin"
+        "testdata/dither_comparison/option_2_blue_noise.bin"
+        "testdata/dither_comparison/option_3_burkes.bin"
+        "testdata/dither_comparison/option_4_atkinson.bin"
+    )
+endif()
+
 idf_component_register(
     SRCS
         "main.c"
@@ -6,16 +16,27 @@ idf_component_register(
         "wifi_prov.c"
         "wifi_sta.c"
         "dns_server.c"
+        "button.c"
+        "device_identity.c"
+        "device_runtime.c"
+        "cloud_client.c"
+        "display_provisioning.c"
+        "Fonts/font24.c"
     PRIV_REQUIRES
         esp_wifi
         nvs_flash
         esp_netif
         esp_event
         esp_http_server
+        esp_http_client
         esp_driver_gpio
         esp_driver_spi
+        mbedtls
+        espressif__qrcode
     INCLUDE_DIRS
         "."
         "GUI"
         "Fonts"
+    EMBED_FILES
+        ${everframe_embed_files}
 )

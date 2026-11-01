@@ -1,5 +1,29 @@
 menu "Example Configuration"
 
+    config EVERFRAME_DISPLAY_SELF_TEST
+        bool "Render the one-shot provisioning QR test screen at boot"
+        default n
+        help
+            Hardware diagnostic only. Renders a real Wi-Fi QR and setup screen
+            into a 192 KB PSRAM frame, refreshes the 7.3-inch panel, then sleeps
+            it. Keep disabled in normal firmware because e-paper retains its image.
+
+    config EVERFRAME_DISABLE_DEEP_SLEEP
+        bool "Keep EverFrame awake for development"
+        default n
+        help
+            Development only. Keep Wi-Fi running and poll the cloud every 15
+            seconds instead of entering 12-hour deep sleep. This substantially
+            increases power consumption and should be disabled for production.
+
+    config EVERFRAME_EMBEDDED_HALF_FRAME_TEST
+        bool "Render the embedded frame transport diagnostic at boot"
+        default n
+        help
+            Development-only panel diagnostic. Bypass Wi-Fi, cloud downloads,
+            and PSRAM by reading a verified 192 KB frame embedded in firmware.
+            The transport variant is selected in main.c; refresh once and stop.
+
     config ESP_WIFI_SSID
         string "WiFi SSID"
         default "SpectrumSetup-D721"

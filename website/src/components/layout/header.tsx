@@ -1,7 +1,6 @@
 'use client';
 
 import { LogOut } from 'lucide-react';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/firebase';
 import { Button } from '@/components/ui/button';
@@ -9,15 +8,25 @@ import styles from '@/components/dashboard/dashboard.module.css';
 
 interface HeaderProps {
   onLogoClick?: () => void;
+  onAddPhotos: () => void;
+  onMyDevice: () => void;
+  activeSection: 'photos' | 'device';
+  navigationDisabled?: boolean;
 }
 
-export default function Header({ onLogoClick }: HeaderProps) {
+export default function Header({
+  onLogoClick,
+  onAddPhotos,
+  onMyDevice,
+  activeSection,
+  navigationDisabled = false,
+}: HeaderProps) {
   const router = useRouter();
   const auth = useAuth();
 
   const handleLogout = async () => {
     await auth.signOut();
-    router.push('/');
+    router.replace('/');
   };
 
   return (
@@ -28,12 +37,24 @@ export default function Header({ onLogoClick }: HeaderProps) {
       </button>
 
       <nav className={styles.navigation} aria-label="Primary navigation">
-        <Link href="/" className={styles.navLink}>
-          Everframe
-        </Link>
-        <Link href="/dashboard" className={styles.activeNavLink} aria-current="page">
+        <button
+          type="button"
+          onClick={onAddPhotos}
+          disabled={navigationDisabled}
+          className={activeSection === 'photos' ? styles.activeNavLink : styles.navLink}
+          aria-current={activeSection === 'photos' ? 'page' : undefined}
+        >
+          Add Photos
+        </button>
+        <button
+          type="button"
+          onClick={onMyDevice}
+          disabled={navigationDisabled}
+          className={activeSection === 'device' ? styles.activeNavLink : styles.navLink}
+          aria-current={activeSection === 'device' ? 'page' : undefined}
+        >
           My Device
-        </Link>
+        </button>
       </nav>
 
       <Button variant="ghost" size="sm" onClick={handleLogout} className={styles.headerAction}>

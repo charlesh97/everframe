@@ -1,7 +1,38 @@
 | Supported Targets | ESP32 | ESP32-C2 | ESP32-C3 | ESP32-C5 | ESP32-C6 | ESP32-C61 | ESP32-S2 | ESP32-S3 | ESP32-P4 | ESP32-H2 |
 | ----------------- | ----- | -------- | -------- | -------- | --------- | -------- | -------- | -------- | -------- | -------- |
 
-# Wi-Fi Station Example
+# Everframe ESP32-S3 firmware
+
+This project provisions Wi-Fi, links a frame to an Everframe account, pulls a
+SHA-verified 800 x 480 six-color artifact, refreshes the e-paper panel, and
+sleeps according to the dashboard schedule.
+
+## Quick flash
+
+Connect one ESP by USB, then run:
+
+```bash
+./flash.sh
+```
+
+The helper detects the serial port, builds the current source, and flashes the
+bootloader, partition table, and application at their correct offsets. It does
+not erase NVS, so an already configured frame keeps its identity and Wi-Fi.
+
+Use `./flash.sh --monitor` to keep the serial log open after flashing, or
+`./flash.sh /dev/cu.usbmodem11201` to choose a port explicitly.
+
+After a successful build, the latest application image is:
+
+```text
+build/everframe-esp32.bin
+```
+
+That application-only file is written at offset `0x10000`. For normal use,
+prefer `flash.sh` or `idf.py flash` because they also load the matching
+bootloader and partition table automatically.
+
+## ESP-IDF setup
 
 (See the README.md file in the upper level 'examples' directory for more information about examples.)
 

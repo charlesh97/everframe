@@ -5,24 +5,43 @@ import React, { useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { Button } from '../ui/button';
 import { cn } from '@/lib/utils';
+import { MAX_IMPORT_BYTES } from '@/lib/image-import';
 import styles from './dashboard.module.css';
 
 interface UploadViewProps {
   onUpload: (files: File[]) => void;
   onGoToGallery: () => void;
+  onError: (message: string) => void;
 }
 
-export default function UploadView({ onUpload, onGoToGallery }: UploadViewProps) {
+export default function UploadView({ onUpload, onGoToGallery, onError }: UploadViewProps) {
   const [isDragging, setIsDragging] = useState(false);
 
   const { getRootProps, getInputProps, open } = useDropzone({
-    onDrop: onUpload,
-    accept: { 'image/*': ['.jpeg', '.png', '.gif', '.jpg'] },
+    onDropAccepted: (files) => {
+      setIsDragging(false);
+      onUpload(files);
+    },
+    onDropRejected: (rejections) => {
+      setIsDragging(false);
+      const firstError = rejections[0]?.errors[0];
+      onError(
+        firstError?.code === 'file-too-large'
+          ? 'Each photo must be 75 MB or smaller.'
+          : 'Choose JPEG, PNG, HEIC, or HEIF photos only.'
+      );
+    },
+    accept: {
+      'image/jpeg': ['.jpg', '.jpeg'],
+      'image/png': ['.png'],
+      'image/heic': ['.heic'],
+      'image/heif': ['.heif'],
+    },
+    maxSize: MAX_IMPORT_BYTES,
     noClick: true,
     noKeyboard: true,
     onDragEnter: () => setIsDragging(true),
     onDragLeave: () => setIsDragging(false),
-    onDropAccepted: () => setIsDragging(false),
   });
 
   return (
@@ -46,8 +65,9 @@ export default function UploadView({ onUpload, onGoToGallery }: UploadViewProps)
             Everframe.
           </h1>
           <p className={styles.bodyText}>
-            Drop images here or choose files from your computer.
+            Choose photos, fit each one to the Everframe display, then upload.
           </p>
+          <p className={styles.fileHint}>JPEG, PNG, HEIC or HEIF · up to 75 MB each</p>
           <div className={styles.actions}>
             <Button type="button" onClick={open} size="lg" className={styles.primaryButton}>
               Select Files

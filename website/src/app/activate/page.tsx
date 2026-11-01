@@ -2,20 +2,11 @@
 
 import { Suspense, useEffect, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
-import {
-  collection,
-  query,
-  where,
-  getDocs,
-  doc,
-  updateDoc,
-  serverTimestamp,
-} from 'firebase/firestore';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { FirebaseClientProvider, useUser, useFirestore } from '@/firebase';
+import { FirebaseClientProvider, useUser } from '@/firebase';
 import { GoogleSignInButton } from '@/components/auth/login-form';
 import Header from '@/components/layout/header';
 import styles from '@/components/dashboard/dashboard.module.css';
@@ -24,7 +15,6 @@ function ActivateInner() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const { user, isUserLoading } = useUser();
-  const firestore = useFirestore();
 
   const initialCode = (searchParams.get('code') ?? '').toUpperCase().trim();
   const [code, setCode] = useState(initialCode);
@@ -48,58 +38,49 @@ function ActivateInner() {
       setStatus('error');
       return;
     }
-    if (!firestore) {
-      setMessage('Firestore is not available. Refresh and try again.');
-      setStatus('error');
-      return;
-    }
-
     setStatus('claiming');
     setMessage('');
 
     try {
-      // Find a pending device with this activation code
-      const q = query(
-        collection(firestore, 'devices'),
-        where('activationCode', '==', normalized),
-        where('status', '==', 'pending'),
-      );
-      const snap = await getDocs(q);
-
-      if (snap.empty) {
-        setStatus('error');
-        setMessage(
-          'No pending device found for that code. Check the code on the frame or try again — it may already be claimed or expired.',
-        );
-        return;
-      }
-
-      if (snap.size > 1) {
-        setStatus('error');
-        setMessage('Multiple pending devices share that code. Contact support.');
-        return;
-      }
-
-      const deviceDoc = snap.docs[0];
-      const deviceRef = doc(firestore, 'devices', deviceDoc.id);
-
-      await updateDoc(deviceRef, {
-        userId: user.uid,
-        status: 'claimed',
-        claimedAt: serverTimestamp(),
+      const token = await user.getIdToken();
+      const endpoint = process.env.NEXT_PUBLIC_CLAIM_DEVICE_URL
+        ?? 'https://us-central1-everframe-479214.cloudfunctions.net/claimDevice';
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ activationCode: normalized }),
       });
+      const result: unknown = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        const errorMessage = typeof result === 'object'
+          && result !== null
+          && 'error' in result
+          && typeof result.error === 'string'
+          ? result.error
+          : 'Could not claim the device.';
+        throw new Error(errorMessage);
+      }
+
+      const refreshQueued = typeof result === 'object'
+        && result !== null
+        && 'refreshQueued' in result
+        && result.refreshQueued === true;
 
       setStatus('success');
-      setMessage(`Frame ${normalized} linked to ${user.email ?? user.uid}.`);
+      setMessage(
+        refreshQueued
+          ? `Frame ${normalized} linked to ${user.email ?? user.uid}. Its first refresh is queued.`
+          : `Frame ${normalized} linked. It will refresh on the next scheduled sync.`,
+      );
       // Give the user a moment to see the success state, then go to dashboard
       setTimeout(() => router.push('/dashboard'), 1200);
     } catch (err: any) {
       console.error('Claim failed:', err);
       setStatus('error');
-      const msg =
-        err?.code === 'permission-denied'
-          ? 'Permission denied — check Firestore rules for the devices claim transition.'
-          : (err?.message ?? 'Could not claim the device. Please try again.');
+      const msg = err?.message ?? 'Could not claim the device. Please try again.';
       setMessage(msg);
     }
   };
@@ -127,7 +108,9 @@ function ActivateInner() {
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
-              <GoogleSignInButton />
+              <GoogleSignInButton
+                redirectTo={`/activate${code ? `?code=${encodeURIComponent(code)}` : ''}`}
+              />
               {code && (
                 <p className="text-sm text-muted-foreground">
                   Code from QR: <span className="font-mono font-semibold">{code}</span>
@@ -142,7 +125,12 @@ function ActivateInner() {
 
   return (
     <div className={styles.appShell}>
-      <Header />
+      <Header
+        onLogoClick={() => router.push('/dashboard?view=device')}
+        onAddPhotos={() => router.push('/dashboard')}
+        onMyDevice={() => router.push('/dashboard?view=device')}
+        activeSection="device"
+      />
       <div className="mx-auto max-w-md px-6 py-10">
         <Card>
           <CardHeader>

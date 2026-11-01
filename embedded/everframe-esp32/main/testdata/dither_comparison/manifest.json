@@ -1,0 +1,64 @@
+{
+  "palette": [
+    {
+      "r": 31,
+      "g": 24,
+      "b": 41
+    },
+    {
+      "r": 168,
+      "g": 180,
+      "b": 182
+    },
+    {
+      "r": 180,
+      "g": 173,
+      "b": 0
+    },
+    {
+      "r": 113,
+      "g": 24,
+      "b": 19
+    },
+    {
+      "r": 36,
+      "g": 70,
+      "b": 139
+    },
+    {
+      "r": 50,
+      "g": 84,
+      "b": 60
+    }
+  ],
+  "candidates": [
+    {
+      "number": 1,
+      "name": "No dither",
+      "file": "option_1_no_dither.bin",
+      "sha256": "f7d001c299df566a499878a2a52faf6f3ef984fbcaf678679e82dde46706e94a",
+      "bytes": 192000
+    },
+    {
+      "number": 2,
+      "name": "Blue-noise",
+      "file": "option_2_blue_noise.bin",
+      "sha256": "2a7f7a3f8ec2ed8ecbfe237530cf169b5a43f46b93f3863e33999eeca1ab1a17",
+      "bytes": 192000
+    },
+    {
+      "number": 3,
+      "name": "Serpentine Burkes",
+      "file": "option_3_burkes.bin",
+      "sha256": "fecaae256b6919884f4619bbcadf61e4da34e865d398d5e8be0c275c43b61203",
+      "bytes": 192000
+    },
+    {
+      "number": 4,
+      "name": "Serpentine Atkinson",
+      "file": "option_4_atkinson.bin",
+      "sha256": "1918d55e1d154d2fa9716dae72b368684a6b88338f32621e4be932afa5e1e7ee",
+      "bytes": 192000
+    }
+  ]
+}

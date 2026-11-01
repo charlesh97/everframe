@@ -44,3 +44,6 @@ next-env.d.ts
 firebase-applet-config.json
 firebase-debug.log
 firestore-debug.log
+/dist/
+.vinext/
+.cloudflare/

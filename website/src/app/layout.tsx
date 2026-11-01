@@ -3,7 +3,7 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: 'Everframe',
-  description: 'Art that never gets old.',
+  description: 'Sign in to manage your Everframe.',
 };
 
 export default function RootLayout({

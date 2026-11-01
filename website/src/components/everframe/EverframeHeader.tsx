@@ -4,7 +4,7 @@ import type { RefObject } from 'react';
 import styles from './everframe-hero.module.css';
 
 interface EverframeHeaderProps {
-  headerRef: RefObject<HTMLElement>;
+  headerRef: RefObject<HTMLElement | null>;
 }
 
 export function EverframeHeader({ headerRef }: EverframeHeaderProps) {

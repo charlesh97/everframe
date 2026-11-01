@@ -1,8 +1,7 @@
-functions-framework
-google-cloud-storage
-google-cloud-firestore
-google-cloud-pubsub
-google-cloud-secret-manager
-google-cloud-aiplatform
-pillow
-
+functions-framework>=3.10,<4
+google-cloud-storage>=3.9,<4
+google-cloud-firestore>=2.27,<3
+google-cloud-pubsub>=2.31,<3
+google-genai>=1.47,<2
+firebase-admin>=7.7,<8
+pillow>=11.3,<12
