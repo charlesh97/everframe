@@ -1,0 +1,27 @@
+Drill report for everframe_board.kicad_pcb
+Created on 2026-11-01T20:35:45
+
+Copper Layer Stackup:
+    =============================================================
+    L1 :  F.Cu                      front
+    L2 :  In1.Cu                    in1
+    L3 :  In2.Cu                    in2
+    L4 :  B.Cu                      back
+
+
+Drill file 'everframe_board-PTH.drl' contains
+    plated through holes:
+    =============================================================
+    T1  0.300mm  0.0118"  (232 holes))
+    T2  0.650mm  0.0256"  (4 holes)  (with 4 slots)
+
+    Total plated holes count 236
+
+
+Drill file 'everframe_board-NPTH.drl' contains
+    unplated through holes:
+    =============================================================
+    T1  0.570mm  0.0224"  (1 hole)
+    T2  2.000mm  0.0787"  (4 holes))
+
+    Total unplated holes count 5

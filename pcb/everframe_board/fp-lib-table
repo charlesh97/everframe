@@ -1,0 +1,5 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "everframe_library.footprints")(type "KiCad")(uri "${KIPRJMOD}/library/everframe_library.footprints")(options "")(descr "EverFrame connector footprints"))
+  (lib (name "seed_studio")(type "KiCad")(uri "${KIPRJMOD}/library/Seeed Studio XIAO Series Library/seed_studio.pretty")(options "")(descr "Seeed Studio XIAO footprints"))
+)

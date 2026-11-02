@@ -6348,6 +6348,42 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Texas Instruments"
+			(at 212.09 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "TLV75533PDBVR"
+			(at 212.09 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey PN" "296-50411-1-ND"
+			(at 212.09 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser PN" "595-TLV75533PDBVR"
+			(at 212.09 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "3ae9e9e1-e395-4203-9f9a-948ba4792e4a")
 		)
@@ -10659,6 +10695,7 @@
 	(symbol
 		(lib_id "Transistor_FET:Q_PMOS_GSD")
 		(at 248.92 77.47 0)
+		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -10692,7 +10729,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://www.vishay.com/docs/68741/si2301cd.pdf"
 			(at 248.92 77.47 0)
 			(effects
 				(font
@@ -11510,7 +11547,7 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+5V"
+		(property "Value" "+3V3_ESP32"
 			(at 190.5 19.05 0)
 			(effects
 				(font
@@ -11536,7 +11573,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Power symbol creates a global label with name \"+5V\""
+		(property "Description" "Power symbol creates a global label with name \"+3V3_ESP32\""
 			(at 190.5 22.86 0)
 			(effects
 				(font

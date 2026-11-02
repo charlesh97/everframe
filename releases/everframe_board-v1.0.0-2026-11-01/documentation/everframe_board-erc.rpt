@@ -1,0 +1,137 @@
+ERC report (2026-11-01T20:36:02, Encoding UTF8)
+Report includes: Errors, Warnings, Exclusions
+
+***** Sheet /
+[lib_symbol_mismatch]: Symbol 'C_Small' doesn't match copy in library 'Device'
+    ; warning
+    @(55.88 mm, 138.43 mm): Symbol C31 [C_Small]
+[lib_symbol_mismatch]: Symbol 'C_Small' doesn't match copy in library 'Device'
+    ; warning
+    @(64.77 mm, 138.43 mm): Symbol C32 [C_Small]
+[lib_symbol_mismatch]: Symbol 'C_Small' doesn't match copy in library 'Device'
+    ; warning
+    @(74.93 mm, 40.64 mm): Symbol C35 [C_Small]
+[lib_symbol_mismatch]: Symbol 'C_Small' doesn't match copy in library 'Device'
+    ; warning
+    @(186.69 mm, 40.64 mm): Symbol C33 [C_Small]
+[lib_symbol_mismatch]: Symbol 'C_Small' doesn't match copy in library 'Device'
+    ; warning
+    @(195.58 mm, 40.64 mm): Symbol C34 [C_Small]
+[isolated_pin_label]: Label connected to only one pin
+    ; warning
+    @(53.984 mm, 123.17 mm): Label 'SI2'
+[isolated_pin_label]: Label connected to only one pin
+    ; warning
+    @(53.984 mm, 125.71 mm): Label 'SI3'
+[lib_symbol_mismatch]: Symbol 'C_Small' doesn't match copy in library 'Device'
+    ; warning
+    @(66.04 mm, 140.97 mm): Symbol C13 [C_Small]
+[lib_symbol_mismatch]: Symbol 'C_Small' doesn't match copy in library 'Device'
+    ; warning
+    @(66.04 mm, 148.59 mm): Symbol C14 [C_Small]
+[lib_symbol_mismatch]: Symbol 'C_Small' doesn't match copy in library 'Device'
+    ; warning
+    @(72.39 mm, 165.10 mm): Symbol C22 [C_Small]
+[lib_symbol_mismatch]: Symbol 'C_Small' doesn't match copy in library 'Device'
+    ; warning
+    @(74.93 mm, 128.27 mm): Symbol C17 [C_Small]
+[lib_symbol_mismatch]: Symbol 'C_Small' doesn't match copy in library 'Device'
+    ; warning
+    @(76.20 mm, 53.34 mm): Symbol C20 [C_Small]
+[lib_symbol_mismatch]: Symbol 'C_Small' doesn't match copy in library 'Device'
+    ; warning
+    @(81.28 mm, 149.86 mm): Symbol C16 [C_Small]
+[lib_symbol_mismatch]: Symbol 'C_Small' doesn't match copy in library 'Device'
+    ; warning
+    @(85.09 mm, 53.34 mm): Symbol C21 [C_Small]
+[lib_symbol_mismatch]: Symbol 'C_Small' doesn't match copy in library 'Device'
+    ; warning
+    @(88.90 mm, 149.86 mm): Symbol C15 [C_Small]
+[lib_symbol_mismatch]: Symbol 'C_Small' doesn't match copy in library 'Device'
+    ; warning
+    @(96.52 mm, 140.97 mm): Symbol C9 [C_Small]
+[lib_symbol_mismatch]: Symbol 'C_Small' doesn't match copy in library 'Device'
+    ; warning
+    @(101.60 mm, 38.10 mm): Symbol C18 [C_Small]
+[lib_symbol_mismatch]: Symbol 'C_Small' doesn't match copy in library 'Device'
+    ; warning
+    @(101.60 mm, 41.91 mm): Symbol C19 [C_Small]
+[lib_symbol_mismatch]: Symbol 'C_Small' doesn't match copy in library 'Device'
+    ; warning
+    @(101.60 mm, 72.39 mm): Symbol C1 [C_Small]
+[lib_symbol_mismatch]: Symbol 'C_Small' doesn't match copy in library 'Device'
+    ; warning
+    @(101.60 mm, 76.20 mm): Symbol C2 [C_Small]
+[lib_symbol_mismatch]: Symbol 'C_Small' doesn't match copy in library 'Device'
+    ; warning
+    @(101.60 mm, 80.01 mm): Symbol C3 [C_Small]
+[lib_symbol_mismatch]: Symbol 'C_Small' doesn't match copy in library 'Device'
+    ; warning
+    @(101.60 mm, 83.82 mm): Symbol C4 [C_Small]
+[lib_symbol_mismatch]: Symbol 'C_Small' doesn't match copy in library 'Device'
+    ; warning
+    @(101.60 mm, 87.63 mm): Symbol C5 [C_Small]
+[lib_symbol_mismatch]: Symbol 'C_Small' doesn't match copy in library 'Device'
+    ; warning
+    @(101.60 mm, 91.44 mm): Symbol C6 [C_Small]
+[lib_symbol_mismatch]: Symbol 'C_Small' doesn't match copy in library 'Device'
+    ; warning
+    @(101.60 mm, 95.25 mm): Symbol C7 [C_Small]
+[lib_symbol_mismatch]: Symbol 'C_Small' doesn't match copy in library 'Device'
+    ; warning
+    @(101.60 mm, 99.06 mm): Symbol C8 [C_Small]
+[lib_symbol_mismatch]: Symbol 'C_Small' doesn't match copy in library 'Device'
+    ; warning
+    @(105.41 mm, 140.97 mm): Symbol C11 [C_Small]
+[lib_symbol_mismatch]: Symbol 'C_Small' doesn't match copy in library 'Device'
+    ; warning
+    @(114.30 mm, 140.97 mm): Symbol C10 [C_Small]
+[lib_symbol_mismatch]: Symbol 'C_Small' doesn't match copy in library 'Device'
+    ; warning
+    @(121.92 mm, 140.97 mm): Symbol C12 [C_Small]
+[lib_symbol_mismatch]: Symbol 'C_Small' doesn't match copy in library 'Device'
+    ; warning
+    @(149.86 mm, 69.85 mm): Symbol C25 [C_Small]
+[lib_symbol_mismatch]: Symbol 'C_Small' doesn't match copy in library 'Device'
+    ; warning
+    @(189.23 mm, 73.66 mm): Symbol C28 [C_Small]
+[lib_symbol_mismatch]: Symbol 'C_Small' doesn't match copy in library 'Device'
+    ; warning
+    @(193.04 mm, 26.67 mm): Symbol C23 [C_Small]
+[lib_symbol_mismatch]: Symbol 'C_Small' doesn't match copy in library 'Device'
+    ; warning
+    @(207.01 mm, 69.85 mm): Symbol C26 [C_Small]
+[lib_symbol_mismatch]: Symbol 'C_Small' doesn't match copy in library 'Device'
+    ; warning
+    @(210.82 mm, 95.25 mm): Symbol C27 [C_Small]
+[lib_symbol_mismatch]: Symbol 'C_Small' doesn't match copy in library 'Device'
+    ; warning
+    @(223.52 mm, 26.67 mm): Symbol C24 [C_Small]
+[lib_symbol_mismatch]: Symbol 'C_Small' doesn't match copy in library 'Device'
+    ; warning
+    @(259.08 mm, 66.04 mm): Symbol C30 [C_Small]
+[lib_symbol_mismatch]: Symbol 'C_Small' doesn't match copy in library 'Device'
+    ; warning
+    @(270.51 mm, 95.25 mm): Symbol C29 [C_Small]
+
+***** Sheet /esp32-s3/
+
+***** Sheet /epaper display (page 3)/
+[multiple_net_names]: Both +3.3V and VDD are attached to the same items; +3.3V will be used in the netlist
+    ; warning
+    @(93.98 mm, 49.53 mm): Symbol #PWR014 Pin 1 [Power input, Line]
+    @(50.80 mm, 44.45 mm): Label 'VDD'
+[same_local_global_label]: Local and global labels have same name
+    ; warning
+    @(58.42 mm, 54.61 mm): Symbol #PWR04 Pin 1 [Power input, Line]
+    @(137.16 mm, 26.67 mm): Label 'GND'
+
+ ** ERC messages: 39  Errors 0  Warnings 39
+
+ ** Ignored checks:
+    - Input Power pin not driven by any Output Power pins
+    - Global label only appears once in the schematic
+    - Symbol pin or wire end off connection grid
+    - Four connection points are joined together
+    - SPICE model issue
+    - Assigned footprint doesn't match footprint filters

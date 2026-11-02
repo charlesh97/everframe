@@ -52,6 +52,7 @@
 			)
 		)
 	)
+	(attr smd)
 	(fp_line
 		(start -8.896364 8.56)
 		(end -8.896364 -8.585)
@@ -434,6 +435,15 @@
 		(size 1.7 1.7)
 		(layers "F.Cu" "F.Mask" "F.Paste")
 		(uuid "5ce30cad-4bff-46c5-842c-ffbd827b9c25")
+	)
+	(pad "25" smd roundrect
+		(at 1.113636 2.047)
+		(size 2.75 2.5)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.25)
+		(solder_mask_margin 0.0508)
+		(thermal_bridge_angle 45)
+		(uuid "3602e9a8-6f2f-4ee8-afce-3372badc05ae")
 	)
 	(embedded_fonts no)
 	(model "${KIPRJMOD}/library/everframe_library_models/XIAO-ESP32S3 v2.stp"

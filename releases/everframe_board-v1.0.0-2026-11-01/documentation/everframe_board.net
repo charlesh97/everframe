@@ -1,0 +1,8175 @@
+(export
+	(version "E")
+	(design
+		(source "/Users/charleslab/git/everframe/pcb/everframe_board/everframe_board.kicad_sch")
+		(date "2026-11-01T20:36:02")
+		(tool "Eeschema 10.0.7")
+		(sheet
+			(number "1")
+			(name "/")
+			(tstamps "/")
+			(title_block
+				(title "Everframe Mainboard")
+				(company)
+				(rev "1.0.0")
+				(date "2025-11-24")
+				(source "everframe_board.kicad_sch")
+				(comment
+					(number "1")
+					(value "")
+				)
+				(comment
+					(number "2")
+					(value "")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "2")
+			(name "/esp32-s3/")
+			(tstamps "/78107a9f-00df-4c67-94e8-d5d68baa0c30/")
+			(title_block
+				(title "Everframe Mainboard")
+				(company)
+				(rev "1.0.0")
+				(date "2025-11-24")
+				(source "everframe-esp32.kicad_sch")
+				(comment
+					(number "1")
+					(value "")
+				)
+				(comment
+					(number "2")
+					(value "")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "3")
+			(name "/epaper display (page 3)/")
+			(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			(title_block
+				(title "Everframe Mainboard")
+				(company)
+				(rev "1.0.0")
+				(date "2025-11-24")
+				(source "epaper-display.kicad_sch")
+				(comment
+					(number "1")
+					(value "")
+				)
+				(comment
+					(number "2")
+					(value "")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+	)
+	(components
+		(comp
+			(ref "H1")
+			(value "MountingHole")
+			(footprint "MountingHole:MountingHole_2mm")
+			(description "Mounting Hole without connection")
+			(fields
+				(field
+					(name "Footprint") "MountingHole:MountingHole_2mm")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Mounting Hole without connection")
+			)
+			(libsource
+				(lib "Mechanical")
+				(part "MountingHole")
+				(description "Mounting Hole without connection")
+			)
+			(property
+				(name "Sheetname")
+				(value "everframe_board")
+			)
+			(property
+				(name "Sheetfile")
+				(value "everframe_board.kicad_sch")
+			)
+			(property
+				(name "exclude_from_bom")
+			)
+			(property
+				(name "ki_keywords")
+				(value "mounting hole")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "MountingHole*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "f422b7ce-ee46-42a4-b0a6-ac93196507e9")
+			(units
+				(unit
+					(name "A")
+					(pins)
+				)
+			)
+		)
+		(comp
+			(ref "H2")
+			(value "MountingHole")
+			(footprint "MountingHole:MountingHole_2mm")
+			(description "Mounting Hole without connection")
+			(fields
+				(field
+					(name "Footprint") "MountingHole:MountingHole_2mm")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Mounting Hole without connection")
+			)
+			(libsource
+				(lib "Mechanical")
+				(part "MountingHole")
+				(description "Mounting Hole without connection")
+			)
+			(property
+				(name "Sheetname")
+				(value "everframe_board")
+			)
+			(property
+				(name "Sheetfile")
+				(value "everframe_board.kicad_sch")
+			)
+			(property
+				(name "exclude_from_bom")
+			)
+			(property
+				(name "ki_keywords")
+				(value "mounting hole")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "MountingHole*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "bb1eee57-107e-471f-a387-fae7f8908a2c")
+			(units
+				(unit
+					(name "A")
+					(pins)
+				)
+			)
+		)
+		(comp
+			(ref "H3")
+			(value "MountingHole")
+			(footprint "MountingHole:MountingHole_2mm")
+			(description "Mounting Hole without connection")
+			(fields
+				(field
+					(name "Footprint") "MountingHole:MountingHole_2mm")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Mounting Hole without connection")
+			)
+			(libsource
+				(lib "Mechanical")
+				(part "MountingHole")
+				(description "Mounting Hole without connection")
+			)
+			(property
+				(name "Sheetname")
+				(value "everframe_board")
+			)
+			(property
+				(name "Sheetfile")
+				(value "everframe_board.kicad_sch")
+			)
+			(property
+				(name "exclude_from_bom")
+			)
+			(property
+				(name "ki_keywords")
+				(value "mounting hole")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "MountingHole*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "e47935b1-393c-4c27-94c2-2a7913be8f24")
+			(units
+				(unit
+					(name "A")
+					(pins)
+				)
+			)
+		)
+		(comp
+			(ref "H4")
+			(value "MountingHole")
+			(footprint "MountingHole:MountingHole_2mm")
+			(description "Mounting Hole without connection")
+			(fields
+				(field
+					(name "Footprint") "MountingHole:MountingHole_2mm")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Mounting Hole without connection")
+			)
+			(libsource
+				(lib "Mechanical")
+				(part "MountingHole")
+				(description "Mounting Hole without connection")
+			)
+			(property
+				(name "Sheetname")
+				(value "everframe_board")
+			)
+			(property
+				(name "Sheetfile")
+				(value "everframe_board.kicad_sch")
+			)
+			(property
+				(name "exclude_from_bom")
+			)
+			(property
+				(name "ki_keywords")
+				(value "mounting hole")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "MountingHole*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "cdbe00da-347b-458d-8b5f-0dd310ae9320")
+			(units
+				(unit
+					(name "A")
+					(pins)
+				)
+			)
+		)
+		(comp
+			(ref "C31")
+			(value "10uF")
+			(footprint "Capacitor_SMD:C_0805_2012Metric")
+			(description "Unpolarized capacitor, small symbol")
+			(fields
+				(field
+					(name "Voltage") "25V")
+				(field
+					(name "Size") "0805")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "C_Small")
+				(description "Unpolarized capacitor, small symbol")
+			)
+			(property
+				(name "Voltage")
+				(value "25V")
+			)
+			(property
+				(name "Size")
+				(value "0805")
+			)
+			(property
+				(name "Sheetname")
+				(value "esp32-s3")
+			)
+			(property
+				(name "Sheetfile")
+				(value "everframe-esp32.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "capacitor cap")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/esp32-s3/")
+				(tstamps "/78107a9f-00df-4c67-94e8-d5d68baa0c30/")
+			)
+			(tstamps "29a396fe-7a47-44b8-bf18-3857f12c79f3")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C32")
+			(value "10uF")
+			(footprint "Capacitor_SMD:C_0805_2012Metric")
+			(description "Unpolarized capacitor, small symbol")
+			(fields
+				(field
+					(name "Voltage") "25V")
+				(field
+					(name "Size") "0805")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "C_Small")
+				(description "Unpolarized capacitor, small symbol")
+			)
+			(property
+				(name "Voltage")
+				(value "25V")
+			)
+			(property
+				(name "Size")
+				(value "0805")
+			)
+			(property
+				(name "Sheetname")
+				(value "esp32-s3")
+			)
+			(property
+				(name "Sheetfile")
+				(value "everframe-esp32.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "capacitor cap")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/esp32-s3/")
+				(tstamps "/78107a9f-00df-4c67-94e8-d5d68baa0c30/")
+			)
+			(tstamps "7c4bc7d8-06f8-4fbb-a02f-d6a5f27ce54e")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C33")
+			(value "0.1uF")
+			(footprint "Capacitor_SMD:C_0603_1608Metric")
+			(description "Unpolarized capacitor, small symbol")
+			(fields
+				(field
+					(name "Voltage") "10V")
+				(field
+					(name "Size") "0603")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "C_Small")
+				(description "Unpolarized capacitor, small symbol")
+			)
+			(property
+				(name "Voltage")
+				(value "10V")
+			)
+			(property
+				(name "Size")
+				(value "0603")
+			)
+			(property
+				(name "Sheetname")
+				(value "esp32-s3")
+			)
+			(property
+				(name "Sheetfile")
+				(value "everframe-esp32.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "capacitor cap")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/esp32-s3/")
+				(tstamps "/78107a9f-00df-4c67-94e8-d5d68baa0c30/")
+			)
+			(tstamps "8bf45423-e454-4b1c-8e15-3f6eafd68a23")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C34")
+			(value "1uF")
+			(footprint "Capacitor_SMD:C_0603_1608Metric")
+			(description "Unpolarized capacitor, small symbol")
+			(fields
+				(field
+					(name "Voltage") "10V")
+				(field
+					(name "Size") "0603")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "C_Small")
+				(description "Unpolarized capacitor, small symbol")
+			)
+			(property
+				(name "Voltage")
+				(value "10V")
+			)
+			(property
+				(name "Size")
+				(value "0603")
+			)
+			(property
+				(name "Sheetname")
+				(value "esp32-s3")
+			)
+			(property
+				(name "Sheetfile")
+				(value "everframe-esp32.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "capacitor cap")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/esp32-s3/")
+				(tstamps "/78107a9f-00df-4c67-94e8-d5d68baa0c30/")
+			)
+			(tstamps "75aafd83-da98-4a2e-82b2-b6b8598af482")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C35")
+			(value "1uF")
+			(footprint "Capacitor_SMD:C_0603_1608Metric")
+			(description "Unpolarized capacitor, small symbol")
+			(fields
+				(field
+					(name "Voltage") "10V")
+				(field
+					(name "Size") "0603")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "C_Small")
+				(description "Unpolarized capacitor, small symbol")
+			)
+			(property
+				(name "Voltage")
+				(value "10V")
+			)
+			(property
+				(name "Size")
+				(value "0603")
+			)
+			(property
+				(name "Sheetname")
+				(value "esp32-s3")
+			)
+			(property
+				(name "Sheetfile")
+				(value "everframe-esp32.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "capacitor cap")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/esp32-s3/")
+				(tstamps "/78107a9f-00df-4c67-94e8-d5d68baa0c30/")
+			)
+			(tstamps "967e7e9b-ebc1-4c97-86c5-8fd43b43aff2")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "D5")
+			(value "PESD5V0L1ULD")
+			(footprint "Diode_SMD:D_SOD-882D")
+			(datasheet "\"https://assets.nexperia.com/documents/data-sheet/PESD5V0L1ULD.pdf")
+			(description "Low capacitance unidirectional ESD protection diode, 5V, SOD-882D")
+			(fields
+				(field
+					(name "Footprint") "Diode_SMD:D_SOD-882D")
+				(field
+					(name "Datasheet") "\"https://assets.nexperia.com/documents/data-sheet/PESD5V0L1ULD.pdf")
+				(field
+					(name "Description") "Low capacitance unidirectional ESD protection diode, 5V, SOD-882D")
+			)
+			(libsource
+				(lib "Diode")
+				(part "PESD5V0L1ULD")
+				(description "Low capacitance unidirectional ESD protection diode, 5V, SOD-882D")
+			)
+			(property
+				(name "Sheetname")
+				(value "esp32-s3")
+			)
+			(property
+				(name "Sheetfile")
+				(value "everframe-esp32.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "diode")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "D*SOD?882D*")
+			)
+			(sheetpath
+				(names "/esp32-s3/")
+				(tstamps "/78107a9f-00df-4c67-94e8-d5d68baa0c30/")
+			)
+			(tstamps "8f29df7f-4955-41ad-99bd-e161cc9ab631")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "FB1")
+			(value "30mOhm@100MHz")
+			(footprint "Inductor_SMD:L_0603_1608Metric")
+			(description "Ferrite bead, small symbol")
+			(fields
+				(field
+					(name "Part Number") "BLM18KG121TN1D")
+				(field
+					(name "Footprint") "Inductor_SMD:L_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Ferrite bead, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "FerriteBead_Small")
+				(description "Ferrite bead, small symbol")
+			)
+			(property
+				(name "Part Number")
+				(value "BLM18KG121TN1D")
+			)
+			(property
+				(name "Sheetname")
+				(value "esp32-s3")
+			)
+			(property
+				(name "Sheetfile")
+				(value "everframe-esp32.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "L ferrite bead inductor filter")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "Inductor_* L_* *Ferrite*")
+			)
+			(sheetpath
+				(names "/esp32-s3/")
+				(tstamps "/78107a9f-00df-4c67-94e8-d5d68baa0c30/")
+			)
+			(tstamps "db60e3b8-1bf3-411c-b102-1fcdbcf58aa4")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "J2")
+			(value "GSB1CA11101DSHR")
+			(footprint "everframe_library.footprints:AMPHENOL_GSB1CA11101DSHR")
+			(fields
+				(field
+					(name "PARTREV") "AX1")
+				(field
+					(name "STANDARD") "Manufacturer Recommendations")
+				(field
+					(name "MAXIMUM_PACKAGE_HEIGHT") "6.4mm")
+				(field
+					(name "MANUFACTURER") "Amphenol")
+				(field
+					(name "Footprint") "everframe_library.footprints:AMPHENOL_GSB1CA11101DSHR")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "everframe_library")
+				(part "GSB1CA11101DSHR")
+				(description "")
+			)
+			(property
+				(name "PARTREV")
+				(value "AX1")
+			)
+			(property
+				(name "STANDARD")
+				(value "Manufacturer Recommendations")
+			)
+			(property
+				(name "MAXIMUM_PACKAGE_HEIGHT")
+				(value "6.4mm")
+			)
+			(property
+				(name "MANUFACTURER")
+				(value "Amphenol")
+			)
+			(property
+				(name "Sheetname")
+				(value "esp32-s3")
+			)
+			(property
+				(name "Sheetfile")
+				(value "everframe-esp32.kicad_sch")
+			)
+			(sheetpath
+				(names "/esp32-s3/")
+				(tstamps "/78107a9f-00df-4c67-94e8-d5d68baa0c30/")
+			)
+			(tstamps "4d41f300-9001-4403-bbdc-46094ec4252c")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "A4")
+						)
+						(pin
+							(num "A9")
+						)
+						(pin
+							(num "A5")
+						)
+						(pin
+							(num "A6")
+						)
+						(pin
+							(num "A7")
+						)
+						(pin
+							(num "A8")
+						)
+						(pin
+							(num "A1")
+						)
+						(pin
+							(num "A12")
+						)
+						(pin
+							(num "SH1")
+						)
+						(pin
+							(num "SH2")
+						)
+						(pin
+							(num "SH3")
+						)
+						(pin
+							(num "SH4")
+						)
+						(pin
+							(num "B4")
+						)
+						(pin
+							(num "B9")
+						)
+						(pin
+							(num "B8")
+						)
+						(pin
+							(num "B7")
+						)
+						(pin
+							(num "B6")
+						)
+						(pin
+							(num "B5")
+						)
+						(pin
+							(num "B1")
+						)
+						(pin
+							(num "B12")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "J3")
+			(value "SM02B-GHS-TB")
+			(footprint "Connector_JST:JST_GH_SM02B-GHS-TB_1x02-1MP_P1.25mm_Horizontal")
+			(description "Generic connector, single row, 01x02, script generated")
+			(fields
+				(field
+					(name "Footprint") "Connector_JST:JST_GH_SM02B-GHS-TB_1x02-1MP_P1.25mm_Horizontal")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Generic connector, single row, 01x02, script generated")
+			)
+			(libsource
+				(lib "Connector")
+				(part "Conn_01x02_Pin")
+				(description "Generic connector, single row, 01x02, script generated")
+			)
+			(property
+				(name "Sheetname")
+				(value "esp32-s3")
+			)
+			(property
+				(name "Sheetfile")
+				(value "everframe-esp32.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "connector")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "Connector*:*_1x??_*")
+			)
+			(sheetpath
+				(names "/esp32-s3/")
+				(tstamps "/78107a9f-00df-4c67-94e8-d5d68baa0c30/")
+			)
+			(tstamps "647c370e-d184-478d-a0f8-dd03706c6fa8")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R15")
+			(value "5.1k")
+			(footprint "Resistor_SMD:R_0603_1608Metric")
+			(description "Resistor, small symbol")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Resistor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "R_Small")
+				(description "Resistor, small symbol")
+			)
+			(property
+				(name "Sheetname")
+				(value "esp32-s3")
+			)
+			(property
+				(name "Sheetfile")
+				(value "everframe-esp32.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/esp32-s3/")
+				(tstamps "/78107a9f-00df-4c67-94e8-d5d68baa0c30/")
+			)
+			(tstamps "46b066b6-d892-4fc2-b0fb-5e01fe6aaad5")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R16")
+			(value "5.1k")
+			(footprint "Resistor_SMD:R_0603_1608Metric")
+			(description "Resistor, small symbol")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Resistor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "R_Small")
+				(description "Resistor, small symbol")
+			)
+			(property
+				(name "Sheetname")
+				(value "esp32-s3")
+			)
+			(property
+				(name "Sheetfile")
+				(value "everframe-esp32.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/esp32-s3/")
+				(tstamps "/78107a9f-00df-4c67-94e8-d5d68baa0c30/")
+			)
+			(tstamps "1495960a-ca41-4553-b680-4b18243064ad")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R17")
+			(value "33")
+			(footprint "Resistor_SMD:R_0603_1608Metric")
+			(description "Resistor, small symbol")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Resistor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "R_Small")
+				(description "Resistor, small symbol")
+			)
+			(property
+				(name "Sheetname")
+				(value "esp32-s3")
+			)
+			(property
+				(name "Sheetfile")
+				(value "everframe-esp32.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/esp32-s3/")
+				(tstamps "/78107a9f-00df-4c67-94e8-d5d68baa0c30/")
+			)
+			(tstamps "a7b431b8-8f1b-4e06-889b-984fdfa894ca")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R18")
+			(value "33")
+			(footprint "Resistor_SMD:R_0603_1608Metric")
+			(description "Resistor, small symbol")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Resistor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "R_Small")
+				(description "Resistor, small symbol")
+			)
+			(property
+				(name "Sheetname")
+				(value "esp32-s3")
+			)
+			(property
+				(name "Sheetfile")
+				(value "everframe-esp32.kicad_sch")
+			)
+			(property
+				(name "dnp")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/esp32-s3/")
+				(tstamps "/78107a9f-00df-4c67-94e8-d5d68baa0c30/")
+			)
+			(tstamps "f5b029a8-2f39-49fe-a548-c50e4bfc38cf")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R19")
+			(value "33")
+			(footprint "Resistor_SMD:R_0603_1608Metric")
+			(description "Resistor, small symbol")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Resistor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "R_Small")
+				(description "Resistor, small symbol")
+			)
+			(property
+				(name "Sheetname")
+				(value "esp32-s3")
+			)
+			(property
+				(name "Sheetfile")
+				(value "everframe-esp32.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/esp32-s3/")
+				(tstamps "/78107a9f-00df-4c67-94e8-d5d68baa0c30/")
+			)
+			(tstamps "f8cb8636-b0ee-4a50-8fe0-0eedc70447db")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R20")
+			(value "100k")
+			(footprint "Resistor_SMD:R_0603_1608Metric")
+			(description "Resistor, small symbol")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Resistor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "R_Small")
+				(description "Resistor, small symbol")
+			)
+			(property
+				(name "Sheetname")
+				(value "esp32-s3")
+			)
+			(property
+				(name "Sheetfile")
+				(value "everframe-esp32.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/esp32-s3/")
+				(tstamps "/78107a9f-00df-4c67-94e8-d5d68baa0c30/")
+			)
+			(tstamps "6ef2b9cc-8c6a-4dc4-a3d1-23aac947373e")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R21")
+			(value "1k")
+			(footprint "Resistor_SMD:R_0603_1608Metric")
+			(description "Resistor, small symbol")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Resistor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "R_Small")
+				(description "Resistor, small symbol")
+			)
+			(property
+				(name "Sheetname")
+				(value "esp32-s3")
+			)
+			(property
+				(name "Sheetfile")
+				(value "everframe-esp32.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/esp32-s3/")
+				(tstamps "/78107a9f-00df-4c67-94e8-d5d68baa0c30/")
+			)
+			(tstamps "1d1eb501-b9e6-40ec-9ede-03914e624376")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R22")
+			(value "0")
+			(footprint "Resistor_SMD:R_0603_1608Metric")
+			(description "Resistor, small symbol")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Resistor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "R_Small")
+				(description "Resistor, small symbol")
+			)
+			(property
+				(name "Sheetname")
+				(value "esp32-s3")
+			)
+			(property
+				(name "Sheetfile")
+				(value "everframe-esp32.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/esp32-s3/")
+				(tstamps "/78107a9f-00df-4c67-94e8-d5d68baa0c30/")
+			)
+			(tstamps "7a574bde-82f6-434b-8e88-46bfda2f6518")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R23")
+			(value "0")
+			(footprint "Resistor_SMD:R_0603_1608Metric")
+			(description "Resistor, small symbol")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Resistor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "R_Small")
+				(description "Resistor, small symbol")
+			)
+			(property
+				(name "Sheetname")
+				(value "esp32-s3")
+			)
+			(property
+				(name "Sheetfile")
+				(value "everframe-esp32.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/esp32-s3/")
+				(tstamps "/78107a9f-00df-4c67-94e8-d5d68baa0c30/")
+			)
+			(tstamps "a50d49b2-5dea-4dd0-aa76-c4263614b7ca")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R24")
+			(value "0")
+			(footprint "Resistor_SMD:R_0603_1608Metric")
+			(description "Resistor, small symbol")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Resistor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "R_Small")
+				(description "Resistor, small symbol")
+			)
+			(property
+				(name "Sheetname")
+				(value "esp32-s3")
+			)
+			(property
+				(name "Sheetfile")
+				(value "everframe-esp32.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/esp32-s3/")
+				(tstamps "/78107a9f-00df-4c67-94e8-d5d68baa0c30/")
+			)
+			(tstamps "2e7879be-66eb-422b-a493-4b746df88a19")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R25")
+			(value "0")
+			(footprint "Resistor_SMD:R_0603_1608Metric")
+			(description "Resistor, small symbol")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Resistor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "R_Small")
+				(description "Resistor, small symbol")
+			)
+			(property
+				(name "Sheetname")
+				(value "esp32-s3")
+			)
+			(property
+				(name "Sheetfile")
+				(value "everframe-esp32.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/esp32-s3/")
+				(tstamps "/78107a9f-00df-4c67-94e8-d5d68baa0c30/")
+			)
+			(tstamps "7822867e-7c63-4035-b6ca-2e4597edf2ca")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R26")
+			(value "0")
+			(footprint "Resistor_SMD:R_0603_1608Metric")
+			(description "Resistor, small symbol")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Resistor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "R_Small")
+				(description "Resistor, small symbol")
+			)
+			(property
+				(name "Sheetname")
+				(value "esp32-s3")
+			)
+			(property
+				(name "Sheetfile")
+				(value "everframe-esp32.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/esp32-s3/")
+				(tstamps "/78107a9f-00df-4c67-94e8-d5d68baa0c30/")
+			)
+			(tstamps "a97ab1c4-765a-471c-982b-e5a6f44849f8")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "SW1")
+			(value "SW_Push")
+			(footprint "Button_Switch_SMD:SW_Push_1P1T_NO_CK_KMR2")
+			(description "Push button switch, generic, two pins")
+			(fields
+				(field
+					(name "Part Number") "Y78B23110FP")
+				(field
+					(name "Footprint") "Button_Switch_SMD:SW_Push_1P1T_NO_CK_KMR2")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Push button switch, generic, two pins")
+			)
+			(libsource
+				(lib "Switch")
+				(part "SW_Push")
+				(description "Push button switch, generic, two pins")
+			)
+			(property
+				(name "Part Number")
+				(value "Y78B23110FP")
+			)
+			(property
+				(name "Sheetname")
+				(value "esp32-s3")
+			)
+			(property
+				(name "Sheetfile")
+				(value "everframe-esp32.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "switch normally-open pushbutton push-button")
+			)
+			(sheetpath
+				(names "/esp32-s3/")
+				(tstamps "/78107a9f-00df-4c67-94e8-d5d68baa0c30/")
+			)
+			(tstamps "d2a66d56-3b90-483b-ab12-465e3cea3caa")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "U1")
+			(value "XIAO-ESP32-S3-SMD")
+			(footprint "seed_studio:XIAO-ESP32S3-SMD")
+			(fields
+				(field
+					(name "Manufacturer") "Seeed Studio")
+				(field
+					(name "MPN") "113991114")
+				(field
+					(name "DigiKey PN") "1597-113991114-ND")
+				(field
+					(name "Mouser PN") "713-113991114")
+				(field
+					(name "Footprint") "seed_studio:XIAO-ESP32S3-SMD")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "xiao_seed")
+				(part "XIAO-ESP32-S3-SMD")
+				(description "")
+			)
+			(property
+				(name "Manufacturer")
+				(value "Seeed Studio")
+			)
+			(property
+				(name "MPN")
+				(value "113991114")
+			)
+			(property
+				(name "DigiKey PN")
+				(value "1597-113991114-ND")
+			)
+			(property
+				(name "Mouser PN")
+				(value "713-113991114")
+			)
+			(property
+				(name "Sheetname")
+				(value "esp32-s3")
+			)
+			(property
+				(name "Sheetfile")
+				(value "everframe-esp32.kicad_sch")
+			)
+			(sheetpath
+				(names "/esp32-s3/")
+				(tstamps "/78107a9f-00df-4c67-94e8-d5d68baa0c30/")
+			)
+			(tstamps "a110f94d-9ab9-41fd-ba9a-26982ee95bb8")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "4")
+						)
+						(pin
+							(num "5")
+						)
+						(pin
+							(num "6")
+						)
+						(pin
+							(num "7")
+						)
+						(pin
+							(num "17")
+						)
+						(pin
+							(num "18")
+						)
+						(pin
+							(num "19")
+						)
+						(pin
+							(num "15")
+						)
+						(pin
+							(num "20")
+						)
+						(pin
+							(num "21")
+						)
+						(pin
+							(num "16")
+						)
+						(pin
+							(num "22")
+						)
+						(pin
+							(num "25")
+						)
+						(pin
+							(num "23")
+						)
+						(pin
+							(num "24")
+						)
+						(pin
+							(num "14")
+						)
+						(pin
+							(num "13")
+						)
+						(pin
+							(num "12")
+						)
+						(pin
+							(num "11")
+						)
+						(pin
+							(num "10")
+						)
+						(pin
+							(num "9")
+						)
+						(pin
+							(num "8")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C1")
+			(value "10uF")
+			(footprint "Capacitor_SMD:C_0805_2012Metric")
+			(description "Unpolarized capacitor, small symbol")
+			(fields
+				(field
+					(name "Voltage") "25V")
+				(field
+					(name "Size") "0805")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "C_Small")
+				(description "Unpolarized capacitor, small symbol")
+			)
+			(property
+				(name "Voltage")
+				(value "25V")
+			)
+			(property
+				(name "Size")
+				(value "0805")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "capacitor cap")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "15172add-2677-4957-9f75-01b47a7d55b2")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C2")
+			(value "10uF")
+			(footprint "Capacitor_SMD:C_0805_2012Metric")
+			(description "Unpolarized capacitor, small symbol")
+			(fields
+				(field
+					(name "Voltage") "25V")
+				(field
+					(name "Size") "0805")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "C_Small")
+				(description "Unpolarized capacitor, small symbol")
+			)
+			(property
+				(name "Voltage")
+				(value "25V")
+			)
+			(property
+				(name "Size")
+				(value "0805")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "capacitor cap")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "b21ccba2-c521-4fca-ad11-726aa692850f")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C3")
+			(value "10uF")
+			(footprint "Capacitor_SMD:C_0805_2012Metric")
+			(description "Unpolarized capacitor, small symbol")
+			(fields
+				(field
+					(name "Voltage") "25V")
+				(field
+					(name "Size") "0805")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "C_Small")
+				(description "Unpolarized capacitor, small symbol")
+			)
+			(property
+				(name "Voltage")
+				(value "25V")
+			)
+			(property
+				(name "Size")
+				(value "0805")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "capacitor cap")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "bad07f2c-db4c-4ca1-8173-d6e75b6b595e")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C4")
+			(value "10uF")
+			(footprint "Capacitor_SMD:C_0805_2012Metric")
+			(description "Unpolarized capacitor, small symbol")
+			(fields
+				(field
+					(name "Voltage") "25V")
+				(field
+					(name "Size") "0805")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "C_Small")
+				(description "Unpolarized capacitor, small symbol")
+			)
+			(property
+				(name "Voltage")
+				(value "25V")
+			)
+			(property
+				(name "Size")
+				(value "0805")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "capacitor cap")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "056fd5bd-f016-4344-a09e-6d73a5345974")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C5")
+			(value "10uF")
+			(footprint "Capacitor_SMD:C_0805_2012Metric")
+			(description "Unpolarized capacitor, small symbol")
+			(fields
+				(field
+					(name "Voltage") "25V")
+				(field
+					(name "Size") "0805")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "C_Small")
+				(description "Unpolarized capacitor, small symbol")
+			)
+			(property
+				(name "Voltage")
+				(value "25V")
+			)
+			(property
+				(name "Size")
+				(value "0805")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "capacitor cap")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "2e15d533-5578-45b4-99c5-f3850c5afdf3")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C6")
+			(value "10uF")
+			(footprint "Capacitor_SMD:C_0805_2012Metric")
+			(description "Unpolarized capacitor, small symbol")
+			(fields
+				(field
+					(name "Voltage") "25V")
+				(field
+					(name "Size") "0805")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "C_Small")
+				(description "Unpolarized capacitor, small symbol")
+			)
+			(property
+				(name "Voltage")
+				(value "25V")
+			)
+			(property
+				(name "Size")
+				(value "0805")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "capacitor cap")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "1ad40a93-9351-4faa-8751-4b7afcb2d9d2")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C7")
+			(value "1uF")
+			(footprint "Capacitor_SMD:C_0603_1608Metric")
+			(description "Unpolarized capacitor, small symbol")
+			(fields
+				(field
+					(name "Voltage") "10V")
+				(field
+					(name "Size") "0603")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "C_Small")
+				(description "Unpolarized capacitor, small symbol")
+			)
+			(property
+				(name "Voltage")
+				(value "10V")
+			)
+			(property
+				(name "Size")
+				(value "0603")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "capacitor cap")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "5a46f8c4-2f89-47f7-a879-aa6dc9d3b460")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C8")
+			(value "1uF")
+			(footprint "Capacitor_SMD:C_0603_1608Metric")
+			(description "Unpolarized capacitor, small symbol")
+			(fields
+				(field
+					(name "Voltage") "10V")
+				(field
+					(name "Size") "0603")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "C_Small")
+				(description "Unpolarized capacitor, small symbol")
+			)
+			(property
+				(name "Voltage")
+				(value "10V")
+			)
+			(property
+				(name "Size")
+				(value "0603")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "capacitor cap")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "e36d76c9-2a7c-4880-b5c1-1444067e9ca9")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C9")
+			(value "0.1uF")
+			(footprint "Capacitor_SMD:C_0603_1608Metric")
+			(description "Unpolarized capacitor, small symbol")
+			(fields
+				(field
+					(name "Voltage") "10V")
+				(field
+					(name "Size") "0603")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "C_Small")
+				(description "Unpolarized capacitor, small symbol")
+			)
+			(property
+				(name "Voltage")
+				(value "10V")
+			)
+			(property
+				(name "Size")
+				(value "0603")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "capacitor cap")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "52d3ca0e-ed21-488e-b8a5-039c5adf352f")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C10")
+			(value "1uF")
+			(footprint "Capacitor_SMD:C_0603_1608Metric")
+			(description "Unpolarized capacitor, small symbol")
+			(fields
+				(field
+					(name "Voltage") "10V")
+				(field
+					(name "Size") "0603")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "C_Small")
+				(description "Unpolarized capacitor, small symbol")
+			)
+			(property
+				(name "Voltage")
+				(value "10V")
+			)
+			(property
+				(name "Size")
+				(value "0603")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "capacitor cap")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "817f1d0c-710e-4ba1-aa94-f53d251a473b")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C11")
+			(value "0.1uF")
+			(footprint "Capacitor_SMD:C_0603_1608Metric")
+			(description "Unpolarized capacitor, small symbol")
+			(fields
+				(field
+					(name "Voltage") "10V")
+				(field
+					(name "Size") "0603")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "C_Small")
+				(description "Unpolarized capacitor, small symbol")
+			)
+			(property
+				(name "Voltage")
+				(value "10V")
+			)
+			(property
+				(name "Size")
+				(value "0603")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "capacitor cap")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "1cf051a5-59b6-4543-a719-a82c67bd6f2a")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C12")
+			(value "1uF")
+			(footprint "Capacitor_SMD:C_0603_1608Metric")
+			(description "Unpolarized capacitor, small symbol")
+			(fields
+				(field
+					(name "Voltage") "10V")
+				(field
+					(name "Size") "0603")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "C_Small")
+				(description "Unpolarized capacitor, small symbol")
+			)
+			(property
+				(name "Voltage")
+				(value "10V")
+			)
+			(property
+				(name "Size")
+				(value "0603")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "capacitor cap")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "c6f81ea4-c0a2-4359-9b19-058dd02ecb17")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C13")
+			(value "1uF")
+			(footprint "Capacitor_SMD:C_0603_1608Metric")
+			(description "Unpolarized capacitor, small symbol")
+			(fields
+				(field
+					(name "Voltage") "25V")
+				(field
+					(name "Size") "0603")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "C_Small")
+				(description "Unpolarized capacitor, small symbol")
+			)
+			(property
+				(name "Voltage")
+				(value "25V")
+			)
+			(property
+				(name "Size")
+				(value "0603")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "capacitor cap")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "39550ac1-3caa-4cc6-890f-fa2838808522")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C14")
+			(value "1uF")
+			(footprint "Capacitor_SMD:C_0603_1608Metric")
+			(description "Unpolarized capacitor, small symbol")
+			(fields
+				(field
+					(name "Voltage") "25V")
+				(field
+					(name "Size") "0603")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "C_Small")
+				(description "Unpolarized capacitor, small symbol")
+			)
+			(property
+				(name "Voltage")
+				(value "25V")
+			)
+			(property
+				(name "Size")
+				(value "0603")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "capacitor cap")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "42e13bd5-28a3-4833-b6a9-89c9889b6edd")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C15")
+			(value "1uF")
+			(footprint "Capacitor_SMD:C_0603_1608Metric")
+			(description "Unpolarized capacitor, small symbol")
+			(fields
+				(field
+					(name "Voltage") "10V")
+				(field
+					(name "Size") "0603")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "C_Small")
+				(description "Unpolarized capacitor, small symbol")
+			)
+			(property
+				(name "Voltage")
+				(value "10V")
+			)
+			(property
+				(name "Size")
+				(value "0603")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "capacitor cap")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "32e67194-647a-4fea-8e46-9caa34d6d9cc")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C16")
+			(value "1uF")
+			(footprint "Capacitor_SMD:C_0603_1608Metric")
+			(description "Unpolarized capacitor, small symbol")
+			(fields
+				(field
+					(name "Voltage") "10V")
+				(field
+					(name "Size") "0603")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "C_Small")
+				(description "Unpolarized capacitor, small symbol")
+			)
+			(property
+				(name "Voltage")
+				(value "10V")
+			)
+			(property
+				(name "Size")
+				(value "0603")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "capacitor cap")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "d492678a-2370-42c5-9582-432ebeabafa5")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C17")
+			(value "2.2uF")
+			(footprint "Capacitor_SMD:C_0603_1608Metric")
+			(description "Unpolarized capacitor, small symbol")
+			(fields
+				(field
+					(name "Voltage") "10V")
+				(field
+					(name "Size") "0603")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "C_Small")
+				(description "Unpolarized capacitor, small symbol")
+			)
+			(property
+				(name "Voltage")
+				(value "10V")
+			)
+			(property
+				(name "Size")
+				(value "0603")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "capacitor cap")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "51fd96d8-3df4-44d5-9f3d-6b2aa68a631a")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C18")
+			(value "4.7uF")
+			(footprint "Capacitor_SMD:C_0805_2012Metric")
+			(description "Unpolarized capacitor, small symbol")
+			(fields
+				(field
+					(name "Voltage") "25V")
+				(field
+					(name "Size") "0805")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "C_Small")
+				(description "Unpolarized capacitor, small symbol")
+			)
+			(property
+				(name "Voltage")
+				(value "25V")
+			)
+			(property
+				(name "Size")
+				(value "0805")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "capacitor cap")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "269e1dd4-fe6f-4128-81f9-665a60913a5f")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C19")
+			(value "0.47uF")
+			(footprint "Capacitor_SMD:C_0805_2012Metric")
+			(description "Unpolarized capacitor, small symbol")
+			(fields
+				(field
+					(name "Voltage") "25V")
+				(field
+					(name "Size") "0805")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "C_Small")
+				(description "Unpolarized capacitor, small symbol")
+			)
+			(property
+				(name "Voltage")
+				(value "25V")
+			)
+			(property
+				(name "Size")
+				(value "0805")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "capacitor cap")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "93d8f60d-6ce1-43cc-9d47-1096e6422e58")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C20")
+			(value "0.1uF")
+			(footprint "Capacitor_SMD:C_0603_1608Metric")
+			(description "Unpolarized capacitor, small symbol")
+			(fields
+				(field
+					(name "Voltage") "10V")
+				(field
+					(name "Size") "0603")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "C_Small")
+				(description "Unpolarized capacitor, small symbol")
+			)
+			(property
+				(name "Voltage")
+				(value "10V")
+			)
+			(property
+				(name "Size")
+				(value "0603")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "capacitor cap")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "c4e7941d-3f32-41ee-8b1b-c79b4582d4b8")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C21")
+			(value "1uF")
+			(footprint "Capacitor_SMD:C_0603_1608Metric")
+			(description "Unpolarized capacitor, small symbol")
+			(fields
+				(field
+					(name "Voltage") "10V")
+				(field
+					(name "Size") "0603")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "C_Small")
+				(description "Unpolarized capacitor, small symbol")
+			)
+			(property
+				(name "Voltage")
+				(value "10V")
+			)
+			(property
+				(name "Size")
+				(value "0603")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "capacitor cap")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "c92ff619-179d-4ce1-8ce8-40d68d6214ea")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C22")
+			(value "0.47uF")
+			(footprint "Capacitor_SMD:C_0603_1608Metric")
+			(description "Unpolarized capacitor, small symbol")
+			(fields
+				(field
+					(name "Voltage") "25V")
+				(field
+					(name "Size") "0603")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "C_Small")
+				(description "Unpolarized capacitor, small symbol")
+			)
+			(property
+				(name "Voltage")
+				(value "25V")
+			)
+			(property
+				(name "Size")
+				(value "0603")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "capacitor cap")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "70ae54d6-8b91-4000-92aa-fb2d9dd6c1e3")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C23")
+			(value "1uF")
+			(footprint "Capacitor_SMD:C_0603_1608Metric")
+			(description "Unpolarized capacitor, small symbol")
+			(fields
+				(field
+					(name "Voltage") "10V")
+				(field
+					(name "Size") "0603")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "C_Small")
+				(description "Unpolarized capacitor, small symbol")
+			)
+			(property
+				(name "Voltage")
+				(value "10V")
+			)
+			(property
+				(name "Size")
+				(value "0603")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "capacitor cap")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "1d5ae8c1-acc0-4f9a-b31f-ae157d882fad")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C24")
+			(value "1uF")
+			(footprint "Capacitor_SMD:C_0603_1608Metric")
+			(description "Unpolarized capacitor, small symbol")
+			(fields
+				(field
+					(name "Voltage") "10V")
+				(field
+					(name "Size") "0603")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "C_Small")
+				(description "Unpolarized capacitor, small symbol")
+			)
+			(property
+				(name "Voltage")
+				(value "10V")
+			)
+			(property
+				(name "Size")
+				(value "0603")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "capacitor cap")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "13608fca-9e1d-4f79-8edb-03dc87238605")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C25")
+			(value "4.7uF")
+			(footprint "Capacitor_SMD:C_0805_2012Metric")
+			(description "Unpolarized capacitor, small symbol")
+			(fields
+				(field
+					(name "Voltage") "25V")
+				(field
+					(name "Size") "0805")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "C_Small")
+				(description "Unpolarized capacitor, small symbol")
+			)
+			(property
+				(name "Voltage")
+				(value "25V")
+			)
+			(property
+				(name "Size")
+				(value "0805")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "capacitor cap")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "7bd3cec5-07c9-4b0c-9d83-033b95649525")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C26")
+			(value "10uF")
+			(footprint "Capacitor_SMD:C_0805_2012Metric")
+			(description "Unpolarized capacitor, small symbol")
+			(fields
+				(field
+					(name "Voltage") "25V")
+				(field
+					(name "Size") "0805")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "C_Small")
+				(description "Unpolarized capacitor, small symbol")
+			)
+			(property
+				(name "Voltage")
+				(value "25V")
+			)
+			(property
+				(name "Size")
+				(value "0805")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "capacitor cap")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "4b528f99-bc8b-4d52-8162-74c3e8381923")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C27")
+			(value "10uF")
+			(footprint "Capacitor_SMD:C_0805_2012Metric")
+			(description "Unpolarized capacitor, small symbol")
+			(fields
+				(field
+					(name "Voltage") "25V")
+				(field
+					(name "Size") "0805")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "C_Small")
+				(description "Unpolarized capacitor, small symbol")
+			)
+			(property
+				(name "Voltage")
+				(value "25V")
+			)
+			(property
+				(name "Size")
+				(value "0805")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "capacitor cap")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "76702df2-ef5c-436f-9a2b-30f0330bf0bc")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C28")
+			(value "10uF")
+			(footprint "Capacitor_SMD:C_0805_2012Metric")
+			(description "Unpolarized capacitor, small symbol")
+			(fields
+				(field
+					(name "Voltage") "25V")
+				(field
+					(name "Size") "0805")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "C_Small")
+				(description "Unpolarized capacitor, small symbol")
+			)
+			(property
+				(name "Voltage")
+				(value "25V")
+			)
+			(property
+				(name "Size")
+				(value "0805")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "capacitor cap")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "6593b3fb-4b90-444d-8e07-c8316c8ec5b3")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C29")
+			(value "10uF")
+			(footprint "Capacitor_SMD:C_0805_2012Metric")
+			(description "Unpolarized capacitor, small symbol")
+			(fields
+				(field
+					(name "Voltage") "25V")
+				(field
+					(name "Size") "0805")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "C_Small")
+				(description "Unpolarized capacitor, small symbol")
+			)
+			(property
+				(name "Voltage")
+				(value "25V")
+			)
+			(property
+				(name "Size")
+				(value "0805")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "capacitor cap")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "4148c430-d4d7-49a1-a663-3e73936aadcd")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C30")
+			(value "4.7uF")
+			(footprint "Capacitor_SMD:C_0805_2012Metric")
+			(description "Unpolarized capacitor, small symbol")
+			(fields
+				(field
+					(name "Voltage") "25V")
+				(field
+					(name "Size") "0805")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "C_Small")
+				(description "Unpolarized capacitor, small symbol")
+			)
+			(property
+				(name "Voltage")
+				(value "25V")
+			)
+			(property
+				(name "Size")
+				(value "0805")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "capacitor cap")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "cfb8f624-d007-4c1f-badf-fa7c954beb11")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "D1")
+			(value "MBR0530")
+			(footprint "Diode_SMD:D_SOD-123")
+			(datasheet "http://www.mccsemi.com/up_pdf/MBR0520~MBR0580(SOD123).pdf")
+			(description "30V 0.5A Schottky Power Rectifier Diode, SOD-123")
+			(fields
+				(field
+					(name "Footprint") "Diode_SMD:D_SOD-123")
+				(field
+					(name "Datasheet") "http://www.mccsemi.com/up_pdf/MBR0520~MBR0580(SOD123).pdf")
+				(field
+					(name "Description") "30V 0.5A Schottky Power Rectifier Diode, SOD-123")
+			)
+			(libsource
+				(lib "Diode")
+				(part "MBR0530")
+				(description "30V 0.5A Schottky Power Rectifier Diode, SOD-123")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "diode Schottky")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "D*SOD?123*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "d61b59ec-e002-45dc-878c-449dfd38e2b3")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "D2")
+			(value "MBR0530")
+			(footprint "Diode_SMD:D_SOD-123")
+			(datasheet "http://www.mccsemi.com/up_pdf/MBR0520~MBR0580(SOD123).pdf")
+			(description "30V 0.5A Schottky Power Rectifier Diode, SOD-123")
+			(fields
+				(field
+					(name "Footprint") "Diode_SMD:D_SOD-123")
+				(field
+					(name "Datasheet") "http://www.mccsemi.com/up_pdf/MBR0520~MBR0580(SOD123).pdf")
+				(field
+					(name "Description") "30V 0.5A Schottky Power Rectifier Diode, SOD-123")
+			)
+			(libsource
+				(lib "Diode")
+				(part "MBR0530")
+				(description "30V 0.5A Schottky Power Rectifier Diode, SOD-123")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "diode Schottky")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "D*SOD?123*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "672ad8db-88bb-40f8-84b6-ff514f6842e7")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "D3")
+			(value "MBR0530")
+			(footprint "Diode_SMD:D_SOD-123")
+			(datasheet "http://www.mccsemi.com/up_pdf/MBR0520~MBR0580(SOD123).pdf")
+			(description "30V 0.5A Schottky Power Rectifier Diode, SOD-123")
+			(fields
+				(field
+					(name "Footprint") "Diode_SMD:D_SOD-123")
+				(field
+					(name "Datasheet") "http://www.mccsemi.com/up_pdf/MBR0520~MBR0580(SOD123).pdf")
+				(field
+					(name "Description") "30V 0.5A Schottky Power Rectifier Diode, SOD-123")
+			)
+			(libsource
+				(lib "Diode")
+				(part "MBR0530")
+				(description "30V 0.5A Schottky Power Rectifier Diode, SOD-123")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "diode Schottky")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "D*SOD?123*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "4a68e681-502e-4378-b3ee-8ae8a2805767")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "D4")
+			(value "MBR0530")
+			(footprint "Diode_SMD:D_SOD-123")
+			(datasheet "http://www.mccsemi.com/up_pdf/MBR0520~MBR0580(SOD123).pdf")
+			(description "30V 0.5A Schottky Power Rectifier Diode, SOD-123")
+			(fields
+				(field
+					(name "Footprint") "Diode_SMD:D_SOD-123")
+				(field
+					(name "Datasheet") "http://www.mccsemi.com/up_pdf/MBR0520~MBR0580(SOD123).pdf")
+				(field
+					(name "Description") "30V 0.5A Schottky Power Rectifier Diode, SOD-123")
+			)
+			(libsource
+				(lib "Diode")
+				(part "MBR0530")
+				(description "30V 0.5A Schottky Power Rectifier Diode, SOD-123")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "diode Schottky")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "D*SOD?123*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "fa7a7621-462e-4829-a413-b1977cfc83f9")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "J1")
+			(value "62684-501100ALF")
+			(footprint "everframe_library.footprints:AMPHENOL_62684-501100ALF")
+			(fields
+				(field
+					(name "PARTREV") "AM")
+				(field
+					(name "STANDARD") "Manufacturer Recommendations")
+				(field
+					(name "SNAPEDA_PN") "62684-501100ALF")
+				(field
+					(name "MAXIMUM_PACKAGE_HEIGHT") "2.00mm")
+				(field
+					(name "MANUFACTURER") "Amphenol")
+				(field
+					(name "Footprint") "everframe_library.footprints:AMPHENOL_62684-501100ALF")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "everframe_library")
+				(part "62684-501100ALF")
+				(description "")
+			)
+			(property
+				(name "PARTREV")
+				(value "AM")
+			)
+			(property
+				(name "STANDARD")
+				(value "Manufacturer Recommendations")
+			)
+			(property
+				(name "SNAPEDA_PN")
+				(value "62684-501100ALF")
+			)
+			(property
+				(name "MAXIMUM_PACKAGE_HEIGHT")
+				(value "2.00mm")
+			)
+			(property
+				(name "MANUFACTURER")
+				(value "Amphenol")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "8a576210-07ce-4198-9cae-db414b7dd00c")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "01")
+						)
+						(pin
+							(num "02")
+						)
+						(pin
+							(num "03")
+						)
+						(pin
+							(num "04")
+						)
+						(pin
+							(num "05")
+						)
+						(pin
+							(num "06")
+						)
+						(pin
+							(num "07")
+						)
+						(pin
+							(num "08")
+						)
+						(pin
+							(num "09")
+						)
+						(pin
+							(num "10")
+						)
+						(pin
+							(num "11")
+						)
+						(pin
+							(num "12")
+						)
+						(pin
+							(num "13")
+						)
+						(pin
+							(num "14")
+						)
+						(pin
+							(num "15")
+						)
+						(pin
+							(num "16")
+						)
+						(pin
+							(num "17")
+						)
+						(pin
+							(num "18")
+						)
+						(pin
+							(num "19")
+						)
+						(pin
+							(num "20")
+						)
+						(pin
+							(num "21")
+						)
+						(pin
+							(num "22")
+						)
+						(pin
+							(num "23")
+						)
+						(pin
+							(num "24")
+						)
+						(pin
+							(num "25")
+						)
+						(pin
+							(num "26")
+						)
+						(pin
+							(num "27")
+						)
+						(pin
+							(num "28")
+						)
+						(pin
+							(num "29")
+						)
+						(pin
+							(num "30")
+						)
+						(pin
+							(num "31")
+						)
+						(pin
+							(num "32")
+						)
+						(pin
+							(num "33")
+						)
+						(pin
+							(num "34")
+						)
+						(pin
+							(num "35")
+						)
+						(pin
+							(num "36")
+						)
+						(pin
+							(num "37")
+						)
+						(pin
+							(num "38")
+						)
+						(pin
+							(num "39")
+						)
+						(pin
+							(num "40")
+						)
+						(pin
+							(num "41")
+						)
+						(pin
+							(num "42")
+						)
+						(pin
+							(num "43")
+						)
+						(pin
+							(num "44")
+						)
+						(pin
+							(num "45")
+						)
+						(pin
+							(num "46")
+						)
+						(pin
+							(num "47")
+						)
+						(pin
+							(num "48")
+						)
+						(pin
+							(num "49")
+						)
+						(pin
+							(num "50")
+						)
+						(pin
+							(num "S1")
+						)
+						(pin
+							(num "S2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "L1")
+			(value "10uH")
+			(footprint "Inductor_SMD:L_1008_2520Metric")
+			(description "Inductor")
+			(fields
+				(field
+					(name "Package") "1008")
+				(field
+					(name "Part Number") "CBC2518T100M")
+				(field
+					(name "Current") "480mA")
+				(field
+					(name "Footprint") "Inductor_SMD:L_1008_2520Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Inductor")
+			)
+			(libsource
+				(lib "Device")
+				(part "L")
+				(description "Inductor")
+			)
+			(property
+				(name "Package")
+				(value "1008")
+			)
+			(property
+				(name "Part Number")
+				(value "CBC2518T100M")
+			)
+			(property
+				(name "Current")
+				(value "480mA")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "inductor choke coil reactor magnetic")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "Choke_* *Coil* Inductor_* L_*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "07bf52fe-317d-4e71-9114-d46186b4630b")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "L2")
+			(value "10uH")
+			(footprint "Inductor_SMD:L_1008_2520Metric")
+			(description "Inductor")
+			(fields
+				(field
+					(name "Package") "1008")
+				(field
+					(name "Part Number") "CBC2518T100M")
+				(field
+					(name "Current") "480mA")
+				(field
+					(name "Footprint") "Inductor_SMD:L_1008_2520Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Inductor")
+			)
+			(libsource
+				(lib "Device")
+				(part "L")
+				(description "Inductor")
+			)
+			(property
+				(name "Package")
+				(value "1008")
+			)
+			(property
+				(name "Part Number")
+				(value "CBC2518T100M")
+			)
+			(property
+				(name "Current")
+				(value "480mA")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "inductor choke coil reactor magnetic")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "Choke_* *Coil* Inductor_* L_*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "698accc2-274a-427a-958c-65093b62d410")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "Q1")
+			(value "BSS138")
+			(footprint "Package_TO_SOT_SMD:SOT-23")
+			(datasheet "https://www.onsemi.com/pub/Collateral/BSS138-D.PDF")
+			(description "50V Vds, 0.22A Id, N-Channel MOSFET, SOT-23")
+			(fields
+				(field
+					(name "Footprint") "Package_TO_SOT_SMD:SOT-23")
+				(field
+					(name "Datasheet") "https://www.onsemi.com/pub/Collateral/BSS138-D.PDF")
+				(field
+					(name "Description") "50V Vds, 0.22A Id, N-Channel MOSFET, SOT-23")
+			)
+			(libsource
+				(lib "Transistor_FET")
+				(part "BSS138")
+				(description "50V Vds, 0.22A Id, N-Channel MOSFET, SOT-23")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "N-Channel MOSFET")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "SOT?23*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "6902d965-eecb-4c45-b256-7659dd773efb")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "Q2")
+			(value "SI2301CDS-T1-E3")
+			(footprint "Package_TO_SOT_SMD:SOT-23")
+			(datasheet "https://www.vishay.com/docs/68741/si2301cd.pdf")
+			(description "P-MOSFET transistor, gate/source/drain")
+			(fields
+				(field
+					(name "Footprint") "Package_TO_SOT_SMD:SOT-23")
+				(field
+					(name "Datasheet") "https://www.vishay.com/docs/68741/si2301cd.pdf")
+				(field
+					(name "Description") "P-MOSFET transistor, gate/source/drain")
+			)
+			(libsource
+				(lib "Transistor_FET")
+				(part "Q_PMOS_GSD")
+				(description "P-MOSFET transistor, gate/source/drain")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "transistor PMOS P-MOS P-MOSFET")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "9b504f6b-58f0-4c7a-851b-15829dffce1b")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R1")
+			(value "0")
+			(footprint "Resistor_SMD:R_0603_1608Metric")
+			(description "Resistor, small symbol")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Resistor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "R_Small")
+				(description "Resistor, small symbol")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "dnp")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "58bc48c4-0647-409a-8442-a2827b69c3d9")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R2")
+			(value "0")
+			(footprint "Resistor_SMD:R_0603_1608Metric")
+			(description "Resistor, small symbol")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Resistor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "R_Small")
+				(description "Resistor, small symbol")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "a5b2a18d-05c8-4018-a501-333facc53b45")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R3")
+			(value "0")
+			(footprint "Resistor_SMD:R_0603_1608Metric")
+			(description "Resistor, small symbol")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Resistor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "R_Small")
+				(description "Resistor, small symbol")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "dnp")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "62e07621-a512-46d1-ba49-7124a87b8b8e")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R4")
+			(value "0")
+			(footprint "Resistor_SMD:R_0603_1608Metric")
+			(description "Resistor, small symbol")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Resistor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "R_Small")
+				(description "Resistor, small symbol")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "3eec8992-4176-411d-aec0-7bf26e56ddc4")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R5")
+			(value "0")
+			(footprint "Resistor_SMD:R_0603_1608Metric")
+			(description "Resistor, small symbol")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Resistor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "R_Small")
+				(description "Resistor, small symbol")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "d8a9539e-6d4f-476c-b967-2a13e3522e36")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R6")
+			(value "0")
+			(footprint "Resistor_SMD:R_0603_1608Metric")
+			(description "Resistor, small symbol")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Resistor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "R_Small")
+				(description "Resistor, small symbol")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "5aaba428-4112-4911-b3e9-f557de47d9a3")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R7")
+			(value "100k")
+			(footprint "Resistor_SMD:R_0603_1608Metric")
+			(description "Resistor, small symbol")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Resistor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "R_Small")
+				(description "Resistor, small symbol")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "a8274992-d9a0-4b09-a351-d04a5cf5dbe3")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R8")
+			(value "0")
+			(footprint "Resistor_SMD:R_0603_1608Metric")
+			(description "Resistor, small symbol")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Resistor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "R_Small")
+				(description "Resistor, small symbol")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "dnp")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "7fcc03f5-91f3-4400-9a3a-8ec748333e7c")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R9")
+			(value "0")
+			(footprint "Resistor_SMD:R_0603_1608Metric")
+			(description "Resistor, small symbol")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Resistor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "R_Small")
+				(description "Resistor, small symbol")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "76132a5b-f279-45a7-9c77-47c116278d03")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R10")
+			(value "0.47")
+			(footprint "Resistor_SMD:R_0603_1608Metric")
+			(description "Resistor, small symbol")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Resistor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "R_Small")
+				(description "Resistor, small symbol")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "3a362dd4-7c96-4689-89b8-61a2d55527ed")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R11")
+			(value "1M")
+			(footprint "Resistor_SMD:R_0603_1608Metric")
+			(description "Resistor, small symbol")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Resistor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "R_Small")
+				(description "Resistor, small symbol")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "cec52203-5628-41a2-b525-57145acc0b56")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R12")
+			(value "0")
+			(footprint "Resistor_SMD:R_0603_1608Metric")
+			(description "Resistor, small symbol")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Resistor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "R_Small")
+				(description "Resistor, small symbol")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "664bc040-0d18-418e-bca0-46f1509d9a9e")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R13")
+			(value "1M")
+			(footprint "Resistor_SMD:R_0603_1608Metric")
+			(description "Resistor, small symbol")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Resistor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "R_Small")
+				(description "Resistor, small symbol")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "8ca88367-2f69-4d2b-bacd-8771b0a5dc55")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R14")
+			(value "0.47")
+			(footprint "Resistor_SMD:R_0603_1608Metric")
+			(description "Resistor, small symbol")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Resistor, small symbol")
+			)
+			(libsource
+				(lib "Device")
+				(part "R_Small")
+				(description "Resistor, small symbol")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "b3000c3b-30ab-413b-bfdc-5e145c6e2cbf")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "U2")
+			(value "TLV75533PDBV")
+			(footprint "Package_TO_SOT_SMD:SOT-23-5")
+			(datasheet "http://www.ti.com/lit/ds/symlink/tlv755p.pdf")
+			(description "500mA Low Dropout Voltage Regulator, Fixed Output 3.3V, SOT-23-5")
+			(fields
+				(field
+					(name "Manufacturer") "Texas Instruments")
+				(field
+					(name "MPN") "TLV75533PDBVR")
+				(field
+					(name "DigiKey PN") "296-50411-1-ND")
+				(field
+					(name "Mouser PN") "595-TLV75533PDBVR")
+				(field
+					(name "Footprint") "Package_TO_SOT_SMD:SOT-23-5")
+				(field
+					(name "Datasheet") "http://www.ti.com/lit/ds/symlink/tlv755p.pdf")
+				(field
+					(name "Description") "500mA Low Dropout Voltage Regulator, Fixed Output 3.3V, SOT-23-5")
+			)
+			(libsource
+				(lib "Regulator_Linear")
+				(part "TLV75533PDBV")
+				(description "500mA Low Dropout Voltage Regulator, Fixed Output 3.3V, SOT-23-5")
+			)
+			(property
+				(name "Manufacturer")
+				(value "Texas Instruments")
+			)
+			(property
+				(name "MPN")
+				(value "TLV75533PDBVR")
+			)
+			(property
+				(name "DigiKey PN")
+				(value "296-50411-1-ND")
+			)
+			(property
+				(name "Mouser PN")
+				(value "595-TLV75533PDBVR")
+			)
+			(property
+				(name "Sheetname")
+				(value "epaper display (page 3)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "epaper-display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "LDO Regulator Fixed Positive")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "SOT?23*")
+			)
+			(sheetpath
+				(names "/epaper display (page 3)/")
+				(tstamps "/cb88762e-8596-475c-ac90-5c23efd8ad49/")
+			)
+			(tstamps "01b91df0-06d6-4359-81c0-672065c9e227")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "4")
+						)
+						(pin
+							(num "5")
+						)
+					)
+				)
+			)
+		)
+	)
+	(groups)
+	(variants)
+	(libparts
+		(libpart
+			(lib "Connector")
+			(part "Conn_01x02_Pin")
+			(description "Generic connector, single row, 01x02, script generated")
+			(footprints
+				(fp "Connector*:*_1x??_*")
+			)
+			(fields
+				(field
+					(name "Reference") "J")
+				(field
+					(name "Value") "Conn_01x02_Pin")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Generic connector, single row, 01x02, script generated")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "Pin_1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "Pin_2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "Device")
+			(part "C_Small")
+			(description "Unpolarized capacitor, small symbol")
+			(footprints
+				(fp "C_*")
+			)
+			(fields
+				(field
+					(name "Reference") "C")
+				(field
+					(name "Value") "C_Small")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor, small symbol")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "Device")
+			(part "FerriteBead_Small")
+			(description "Ferrite bead, small symbol")
+			(footprints
+				(fp "Inductor_*")
+				(fp "L_*")
+				(fp "*Ferrite*")
+			)
+			(fields
+				(field
+					(name "Reference") "FB")
+				(field
+					(name "Value") "FerriteBead_Small")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Ferrite bead, small symbol")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "Device")
+			(part "L")
+			(description "Inductor")
+			(footprints
+				(fp "Choke_*")
+				(fp "*Coil*")
+				(fp "Inductor_*")
+				(fp "L_*")
+			)
+			(fields
+				(field
+					(name "Reference") "L")
+				(field
+					(name "Value") "L")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Inductor")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "Device")
+			(part "R_Small")
+			(description "Resistor, small symbol")
+			(footprints
+				(fp "R_*")
+			)
+			(fields
+				(field
+					(name "Reference") "R")
+				(field
+					(name "Value") "R_Small")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Resistor, small symbol")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "Diode")
+			(part "MBR0530")
+			(description "30V 0.5A Schottky Power Rectifier Diode, SOD-123")
+			(docs "http://www.mccsemi.com/up_pdf/MBR0520~MBR0580(SOD123).pdf")
+			(footprints
+				(fp "D*SOD?123*")
+			)
+			(fields
+				(field
+					(name "Reference") "D")
+				(field
+					(name "Value") "MBR0530")
+				(field
+					(name "Footprint") "Diode_SMD:D_SOD-123")
+				(field
+					(name "Datasheet") "http://www.mccsemi.com/up_pdf/MBR0520~MBR0580(SOD123).pdf")
+				(field
+					(name "Description") "30V 0.5A Schottky Power Rectifier Diode, SOD-123")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "K")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "A")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "Diode")
+			(part "PESD5V0L1ULD")
+			(description "Low capacitance unidirectional ESD protection diode, 5V, SOD-882D")
+			(docs "\"https://assets.nexperia.com/documents/data-sheet/PESD5V0L1ULD.pdf")
+			(footprints
+				(fp "D*SOD?882D*")
+			)
+			(fields
+				(field
+					(name "Reference") "D")
+				(field
+					(name "Value") "PESD5V0L1ULD")
+				(field
+					(name "Footprint") "Diode_SMD:D_SOD-882D")
+				(field
+					(name "Datasheet") "\"https://assets.nexperia.com/documents/data-sheet/PESD5V0L1ULD.pdf")
+				(field
+					(name "Description") "Low capacitance unidirectional ESD protection diode, 5V, SOD-882D")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "K")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "A")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "Mechanical")
+			(part "MountingHole")
+			(description "Mounting Hole without connection")
+			(footprints
+				(fp "MountingHole*")
+			)
+			(fields
+				(field
+					(name "Reference") "H")
+				(field
+					(name "Value") "MountingHole")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Mounting Hole without connection")
+			)
+		)
+		(libpart
+			(lib "Regulator_Linear")
+			(part "TLV75533PDBV")
+			(description "500mA Low Dropout Voltage Regulator, Fixed Output 3.3V, SOT-23-5")
+			(docs "http://www.ti.com/lit/ds/symlink/tlv755p.pdf")
+			(footprints
+				(fp "SOT?23*")
+			)
+			(fields
+				(field
+					(name "Reference") "U")
+				(field
+					(name "Value") "TLV75533PDBV")
+				(field
+					(name "Footprint") "Package_TO_SOT_SMD:SOT-23-5")
+				(field
+					(name "Datasheet") "http://www.ti.com/lit/ds/symlink/tlv755p.pdf")
+				(field
+					(name "Description") "500mA Low Dropout Voltage Regulator, Fixed Output 3.3V, SOT-23-5")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "IN")
+					(type "power_in")
+				)
+				(pin
+					(num "2")
+					(name "GND")
+					(type "power_in")
+				)
+				(pin
+					(num "3")
+					(name "EN")
+					(type "input")
+				)
+				(pin
+					(num "4")
+					(name "NC")
+					(type "no_connect")
+				)
+				(pin
+					(num "5")
+					(name "OUT")
+					(type "power_out")
+				)
+			)
+		)
+		(libpart
+			(lib "Switch")
+			(part "SW_Push")
+			(description "Push button switch, generic, two pins")
+			(fields
+				(field
+					(name "Reference") "SW")
+				(field
+					(name "Value") "SW_Push")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Push button switch, generic, two pins")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "Transistor_FET")
+			(part "BSS138")
+			(description "50V Vds, 0.22A Id, N-Channel MOSFET, SOT-23")
+			(docs "https://www.onsemi.com/pub/Collateral/BSS138-D.PDF")
+			(footprints
+				(fp "SOT?23*")
+			)
+			(fields
+				(field
+					(name "Reference") "Q")
+				(field
+					(name "Value") "BSS138")
+				(field
+					(name "Footprint") "Package_TO_SOT_SMD:SOT-23")
+				(field
+					(name "Datasheet") "https://www.onsemi.com/pub/Collateral/BSS138-D.PDF")
+				(field
+					(name "Description") "50V Vds, 0.22A Id, N-Channel MOSFET, SOT-23")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "G")
+					(type "input")
+				)
+				(pin
+					(num "2")
+					(name "S")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "D")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "Transistor_FET")
+			(part "Q_PMOS_GSD")
+			(description "P-MOSFET transistor, gate/source/drain")
+			(fields
+				(field
+					(name "Reference") "Q")
+				(field
+					(name "Value") "Q_PMOS_GSD")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "P-MOSFET transistor, gate/source/drain")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "G")
+					(type "input")
+				)
+				(pin
+					(num "2")
+					(name "S")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "D")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "everframe_library")
+			(part "62684-501100ALF")
+			(fields
+				(field
+					(name "Reference") "J")
+				(field
+					(name "Value") "62684-501100ALF")
+				(field
+					(name "Footprint") "everframe_library.footprints:AMPHENOL_62684-501100ALF")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+				(field
+					(name "PARTREV") "AM")
+				(field
+					(name "STANDARD") "Manufacturer Recommendations")
+				(field
+					(name "SNAPEDA_PN") "62684-501100ALF")
+				(field
+					(name "MAXIMUM_PACKAGE_HEIGHT") "2.00mm")
+				(field
+					(name "MANUFACTURER") "Amphenol")
+			)
+			(pins
+				(pin
+					(num "01")
+					(name "01")
+					(type "passive")
+				)
+				(pin
+					(num "02")
+					(name "02")
+					(type "passive")
+				)
+				(pin
+					(num "03")
+					(name "03")
+					(type "passive")
+				)
+				(pin
+					(num "04")
+					(name "04")
+					(type "passive")
+				)
+				(pin
+					(num "05")
+					(name "05")
+					(type "passive")
+				)
+				(pin
+					(num "06")
+					(name "06")
+					(type "passive")
+				)
+				(pin
+					(num "07")
+					(name "07")
+					(type "passive")
+				)
+				(pin
+					(num "08")
+					(name "08")
+					(type "passive")
+				)
+				(pin
+					(num "09")
+					(name "09")
+					(type "passive")
+				)
+				(pin
+					(num "10")
+					(name "10")
+					(type "passive")
+				)
+				(pin
+					(num "11")
+					(name "11")
+					(type "passive")
+				)
+				(pin
+					(num "12")
+					(name "12")
+					(type "passive")
+				)
+				(pin
+					(num "13")
+					(name "13")
+					(type "passive")
+				)
+				(pin
+					(num "14")
+					(name "14")
+					(type "passive")
+				)
+				(pin
+					(num "15")
+					(name "15")
+					(type "passive")
+				)
+				(pin
+					(num "16")
+					(name "16")
+					(type "passive")
+				)
+				(pin
+					(num "17")
+					(name "17")
+					(type "passive")
+				)
+				(pin
+					(num "18")
+					(name "18")
+					(type "passive")
+				)
+				(pin
+					(num "19")
+					(name "19")
+					(type "passive")
+				)
+				(pin
+					(num "20")
+					(name "20")
+					(type "passive")
+				)
+				(pin
+					(num "21")
+					(name "21")
+					(type "passive")
+				)
+				(pin
+					(num "22")
+					(name "22")
+					(type "passive")
+				)
+				(pin
+					(num "23")
+					(name "23")
+					(type "passive")
+				)
+				(pin
+					(num "24")
+					(name "24")
+					(type "passive")
+				)
+				(pin
+					(num "25")
+					(name "25")
+					(type "passive")
+				)
+				(pin
+					(num "26")
+					(name "26")
+					(type "passive")
+				)
+				(pin
+					(num "27")
+					(name "27")
+					(type "passive")
+				)
+				(pin
+					(num "28")
+					(name "28")
+					(type "passive")
+				)
+				(pin
+					(num "29")
+					(name "29")
+					(type "passive")
+				)
+				(pin
+					(num "30")
+					(name "30")
+					(type "passive")
+				)
+				(pin
+					(num "31")
+					(name "31")
+					(type "passive")
+				)
+				(pin
+					(num "32")
+					(name "32")
+					(type "passive")
+				)
+				(pin
+					(num "33")
+					(name "33")
+					(type "passive")
+				)
+				(pin
+					(num "34")
+					(name "34")
+					(type "passive")
+				)
+				(pin
+					(num "35")
+					(name "35")
+					(type "passive")
+				)
+				(pin
+					(num "36")
+					(name "36")
+					(type "passive")
+				)
+				(pin
+					(num "37")
+					(name "37")
+					(type "passive")
+				)
+				(pin
+					(num "38")
+					(name "38")
+					(type "passive")
+				)
+				(pin
+					(num "39")
+					(name "39")
+					(type "passive")
+				)
+				(pin
+					(num "40")
+					(name "40")
+					(type "passive")
+				)
+				(pin
+					(num "41")
+					(name "41")
+					(type "passive")
+				)
+				(pin
+					(num "42")
+					(name "42")
+					(type "passive")
+				)
+				(pin
+					(num "43")
+					(name "43")
+					(type "passive")
+				)
+				(pin
+					(num "44")
+					(name "44")
+					(type "passive")
+				)
+				(pin
+					(num "45")
+					(name "45")
+					(type "passive")
+				)
+				(pin
+					(num "46")
+					(name "46")
+					(type "passive")
+				)
+				(pin
+					(num "47")
+					(name "47")
+					(type "passive")
+				)
+				(pin
+					(num "48")
+					(name "48")
+					(type "passive")
+				)
+				(pin
+					(num "49")
+					(name "49")
+					(type "passive")
+				)
+				(pin
+					(num "50")
+					(name "50")
+					(type "passive")
+				)
+				(pin
+					(num "S1")
+					(name "SHIELD")
+					(type "passive")
+				)
+				(pin
+					(num "S2")
+					(name "SHIELD__1")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "everframe_library")
+			(part "GSB1CA11101DSHR")
+			(fields
+				(field
+					(name "Reference") "J")
+				(field
+					(name "Value") "GSB1CA11101DSHR")
+				(field
+					(name "Footprint") "everframe_library.footprints:AMPHENOL_GSB1CA11101DSHR")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+				(field
+					(name "PARTREV") "AX1")
+				(field
+					(name "STANDARD") "Manufacturer Recommendations")
+				(field
+					(name "MAXIMUM_PACKAGE_HEIGHT") "6.4mm")
+				(field
+					(name "MANUFACTURER") "Amphenol")
+			)
+			(pins
+				(pin
+					(num "A1")
+					(name "GND_A")
+					(type "power_in")
+				)
+				(pin
+					(num "A4")
+					(name "VBUS_A")
+					(type "power_in")
+				)
+				(pin
+					(num "A5")
+					(name "CC1")
+					(type "bidirectional")
+				)
+				(pin
+					(num "A6")
+					(name "DP1")
+					(type "bidirectional")
+				)
+				(pin
+					(num "A7")
+					(name "DN1")
+					(type "bidirectional")
+				)
+				(pin
+					(num "A8")
+					(name "SBU1")
+					(type "bidirectional")
+				)
+				(pin
+					(num "A9")
+					(name "VBUS_A__1")
+					(type "power_in")
+				)
+				(pin
+					(num "A12")
+					(name "GND_A__1")
+					(type "power_in")
+				)
+				(pin
+					(num "B1")
+					(name "GND_B")
+					(type "power_in")
+				)
+				(pin
+					(num "B4")
+					(name "VBUS_B")
+					(type "power_in")
+				)
+				(pin
+					(num "B5")
+					(name "CC2")
+					(type "bidirectional")
+				)
+				(pin
+					(num "B6")
+					(name "DP2")
+					(type "bidirectional")
+				)
+				(pin
+					(num "B7")
+					(name "DN2")
+					(type "bidirectional")
+				)
+				(pin
+					(num "B8")
+					(name "SBU2")
+					(type "bidirectional")
+				)
+				(pin
+					(num "B9")
+					(name "VBUS_B__1")
+					(type "power_in")
+				)
+				(pin
+					(num "B12")
+					(name "GND_B__1")
+					(type "power_in")
+				)
+				(pin
+					(num "SH1")
+					(name "SHIELD")
+					(type "passive")
+				)
+				(pin
+					(num "SH2")
+					(name "SHIELD__1")
+					(type "passive")
+				)
+				(pin
+					(num "SH3")
+					(name "SHIELD__2")
+					(type "passive")
+				)
+				(pin
+					(num "SH4")
+					(name "SHIELD__3")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "xiao_seed")
+			(part "XIAO-ESP32-S3-SMD")
+			(fields
+				(field
+					(name "Reference") "U")
+				(field
+					(name "Value") "XIAO-ESP32-S3-SMD")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "GPIO1_A0_D0")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "GPIO2_A1_D1")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "GPIO3_A2_D2")
+					(type "passive")
+				)
+				(pin
+					(num "4")
+					(name "GPIO4_A3_D3")
+					(type "passive")
+				)
+				(pin
+					(num "5")
+					(name "GPIO5_A4_D4_SDA")
+					(type "passive")
+				)
+				(pin
+					(num "6")
+					(name "GPIO6_A5_D5_SCL")
+					(type "passive")
+				)
+				(pin
+					(num "7")
+					(name "GPIO43_A6_D6_TX")
+					(type "passive")
+				)
+				(pin
+					(num "8")
+					(name "GPIO44_D7_RX")
+					(type "passive")
+				)
+				(pin
+					(num "9")
+					(name "GPIO7_A8_D8_SCK")
+					(type "passive")
+				)
+				(pin
+					(num "10")
+					(name "GPIO8_A9_D9_MISO")
+					(type "passive")
+				)
+				(pin
+					(num "11")
+					(name "GPIO9_A10_D10_MOSI")
+					(type "passive")
+				)
+				(pin
+					(num "12")
+					(name "3V3")
+					(type "passive")
+				)
+				(pin
+					(num "13")
+					(name "GND")
+					(type "passive")
+				)
+				(pin
+					(num "14")
+					(name "5V")
+					(type "passive")
+				)
+				(pin
+					(num "15")
+					(name "BAT")
+					(type "passive")
+				)
+				(pin
+					(num "16")
+					(name "GND")
+					(type "passive")
+				)
+				(pin
+					(num "17")
+					(name "MTDI")
+					(type "passive")
+				)
+				(pin
+					(num "18")
+					(name "MTDO")
+					(type "passive")
+				)
+				(pin
+					(num "19")
+					(name "CHIP_EN")
+					(type "passive")
+				)
+				(pin
+					(num "20")
+					(name "GND")
+					(type "passive")
+				)
+				(pin
+					(num "21")
+					(name "MTMS")
+					(type "passive")
+				)
+				(pin
+					(num "22")
+					(name "MTCK")
+					(type "passive")
+				)
+				(pin
+					(num "23")
+					(name "USB_DN")
+					(type "passive")
+				)
+				(pin
+					(num "24")
+					(name "USB_DP")
+					(type "passive")
+				)
+				(pin
+					(num "25")
+					(name "PAD")
+					(type "passive")
+				)
+			)
+		)
+	)
+	(libraries
+		(library
+			(logical "Connector")
+			(uri "${KICAD10_SYMBOL_DIR}/Connector.kicad_sym")
+		)
+		(library
+			(logical "Device")
+			(uri "${KICAD10_SYMBOL_DIR}/Device.kicad_sym")
+		)
+		(library
+			(logical "Diode")
+			(uri "${KICAD10_SYMBOL_DIR}/Diode.kicad_sym")
+		)
+		(library
+			(logical "Mechanical")
+			(uri "${KICAD10_SYMBOL_DIR}/Mechanical.kicad_sym")
+		)
+		(library
+			(logical "Regulator_Linear")
+			(uri "${KICAD10_SYMBOL_DIR}/Regulator_Linear.kicad_sym")
+		)
+		(library
+			(logical "Switch")
+			(uri "${KICAD10_SYMBOL_DIR}/Switch.kicad_sym")
+		)
+		(library
+			(logical "Transistor_FET")
+			(uri "${KICAD10_SYMBOL_DIR}/Transistor_FET.kicad_sym")
+		)
+		(library
+			(logical "everframe_library")
+			(uri "${KIPRJMOD}/library/everframe_library.kicad_sym")
+		)
+		(library
+			(logical "xiao_seed")
+			(uri "${KIPRJMOD}/library/Seeed Studio XIAO Series Library/Seeed_Studio_XIAO_Series.kicad_sym")
+		)
+	)
+	(nets
+		(net
+			(code "1")
+			(name "+3.3V")
+			(class "Default")
+			(node
+				(ref "C10")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "C11")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "C12")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "C20")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "C21")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "C24")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "C25")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C30")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C9")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "J1")
+				(pin "04")
+				(pinfunction "04_04")
+				(pintype "passive")
+			)
+			(node
+				(ref "J1")
+				(pin "38")
+				(pinfunction "38_38")
+				(pintype "passive")
+			)
+			(node
+				(ref "J1")
+				(pin "40")
+				(pinfunction "40_40")
+				(pintype "passive")
+			)
+			(node
+				(ref "L1")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "Q2")
+				(pin "2")
+				(pinfunction "S_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "R1")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "R13")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "R3")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U2")
+				(pin "5")
+				(pinfunction "OUT_5")
+				(pintype "power_out")
+			)
+		)
+		(net
+			(code "2")
+			(name "+3V3_ESP32")
+			(class "Default")
+			(node
+				(ref "C23")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "SW1")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U1")
+				(pin "12")
+				(pinfunction "3V3_12")
+				(pintype "passive")
+			)
+			(node
+				(ref "U2")
+				(pin "1")
+				(pinfunction "IN_1")
+				(pintype "power_in")
+			)
+		)
+		(net
+			(code "3")
+			(name "+5V")
+			(class "Default")
+			(node
+				(ref "C31")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C32")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C33")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "C34")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "FB1")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U1")
+				(pin "14")
+				(pinfunction "5V_14")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "4")
+			(name "+5V_USB")
+			(class "Default")
+			(node
+				(ref "D5")
+				(pin "1")
+				(pinfunction "K_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "FB1")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "J2")
+				(pin "A4")
+				(pinfunction "VBUS_A_A4")
+				(pintype "power_in")
+			)
+			(node
+				(ref "J2")
+				(pin "A9")
+				(pinfunction "VBUS_A__1_A9")
+				(pintype "power_in")
+			)
+			(node
+				(ref "J2")
+				(pin "B4")
+				(pinfunction "VBUS_B_B4")
+				(pintype "power_in")
+			)
+			(node
+				(ref "J2")
+				(pin "B9")
+				(pinfunction "VBUS_B__1_B9")
+				(pintype "power_in")
+			)
+		)
+		(net
+			(code "5")
+			(name "/epaper display (page 3)/BS0")
+			(class "Default")
+			(node
+				(ref "J1")
+				(pin "26")
+				(pinfunction "26_26")
+				(pintype "passive")
+			)
+			(node
+				(ref "R1")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "R2")
+				(pin "1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "6")
+			(name "/epaper display (page 3)/BS1")
+			(class "Default")
+			(node
+				(ref "J1")
+				(pin "27")
+				(pinfunction "27_27")
+				(pintype "passive")
+			)
+			(node
+				(ref "R3")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "R4")
+				(pin "1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "7")
+			(name "/epaper display (page 3)/BUSY_N")
+			(class "Default")
+			(node
+				(ref "J1")
+				(pin "29")
+				(pinfunction "29_29")
+				(pintype "passive")
+			)
+			(node
+				(ref "R25")
+				(pin "2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "8")
+			(name "/epaper display (page 3)/CP1N")
+			(class "Default")
+			(node
+				(ref "C14")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "J1")
+				(pin "45")
+				(pinfunction "45_45")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "9")
+			(name "/epaper display (page 3)/CP1P")
+			(class "Default")
+			(node
+				(ref "C14")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "J1")
+				(pin "46")
+				(pinfunction "46_46")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "10")
+			(name "/epaper display (page 3)/CP2N")
+			(class "Default")
+			(node
+				(ref "C13")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "J1")
+				(pin "42")
+				(pinfunction "42_42")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "11")
+			(name "/epaper display (page 3)/CP2P")
+			(class "Default")
+			(node
+				(ref "C13")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "J1")
+				(pin "43")
+				(pinfunction "43_43")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "12")
+			(name "/epaper display (page 3)/CS")
+			(class "Default")
+			(node
+				(ref "J1")
+				(pin "31")
+				(pinfunction "31_31")
+				(pintype "passive")
+			)
+			(node
+				(ref "R23")
+				(pin "2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "13")
+			(name "/epaper display (page 3)/DC")
+			(class "Default")
+			(node
+				(ref "J1")
+				(pin "30")
+				(pinfunction "30_30")
+				(pintype "passive")
+			)
+			(node
+				(ref "R22")
+				(pin "2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "14")
+			(name "/epaper display (page 3)/DISP_PWR_EN")
+			(class "Default")
+			(node
+				(ref "R26")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "R9")
+				(pin "1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "15")
+			(name "/epaper display (page 3)/FPL_VCOM")
+			(class "Default")
+			(node
+				(ref "J1")
+				(pin "03")
+				(pinfunction "03_03")
+				(pintype "passive")
+			)
+			(node
+				(ref "R5")
+				(pin "1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "16")
+			(name "/epaper display (page 3)/GDRC")
+			(class "Default")
+			(node
+				(ref "J1")
+				(pin "09")
+				(pinfunction "09_09")
+				(pintype "passive")
+			)
+			(node
+				(ref "Q2")
+				(pin "1")
+				(pinfunction "G_1")
+				(pintype "input")
+			)
+			(node
+				(ref "R13")
+				(pin "1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "17")
+			(name "/epaper display (page 3)/GDRH")
+			(class "Default")
+			(node
+				(ref "J1")
+				(pin "05")
+				(pinfunction "05_05")
+				(pintype "passive")
+			)
+			(node
+				(ref "Q1")
+				(pin "1")
+				(pinfunction "G_1")
+				(pintype "input")
+			)
+			(node
+				(ref "R11")
+				(pin "2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "18")
+			(name "/epaper display (page 3)/REFN")
+			(class "Default")
+			(node
+				(ref "C7")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "J1")
+				(pin "22")
+				(pinfunction "22_22")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "19")
+			(name "/epaper display (page 3)/REFP")
+			(class "Default")
+			(node
+				(ref "C8")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "J1")
+				(pin "23")
+				(pinfunction "23_23")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "20")
+			(name "/epaper display (page 3)/RESEC")
+			(class "Default")
+			(node
+				(ref "J1")
+				(pin "10")
+				(pinfunction "10_10")
+				(pintype "passive")
+			)
+			(node
+				(ref "L2")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "R14")
+				(pin "2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "21")
+			(name "/epaper display (page 3)/RESEH")
+			(class "Default")
+			(node
+				(ref "J1")
+				(pin "06")
+				(pinfunction "06_06")
+				(pintype "passive")
+			)
+			(node
+				(ref "Q1")
+				(pin "2")
+				(pinfunction "S_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "R10")
+				(pin "2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "22")
+			(name "/epaper display (page 3)/RST_N")
+			(class "Default")
+			(node
+				(ref "J1")
+				(pin "28")
+				(pinfunction "28_28")
+				(pintype "passive")
+			)
+			(node
+				(ref "R20")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "R24")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "R8")
+				(pin "1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "23")
+			(name "/epaper display (page 3)/SCK")
+			(class "Default")
+			(node
+				(ref "J1")
+				(pin "32")
+				(pinfunction "32_32")
+				(pintype "passive")
+			)
+			(node
+				(ref "R19")
+				(pin "2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "24")
+			(name "/epaper display (page 3)/SI0")
+			(class "Default")
+			(node
+				(ref "J1")
+				(pin "33")
+				(pinfunction "33_33")
+				(pintype "passive")
+			)
+			(node
+				(ref "R17")
+				(pin "2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "25")
+			(name "/epaper display (page 3)/SI1")
+			(class "Default")
+			(node
+				(ref "J1")
+				(pin "34")
+				(pinfunction "34_34")
+				(pintype "passive")
+			)
+			(node
+				(ref "R18")
+				(pin "2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "26")
+			(name "/epaper display (page 3)/SI2")
+			(class "Default")
+			(node
+				(ref "J1")
+				(pin "35")
+				(pinfunction "35_35")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "27")
+			(name "/epaper display (page 3)/SI3")
+			(class "Default")
+			(node
+				(ref "J1")
+				(pin "36")
+				(pinfunction "36_36")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "28")
+			(name "/epaper display (page 3)/TFT_VCOM")
+			(class "Default")
+			(node
+				(ref "C18")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "J1")
+				(pin "02")
+				(pinfunction "02_02")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "29")
+			(name "/epaper display (page 3)/VCOMBO")
+			(class "Default")
+			(node
+				(ref "J1")
+				(pin "50")
+				(pinfunction "50_50")
+				(pintype "passive")
+			)
+			(node
+				(ref "R6")
+				(pin "1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "30")
+			(name "/epaper display (page 3)/VCP1")
+			(class "Default")
+			(node
+				(ref "C16")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "J1")
+				(pin "44")
+				(pinfunction "44_44")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "31")
+			(name "/epaper display (page 3)/VCP2")
+			(class "Default")
+			(node
+				(ref "C15")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "J1")
+				(pin "41")
+				(pinfunction "41_41")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "32")
+			(name "/epaper display (page 3)/VDDO")
+			(class "Default")
+			(node
+				(ref "C17")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "J1")
+				(pin "37")
+				(pinfunction "37_37")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "33")
+			(name "/epaper display (page 3)/VGH")
+			(class "Default")
+			(node
+				(ref "J1")
+				(pin "49")
+				(pinfunction "49_49")
+				(pintype "passive")
+			)
+			(node
+				(ref "R12")
+				(pin "1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "34")
+			(name "/epaper display (page 3)/VGL")
+			(class "Default")
+			(node
+				(ref "C27")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "D2")
+				(pin "2")
+				(pinfunction "A_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "J1")
+				(pin "13")
+				(pinfunction "13_13")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "35")
+			(name "/epaper display (page 3)/VPC")
+			(class "Default")
+			(node
+				(ref "C29")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "D4")
+				(pin "2")
+				(pinfunction "A_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "J1")
+				(pin "11")
+				(pinfunction "11_11")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "36")
+			(name "/epaper display (page 3)/VPH")
+			(class "Default")
+			(node
+				(ref "C26")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "D1")
+				(pin "1")
+				(pinfunction "K_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "J1")
+				(pin "14")
+				(pinfunction "14_14")
+				(pintype "passive")
+			)
+			(node
+				(ref "R12")
+				(pin "2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "37")
+			(name "/epaper display (page 3)/VSH")
+			(class "Default")
+			(node
+				(ref "C1")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "J1")
+				(pin "15")
+				(pinfunction "15_15")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "38")
+			(name "/epaper display (page 3)/VSH_LV")
+			(class "Default")
+			(node
+				(ref "C2")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "J1")
+				(pin "16")
+				(pinfunction "16_16")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "39")
+			(name "/epaper display (page 3)/VSH_LV2")
+			(class "Default")
+			(node
+				(ref "C3")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "J1")
+				(pin "17")
+				(pinfunction "17_17")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "40")
+			(name "/epaper display (page 3)/VSL")
+			(class "Default")
+			(node
+				(ref "C4")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "J1")
+				(pin "18")
+				(pinfunction "18_18")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "41")
+			(name "/epaper display (page 3)/VSL_LV")
+			(class "Default")
+			(node
+				(ref "C5")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "J1")
+				(pin "19")
+				(pinfunction "19_19")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "42")
+			(name "/epaper display (page 3)/VSL_LV2")
+			(class "Default")
+			(node
+				(ref "C6")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "J1")
+				(pin "20")
+				(pinfunction "20_20")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "43")
+			(name "/esp32-s3/ESP32_BUSY_N")
+			(class "Default")
+			(node
+				(ref "R25")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U1")
+				(pin "5")
+				(pinfunction "GPIO5_A4_D4_SDA_5")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "44")
+			(name "/esp32-s3/ESP32_CS")
+			(class "Default")
+			(node
+				(ref "R23")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U1")
+				(pin "7")
+				(pinfunction "GPIO43_A6_D6_TX_7")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "45")
+			(name "/esp32-s3/ESP32_DC")
+			(class "Default")
+			(node
+				(ref "R22")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U1")
+				(pin "8")
+				(pinfunction "GPIO44_D7_RX_8")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "46")
+			(name "/esp32-s3/ESP32_DISP_PWR_EN")
+			(class "Default")
+			(node
+				(ref "R26")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U1")
+				(pin "4")
+				(pinfunction "GPIO4_A3_D3_4")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "47")
+			(name "/esp32-s3/ESP32_MISO")
+			(class "Default")
+			(node
+				(ref "R18")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U1")
+				(pin "10")
+				(pinfunction "GPIO8_A9_D9_MISO_10")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "48")
+			(name "/esp32-s3/ESP32_MOSI")
+			(class "Default")
+			(node
+				(ref "R17")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U1")
+				(pin "11")
+				(pinfunction "GPIO9_A10_D10_MOSI_11")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "49")
+			(name "/esp32-s3/ESP32_RST_N")
+			(class "Default")
+			(node
+				(ref "R24")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U1")
+				(pin "6")
+				(pinfunction "GPIO6_A5_D5_SCL_6")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "50")
+			(name "/esp32-s3/ESP32_SCK")
+			(class "Default")
+			(node
+				(ref "R19")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U1")
+				(pin "9")
+				(pinfunction "GPIO7_A8_D8_SCK_9")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "51")
+			(name "/esp32-s3/VBAT")
+			(class "Default")
+			(node
+				(ref "J3")
+				(pin "2")
+				(pinfunction "Pin_2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "U1")
+				(pin "15")
+				(pinfunction "BAT_15")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "52")
+			(name "GND")
+			(class "Default")
+			(node
+				(ref "C1")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C10")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C11")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C12")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C15")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C16")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C17")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C18")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C19")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C2")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C20")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C21")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C22")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C23")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C24")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C25")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "C26")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "C27")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "C29")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "C3")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C30")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "C31")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "C32")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "C33")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C34")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C35")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C4")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C5")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C6")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C7")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C8")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C9")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "D3")
+				(pin "1")
+				(pinfunction "K_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "D5")
+				(pin "2")
+				(pinfunction "A_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "J1")
+				(pin "08")
+				(pinfunction "08_08")
+				(pintype "passive")
+			)
+			(node
+				(ref "J1")
+				(pin "12")
+				(pinfunction "12_12")
+				(pintype "passive")
+			)
+			(node
+				(ref "J1")
+				(pin "21")
+				(pinfunction "21_21")
+				(pintype "passive")
+			)
+			(node
+				(ref "J1")
+				(pin "39")
+				(pinfunction "39_39")
+				(pintype "passive")
+			)
+			(node
+				(ref "J1")
+				(pin "S1")
+				(pinfunction "SHIELD_S1")
+				(pintype "passive")
+			)
+			(node
+				(ref "J1")
+				(pin "S2")
+				(pinfunction "SHIELD__1_S2")
+				(pintype "passive")
+			)
+			(node
+				(ref "J2")
+				(pin "A1")
+				(pinfunction "GND_A_A1")
+				(pintype "power_in")
+			)
+			(node
+				(ref "J2")
+				(pin "A12")
+				(pinfunction "GND_A__1_A12")
+				(pintype "power_in")
+			)
+			(node
+				(ref "J2")
+				(pin "B1")
+				(pinfunction "GND_B_B1")
+				(pintype "power_in")
+			)
+			(node
+				(ref "J2")
+				(pin "B12")
+				(pinfunction "GND_B__1_B12")
+				(pintype "power_in")
+			)
+			(node
+				(ref "J2")
+				(pin "SH1")
+				(pinfunction "SHIELD_SH1")
+				(pintype "passive")
+			)
+			(node
+				(ref "J2")
+				(pin "SH2")
+				(pinfunction "SHIELD__1_SH2")
+				(pintype "passive")
+			)
+			(node
+				(ref "J2")
+				(pin "SH3")
+				(pinfunction "SHIELD__2_SH3")
+				(pintype "passive")
+			)
+			(node
+				(ref "J2")
+				(pin "SH4")
+				(pinfunction "SHIELD__3_SH4")
+				(pintype "passive")
+			)
+			(node
+				(ref "J3")
+				(pin "1")
+				(pinfunction "Pin_1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "R10")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "R11")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "R14")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "R15")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "R16")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "R2")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "R20")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "R4")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "R7")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U1")
+				(pin "13")
+				(pinfunction "GND_13")
+				(pintype "passive")
+			)
+			(node
+				(ref "U1")
+				(pin "16")
+				(pinfunction "GND_16")
+				(pintype "passive")
+			)
+			(node
+				(ref "U1")
+				(pin "20")
+				(pinfunction "GND_20")
+				(pintype "passive")
+			)
+			(node
+				(ref "U2")
+				(pin "2")
+				(pinfunction "GND_2")
+				(pintype "power_in")
+			)
+		)
+		(net
+			(code "53")
+			(name "Net-(C19-Pad1)")
+			(class "Default")
+			(node
+				(ref "C19")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "R5")
+				(pin "2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "54")
+			(name "Net-(C22-Pad1)")
+			(class "Default")
+			(node
+				(ref "C22")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "R6")
+				(pin "2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "55")
+			(name "Net-(D1-A)")
+			(class "Default")
+			(node
+				(ref "C28")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "D1")
+				(pin "2")
+				(pinfunction "A_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "L1")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "Q1")
+				(pin "3")
+				(pinfunction "D_3")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "56")
+			(name "Net-(D2-K)")
+			(class "Default")
+			(node
+				(ref "C28")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "D2")
+				(pin "1")
+				(pinfunction "K_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "D3")
+				(pin "2")
+				(pinfunction "A_2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "57")
+			(name "Net-(D4-K)")
+			(class "Default")
+			(node
+				(ref "D4")
+				(pin "1")
+				(pinfunction "K_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "L2")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "Q2")
+				(pin "3")
+				(pinfunction "D_3")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "58")
+			(name "Net-(J2-CC1)")
+			(class "Default")
+			(node
+				(ref "J2")
+				(pin "A5")
+				(pinfunction "CC1_A5")
+				(pintype "bidirectional")
+			)
+			(node
+				(ref "R16")
+				(pin "1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "59")
+			(name "Net-(J2-CC2)")
+			(class "Default")
+			(node
+				(ref "J2")
+				(pin "B5")
+				(pinfunction "CC2_B5")
+				(pintype "bidirectional")
+			)
+			(node
+				(ref "R15")
+				(pin "1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "60")
+			(name "Net-(R21-Pad1)")
+			(class "Default")
+			(node
+				(ref "R21")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "SW1")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "61")
+			(name "Net-(U1-GPIO1_A0_D0)")
+			(class "Default")
+			(node
+				(ref "C35")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "R21")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "U1")
+				(pin "1")
+				(pinfunction "GPIO1_A0_D0_1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "62")
+			(name "Net-(U2-EN)")
+			(class "Default")
+			(node
+				(ref "R7")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "R8")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "R9")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "U2")
+				(pin "3")
+				(pinfunction "EN_3")
+				(pintype "input")
+			)
+		)
+		(net
+			(code "63")
+			(name "unconnected-(J1-Pad01)")
+			(class "Default")
+			(node
+				(ref "J1")
+				(pin "01")
+				(pinfunction "01_01")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "64")
+			(name "unconnected-(J1-Pad07)")
+			(class "Default")
+			(node
+				(ref "J1")
+				(pin "07")
+				(pinfunction "07_07")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "65")
+			(name "unconnected-(J1-Pad24)")
+			(class "Default")
+			(node
+				(ref "J1")
+				(pin "24")
+				(pinfunction "24_24")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "66")
+			(name "unconnected-(J1-Pad25)")
+			(class "Default")
+			(node
+				(ref "J1")
+				(pin "25")
+				(pinfunction "25_25")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "67")
+			(name "unconnected-(J1-Pad47)")
+			(class "Default")
+			(node
+				(ref "J1")
+				(pin "47")
+				(pinfunction "47_47")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "68")
+			(name "unconnected-(J1-Pad48)")
+			(class "Default")
+			(node
+				(ref "J1")
+				(pin "48")
+				(pinfunction "48_48")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "69")
+			(name "unconnected-(J2-DN1-PadA7)")
+			(class "Default")
+			(node
+				(ref "J2")
+				(pin "A7")
+				(pinfunction "DN1_A7")
+				(pintype "bidirectional+no_connect")
+			)
+		)
+		(net
+			(code "70")
+			(name "unconnected-(J2-DN2-PadB7)")
+			(class "Default")
+			(node
+				(ref "J2")
+				(pin "B7")
+				(pinfunction "DN2_B7")
+				(pintype "bidirectional+no_connect")
+			)
+		)
+		(net
+			(code "71")
+			(name "unconnected-(J2-DP1-PadA6)")
+			(class "Default")
+			(node
+				(ref "J2")
+				(pin "A6")
+				(pinfunction "DP1_A6")
+				(pintype "bidirectional+no_connect")
+			)
+		)
+		(net
+			(code "72")
+			(name "unconnected-(J2-DP2-PadB6)")
+			(class "Default")
+			(node
+				(ref "J2")
+				(pin "B6")
+				(pinfunction "DP2_B6")
+				(pintype "bidirectional+no_connect")
+			)
+		)
+		(net
+			(code "73")
+			(name "unconnected-(J2-SBU1-PadA8)")
+			(class "Default")
+			(node
+				(ref "J2")
+				(pin "A8")
+				(pinfunction "SBU1_A8")
+				(pintype "bidirectional+no_connect")
+			)
+		)
+		(net
+			(code "74")
+			(name "unconnected-(J2-SBU2-PadB8)")
+			(class "Default")
+			(node
+				(ref "J2")
+				(pin "B8")
+				(pinfunction "SBU2_B8")
+				(pintype "bidirectional+no_connect")
+			)
+		)
+		(net
+			(code "75")
+			(name "unconnected-(U1-CHIP_EN-Pad19)")
+			(class "Default")
+			(node
+				(ref "U1")
+				(pin "19")
+				(pinfunction "CHIP_EN_19")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "76")
+			(name "unconnected-(U1-GPIO2_A1_D1-Pad2)")
+			(class "Default")
+			(node
+				(ref "U1")
+				(pin "2")
+				(pinfunction "GPIO2_A1_D1_2")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "77")
+			(name "unconnected-(U1-GPIO3_A2_D2-Pad3)")
+			(class "Default")
+			(node
+				(ref "U1")
+				(pin "3")
+				(pinfunction "GPIO3_A2_D2_3")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "78")
+			(name "unconnected-(U1-MTCK-Pad22)")
+			(class "Default")
+			(node
+				(ref "U1")
+				(pin "22")
+				(pinfunction "MTCK_22")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "79")
+			(name "unconnected-(U1-MTDI-Pad17)")
+			(class "Default")
+			(node
+				(ref "U1")
+				(pin "17")
+				(pinfunction "MTDI_17")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "80")
+			(name "unconnected-(U1-MTDO-Pad18)")
+			(class "Default")
+			(node
+				(ref "U1")
+				(pin "18")
+				(pinfunction "MTDO_18")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "81")
+			(name "unconnected-(U1-MTMS-Pad21)")
+			(class "Default")
+			(node
+				(ref "U1")
+				(pin "21")
+				(pinfunction "MTMS_21")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "82")
+			(name "unconnected-(U1-PAD-Pad25)")
+			(class "Default")
+			(node
+				(ref "U1")
+				(pin "25")
+				(pinfunction "PAD_25")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "83")
+			(name "unconnected-(U1-USB_DN-Pad23)")
+			(class "Default")
+			(node
+				(ref "U1")
+				(pin "23")
+				(pinfunction "USB_DN_23")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "84")
+			(name "unconnected-(U1-USB_DP-Pad24)")
+			(class "Default")
+			(node
+				(ref "U1")
+				(pin "24")
+				(pinfunction "USB_DP_24")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "85")
+			(name "unconnected-(U2-NC-Pad4)")
+			(class "Default")
+			(node
+				(ref "U2")
+				(pin "4")
+				(pinfunction "NC_4")
+				(pintype "no_connect")
+			)
+		)
+	)
+)

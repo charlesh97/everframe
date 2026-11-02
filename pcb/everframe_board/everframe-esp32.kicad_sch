@@ -2283,10 +2283,6 @@
 		(uuid "81162552-72ff-4554-8c87-981c40487119")
 	)
 	(no_connect
-		(at 137.16 26.67)
-		(uuid "9a679bdd-6181-4fe4-9f78-4a308ea2cfe5")
-	)
-	(no_connect
 		(at 116.84 151.13)
 		(uuid "bc9a0ccf-57a9-494a-ab3a-118e63a3b342")
 	)
@@ -3371,6 +3367,16 @@
 			(justify left bottom)
 		)
 		(uuid "9874af57-8db4-449e-bd29-7595d679991b")
+	)
+	(label "GND"
+		(at 137.16 26.67 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "a68ec0cb-6bdb-43c0-8df0-3e415c8d6708")
 	)
 	(label "VBAT"
 		(at 127 77.47 0)
@@ -5352,6 +5358,42 @@
 			)
 		)
 		(property "Description" ""
+			(at 138.43 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Seeed Studio"
+			(at 138.43 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "113991114"
+			(at 138.43 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey PN" "1597-113991114-ND"
+			(at 138.43 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser PN" "713-113991114"
 			(at 138.43 49.53 0)
 			(effects
 				(font

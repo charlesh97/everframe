@@ -623,7 +623,7 @@
 	(pad "S1" smd custom
 		(at -13.95 -0.475)
 		(size 1.4 1.4)
-		(layers "F.Cu")
+		(layers "F.Cu" "F.Mask" "F.Paste")
 		(options
 			(clearance outline)
 			(anchor rect)
@@ -642,7 +642,7 @@
 	(pad "S2" smd custom
 		(at 13.95 -0.475)
 		(size 1.4 1.4)
-		(layers "F.Cu")
+		(layers "F.Cu" "F.Mask" "F.Paste")
 		(options
 			(clearance outline)
 			(anchor rect)

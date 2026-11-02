@@ -1,0 +1,536 @@
+** Drc report for everframe_board.kicad_pcb **
+** Created on 2026-11-01T20:38:40 **
+** Report includes: Errors, Warnings, Exclusions **
+
+** Found 91 DRC violations **
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(72.0000 mm, 136.0000 mm): Segment on Edge.Cuts
+    @(71.9830 mm, 57.7568 mm): Segment of J1 on F.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(72.0000 mm, 136.0000 mm): Segment on Edge.Cuts
+    @(71.9830 mm, 88.2568 mm): Segment of J1 on F.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(72.0000 mm, 136.0000 mm): Segment on Edge.Cuts
+    @(72.9630 mm, 88.2568 mm): Segment of J1 on F.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(94.0000 mm, 52.0000 mm): Segment on Edge.Cuts
+    @(93.2870 mm, 98.3950 mm): Segment of U1 on F.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(94.0000 mm, 52.0000 mm): Segment on Edge.Cuts
+    @(94.2970 mm, 107.3940 mm): Segment of U1 on F.Silkscreen
+[lib_footprint_mismatch]: Footprint 'R_0603_1608Metric' does not match copy in library 'Resistor_SMD'
+    Local override; warning
+    @(84.2125 mm, 58.2375 mm): Footprint R10
+[lib_footprint_mismatch]: Footprint 'L_0603_1608Metric' does not match copy in library 'Inductor_SMD'
+    Local override; warning
+    @(84.5000 mm, 127.5000 mm): Footprint FB1
+[lib_footprint_mismatch]: Footprint 'C_0805_2012Metric' does not match copy in library 'Capacitor_SMD'
+    Local override; warning
+    @(81.8000 mm, 57.0000 mm): Footprint C19
+[lib_footprint_mismatch]: Footprint 'R_0603_1608Metric' does not match copy in library 'Resistor_SMD'
+    Local override; warning
+    @(90.8000 mm, 77.4000 mm): Footprint R3
+[lib_footprint_mismatch]: Footprint 'L_1008_2520Metric' does not match copy in library 'Inductor_SMD'
+    Local override; warning
+    @(90.4000 mm, 58.3000 mm): Footprint L1
+[lib_footprint_mismatch]: Footprint 'SOT-23' does not match copy in library 'Package_TO_SOT_SMD'
+    Local override; warning
+    @(87.1000 mm, 60.0000 mm): Footprint Q1
+[lib_footprint_mismatch]: Footprint 'R_0603_1608Metric' does not match copy in library 'Resistor_SMD'
+    Local override; warning
+    @(81.3000 mm, 59.5000 mm): Footprint R5
+[lib_footprint_mismatch]: Footprint 'C_0603_1608Metric' does not match copy in library 'Capacitor_SMD'
+    Local override; warning
+    @(82.2000 mm, 70.9000 mm): Footprint C7
+[lib_footprint_mismatch]: Footprint 'R_0603_1608Metric' does not match copy in library 'Resistor_SMD'
+    Local override; warning
+    @(74.8000 mm, 91.0000 mm): Footprint R23
+[lib_footprint_mismatch]: Footprint 'R_0603_1608Metric' does not match copy in library 'Resistor_SMD'
+    Local override; warning
+    @(86.2000 mm, 70.3500 mm): Footprint R12
+[lib_footprint_mismatch]: Footprint 'R_0603_1608Metric' does not match copy in library 'Resistor_SMD'
+    Local override; warning
+    @(80.8000 mm, 85.5000 mm): Footprint R6
+[lib_footprint_mismatch]: Footprint 'R_0603_1608Metric' does not match copy in library 'Resistor_SMD'
+    Local override; warning
+    @(87.2000 mm, 57.1000 mm): Footprint R11
+[lib_footprint_mismatch]: Footprint 'C_0603_1608Metric' does not match copy in library 'Capacitor_SMD'
+    Local override; warning
+    @(80.8000 mm, 81.8000 mm): Footprint C13
+[lib_footprint_mismatch]: Footprint 'C_0805_2012Metric' does not match copy in library 'Capacitor_SMD'
+    Local override; warning
+    @(91.3000 mm, 61.4000 mm): Footprint C28
+[lib_footprint_mismatch]: Footprint 'R_0603_1608Metric' does not match copy in library 'Resistor_SMD'
+    Local override; warning
+    @(90.8000 mm, 74.4000 mm): Footprint R4
+[lib_footprint_mismatch]: Footprint 'C_0805_2012Metric' does not match copy in library 'Capacitor_SMD'
+    Local override; warning
+    @(85.5000 mm, 125.0000 mm): Footprint C31
+[lib_footprint_mismatch]: Footprint 'C_0603_1608Metric' does not match copy in library 'Capacitor_SMD'
+    Local override; warning
+    @(80.8000 mm, 83.8000 mm): Footprint C14
+[lib_footprint_mismatch]: Footprint 'R_0603_1608Metric' does not match copy in library 'Resistor_SMD'
+    Local override; warning
+    @(76.4000 mm, 91.0000 mm): Footprint R24
+[lib_footprint_mismatch]: Footprint 'C_0603_1608Metric' does not match copy in library 'Capacitor_SMD'
+    Local override; warning
+    @(89.6250 mm, 113.8000 mm): Footprint C33
+[lib_footprint_mismatch]: Footprint 'C_0805_2012Metric' does not match copy in library 'Capacitor_SMD'
+    Local override; warning
+    @(83.5000 mm, 125.0000 mm): Footprint C32
+[lib_footprint_mismatch]: Footprint 'R_0603_1608Metric' does not match copy in library 'Resistor_SMD'
+    Local override; warning
+    @(81.5000 mm, 125.0000 mm): Footprint R16
+[lib_footprint_mismatch]: Footprint 'C_0603_1608Metric' does not match copy in library 'Capacitor_SMD'
+    Local override; warning
+    @(82.1000 mm, 61.8000 mm): Footprint C20
+[lib_footprint_mismatch]: Footprint 'C_0805_2012Metric' does not match copy in library 'Capacitor_SMD'
+    Local override; warning
+    @(91.0500 mm, 68.4500 mm): Footprint C27
+[lib_footprint_mismatch]: Footprint 'C_0603_1608Metric' does not match copy in library 'Capacitor_SMD'
+    Local override; warning
+    @(82.2000 mm, 72.5000 mm): Footprint C8
+[lib_footprint_mismatch]: Footprint 'R_0603_1608Metric' does not match copy in library 'Resistor_SMD'
+    Local override; warning
+    @(81.2000 mm, 91.0000 mm): Footprint R26
+[lib_footprint_mismatch]: Footprint 'R_0603_1608Metric' does not match copy in library 'Resistor_SMD'
+    Local override; warning
+    @(78.0000 mm, 91.0000 mm): Footprint R20
+[lib_footprint_mismatch]: Footprint 'R_0603_1608Metric' does not match copy in library 'Resistor_SMD'
+    Local override; warning
+    @(92.4000 mm, 77.4000 mm): Footprint R1
+[lib_footprint_mismatch]: Footprint 'C_0805_2012Metric' does not match copy in library 'Capacitor_SMD'
+    Local override; warning
+    @(87.4000 mm, 55.0000 mm): Footprint C25
+[lib_footprint_mismatch]: Footprint 'C_0603_1608Metric' does not match copy in library 'Capacitor_SMD'
+    Local override; warning
+    @(89.6250 mm, 115.3240 mm): Footprint C34
+[lib_footprint_mismatch]: Footprint 'R_0603_1608Metric' does not match copy in library 'Resistor_SMD'
+    Local override; warning
+    @(79.6000 mm, 91.0000 mm): Footprint R25
+[lib_footprint_mismatch]: Footprint 'R_0603_1608Metric' does not match copy in library 'Resistor_SMD'
+    Local override; warning
+    @(92.4000 mm, 74.3000 mm): Footprint R2
+[lib_footprint_mismatch]: Footprint 'C_0603_1608Metric' does not match copy in library 'Capacitor_SMD'
+    Local override; warning
+    @(80.5000 mm, 61.8000 mm): Footprint C21
+[lib_footprint_mismatch]: Footprint 'C_0603_1608Metric' does not match copy in library 'Capacitor_SMD'
+    Local override; warning
+    @(83.2000 mm, 84.7500 mm): Footprint C22
+[lib_footprint_mismatch]: Footprint 'C_0805_2012Metric' does not match copy in library 'Capacitor_SMD'
+    Local override; warning
+    @(79.5000 mm, 57.0000 mm): Footprint C18
+[lib_footprint_mismatch]: Footprint 'C_0805_2012Metric' does not match copy in library 'Capacitor_SMD'
+    Local override; warning
+    @(86.1000 mm, 68.4500 mm): Footprint C26
+[lib_footprint_mismatch]: Footprint 'C_0603_1608Metric' does not match copy in library 'Capacitor_SMD'
+    Local override; warning
+    @(89.5000 mm, 90.5000 mm): Footprint C23
+[lib_footprint_mismatch]: Footprint 'C_0805_2012Metric' does not match copy in library 'Capacitor_SMD'
+    Local override; warning
+    @(89.5750 mm, 59.5067 mm): Footprint C29
+[lib_footprint_mismatch]: Footprint 'SOT-23-5' does not match copy in library 'Package_TO_SOT_SMD'
+    Local override; warning
+    @(89.5000 mm, 87.5000 mm): Footprint U2
+[lib_footprint_mismatch]: Footprint 'C_0805_2012Metric' does not match copy in library 'Capacitor_SMD'
+    Local override; warning
+    @(76.0000 mm, 72.8000 mm): Footprint C5
+[lib_footprint_mismatch]: Footprint 'C_0603_1608Metric' does not match copy in library 'Capacitor_SMD'
+    Local override; warning
+    @(83.2000 mm, 78.2000 mm): Footprint C12
+[lib_footprint_mismatch]: Footprint 'C_0603_1608Metric' does not match copy in library 'Capacitor_SMD'
+    Local override; warning
+    @(76.0000 mm, 78.0000 mm): Footprint C17
+[lib_footprint_mismatch]: Footprint 'SOT-23' does not match copy in library 'Package_TO_SOT_SMD'
+    Local override; warning
+    @(83.3000 mm, 53.2000 mm): Footprint Q2
+[lib_footprint_mismatch]: Footprint 'R_0603_1608Metric' does not match copy in library 'Resistor_SMD'
+    Local override; warning
+    @(74.8000 mm, 91.0000 mm): Footprint R22
+[lib_footprint_mismatch]: Footprint 'C_0805_2012Metric' does not match copy in library 'Capacitor_SMD'
+    Local override; warning
+    @(76.0000 mm, 66.5000 mm): Footprint C2
+[lib_footprint_mismatch]: Footprint 'C_0805_2012Metric' does not match copy in library 'Capacitor_SMD'
+    Local override; warning
+    @(76.0000 mm, 64.4000 mm): Footprint C1
+[lib_footprint_mismatch]: Footprint 'R_0603_1608Metric' does not match copy in library 'Resistor_SMD'
+    Local override; warning
+    @(76.4000 mm, 91.0000 mm): Footprint R19
+[lib_footprint_mismatch]: Footprint 'C_0805_2012Metric' does not match copy in library 'Capacitor_SMD'
+    Local override; warning
+    @(76.0000 mm, 68.6000 mm): Footprint C3
+[lib_footprint_mismatch]: Footprint 'R_0603_1608Metric' does not match copy in library 'Resistor_SMD'
+    Local override; warning
+    @(75.1000 mm, 123.0000 mm): Footprint R15
+[lib_footprint_mismatch]: Footprint 'R_0603_1608Metric' does not match copy in library 'Resistor_SMD'
+    Local override; warning
+    @(86.7000 mm, 90.5000 mm): Footprint R8
+[lib_footprint_mismatch]: Footprint 'C_0603_1608Metric' does not match copy in library 'Capacitor_SMD'
+    Local override; warning
+    @(80.0000 mm, 78.2000 mm): Footprint C10
+[lib_footprint_mismatch]: Footprint 'C_0805_2012Metric' does not match copy in library 'Capacitor_SMD'
+    Local override; warning
+    @(80.4000 mm, 53.4000 mm): Footprint C30
+[lib_footprint_mismatch]: Footprint 'C_0603_1608Metric' does not match copy in library 'Capacitor_SMD'
+    Local override; warning
+    @(80.9000 mm, 80.5000 mm): Footprint C9
+[lib_footprint_mismatch]: Footprint 'L_1008_2520Metric' does not match copy in library 'Inductor_SMD'
+    Local override; warning
+    @(85.6750 mm, 56.7067 mm): Footprint L2
+[lib_footprint_mismatch]: Footprint 'C_0603_1608Metric' does not match copy in library 'Capacitor_SMD'
+    Local override; warning
+    @(76.0000 mm, 81.0000 mm): Footprint C15
+[lib_footprint_mismatch]: Footprint 'C_0603_1608Metric' does not match copy in library 'Capacitor_SMD'
+    Local override; warning
+    @(76.0000 mm, 82.6000 mm): Footprint C16
+[lib_footprint_mismatch]: Footprint 'C_0603_1608Metric' does not match copy in library 'Capacitor_SMD'
+    Local override; warning
+    @(82.2000 mm, 119.4000 mm): Footprint C35
+[lib_footprint_mismatch]: Footprint 'C_0805_2012Metric' does not match copy in library 'Capacitor_SMD'
+    Local override; warning
+    @(76.0000 mm, 70.7000 mm): Footprint C4
+[lib_footprint_mismatch]: Footprint 'R_0603_1608Metric' does not match copy in library 'Resistor_SMD'
+    Local override; warning
+    @(89.3750 mm, 56.7067 mm): Footprint R14
+[lib_footprint_mismatch]: Footprint 'C_0603_1608Metric' does not match copy in library 'Capacitor_SMD'
+    Local override; warning
+    @(81.6000 mm, 78.2000 mm): Footprint C11
+[lib_footprint_mismatch]: Footprint 'R_0603_1608Metric' does not match copy in library 'Resistor_SMD'
+    Local override; warning
+    @(80.6000 mm, 119.4000 mm): Footprint R21
+[lib_footprint_mismatch]: Footprint 'C_0805_2012Metric' does not match copy in library 'Capacitor_SMD'
+    Local override; warning
+    @(76.0000 mm, 74.9000 mm): Footprint C6
+[lib_footprint_mismatch]: Footprint 'R_0603_1608Metric' does not match copy in library 'Resistor_SMD'
+    Local override; warning
+    @(86.0000 mm, 53.6000 mm): Footprint R13
+[lib_footprint_mismatch]: Footprint 'C_0603_1608Metric' does not match copy in library 'Capacitor_SMD'
+    Local override; warning
+    @(89.5000 mm, 84.5000 mm): Footprint C24
+[lib_footprint_mismatch]: Footprint 'R_0603_1608Metric' does not match copy in library 'Resistor_SMD'
+    Local override; warning
+    @(85.1000 mm, 90.5000 mm): Footprint R9
+[lib_footprint_mismatch]: Footprint 'R_0603_1608Metric' does not match copy in library 'Resistor_SMD'
+    Local override; warning
+    @(78.0000 mm, 91.0000 mm): Footprint R18
+[lib_footprint_mismatch]: Footprint 'R_0603_1608Metric' does not match copy in library 'Resistor_SMD'
+    Local override; warning
+    @(86.2000 mm, 88.0000 mm): Footprint R7
+[lib_footprint_mismatch]: Footprint 'R_0603_1608Metric' does not match copy in library 'Resistor_SMD'
+    Local override; warning
+    @(79.6000 mm, 91.0000 mm): Footprint R17
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(78.3500 mm, 85.6000 mm): Reference field of R6
+    @(77.2830 mm, 85.2568 mm): Pad 50 [/epaper display (page 3)/VCOMBO] of J1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(74.2370 mm, 94.0000 mm): Segment of U1 on F.Silkscreen
+    @(75.1300 mm, 94.8350 mm): Pad 7 [/esp32-s3/ESP32_CS] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(74.2370 mm, 94.0000 mm): Segment of U1 on F.Silkscreen
+    @(85.2900 mm, 94.8350 mm): Pad 3 [unconnected-(U1-GPIO3_A2_D2-Pad3)] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(74.2370 mm, 94.0000 mm): Segment of U1 on F.Silkscreen
+    @(82.7500 mm, 94.8350 mm): Pad 4 [/esp32-s3/ESP32_DISP_PWR_EN] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(74.2370 mm, 94.0000 mm): Segment of U1 on F.Silkscreen
+    @(80.2100 mm, 94.8350 mm): Pad 5 [/esp32-s3/ESP32_BUSY_N] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(74.2370 mm, 94.0000 mm): Segment of U1 on F.Silkscreen
+    @(90.3700 mm, 94.8350 mm): Pad 1 [Net-(U1-GPIO1_A0_D0)] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(74.2370 mm, 94.0000 mm): Segment of U1 on F.Silkscreen
+    @(87.8300 mm, 94.8350 mm): Pad 2 [unconnected-(U1-GPIO2_A1_D1-Pad2)] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(74.2370 mm, 94.0000 mm): Segment of U1 on F.Silkscreen
+    @(77.6700 mm, 94.8350 mm): Pad 6 [/esp32-s3/ESP32_RST_N] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(74.2370 mm, 95.9050 mm): Arc of U1 on F.Silkscreen
+    @(75.1300 mm, 94.8350 mm): Pad 7 [/esp32-s3/ESP32_CS] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(74.2370 mm, 109.8750 mm): Arc of U1 on F.Silkscreen
+    @(75.1300 mm, 111.0000 mm): Pad 8 [/esp32-s3/ESP32_DC] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(74.2370 mm, 111.7800 mm): Segment of U1 on F.Silkscreen
+    @(75.1300 mm, 111.0000 mm): Pad 8 [/esp32-s3/ESP32_DC] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(74.2370 mm, 111.7800 mm): Segment of U1 on F.Silkscreen
+    @(77.6700 mm, 111.0000 mm): Pad 9 [/esp32-s3/ESP32_SCK] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(74.2370 mm, 111.7800 mm): Segment of U1 on F.Silkscreen
+    @(80.2100 mm, 111.0000 mm): Pad 10 [/esp32-s3/ESP32_MISO] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(74.2370 mm, 111.7800 mm): Segment of U1 on F.Silkscreen
+    @(82.7500 mm, 111.0000 mm): Pad 11 [/esp32-s3/ESP32_MOSI] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(74.2370 mm, 111.7800 mm): Segment of U1 on F.Silkscreen
+    @(85.2900 mm, 111.0000 mm): Pad 12 [+3V3_ESP32] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(74.2370 mm, 111.7800 mm): Segment of U1 on F.Silkscreen
+    @(87.8300 mm, 111.0000 mm): Pad 13 [GND] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(74.2370 mm, 111.7800 mm): Segment of U1 on F.Silkscreen
+    @(90.3700 mm, 111.0000 mm): Pad 14 [+5V] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(91.3820 mm, 109.8750 mm): Arc of U1 on F.Silkscreen
+    @(90.3700 mm, 111.0000 mm): Pad 14 [+5V] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(91.3860 mm, 95.9050 mm): Arc of U1 on F.Silkscreen
+    @(90.3700 mm, 94.8350 mm): Pad 1 [Net-(U1-GPIO1_A0_D0)] of U1 on F.Cu
+
+** Found 0 unconnected pads **
+
+** Found 73 Footprint errors **
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(75.0000 mm, 52.0000 mm): Footprint H1
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(91.0000 mm, 52.0000 mm): Footprint H2
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(75.0000 mm, 136.0000 mm): Footprint H3
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(91.0000 mm, 136.0000 mm): Footprint H4
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(85.5000 mm, 125.0000 mm): Footprint C31
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(83.5000 mm, 125.0000 mm): Footprint C32
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(89.6250 mm, 113.8000 mm): Footprint C33
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(89.6250 mm, 115.3240 mm): Footprint C34
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(82.2000 mm, 119.4000 mm): Footprint C35
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(84.5000 mm, 127.5000 mm): Footprint FB1
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(90.5000 mm, 129.0000 mm): Footprint J3
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(75.1000 mm, 123.0000 mm): Footprint R15
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(81.5000 mm, 125.0000 mm): Footprint R16
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(79.6000 mm, 91.0000 mm): Footprint R17
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(78.0000 mm, 91.0000 mm): Footprint R18
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(76.4000 mm, 91.0000 mm): Footprint R19
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(78.0000 mm, 91.0000 mm): Footprint R20
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(80.6000 mm, 119.4000 mm): Footprint R21
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(74.8000 mm, 91.0000 mm): Footprint R22
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(74.8000 mm, 91.0000 mm): Footprint R23
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(76.4000 mm, 91.0000 mm): Footprint R24
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(79.6000 mm, 91.0000 mm): Footprint R25
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(81.2000 mm, 91.0000 mm): Footprint R26
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(77.0000 mm, 116.4000 mm): Footprint SW1
+[footprint_symbol_field_mismatch]: Missing symbol field 'Manufacturer' in footprint
+    Local override; warning
+    @(82.7970 mm, 102.8964 mm): Footprint U1
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(76.0000 mm, 64.4000 mm): Footprint C1
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(76.0000 mm, 66.5000 mm): Footprint C2
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(76.0000 mm, 68.6000 mm): Footprint C3
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(76.0000 mm, 70.7000 mm): Footprint C4
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(76.0000 mm, 72.8000 mm): Footprint C5
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(76.0000 mm, 74.9000 mm): Footprint C6
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(82.2000 mm, 70.9000 mm): Footprint C7
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(82.2000 mm, 72.5000 mm): Footprint C8
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(80.9000 mm, 80.5000 mm): Footprint C9
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(80.0000 mm, 78.2000 mm): Footprint C10
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(81.6000 mm, 78.2000 mm): Footprint C11
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(83.2000 mm, 78.2000 mm): Footprint C12
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(80.8000 mm, 81.8000 mm): Footprint C13
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(80.8000 mm, 83.8000 mm): Footprint C14
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(76.0000 mm, 81.0000 mm): Footprint C15
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(76.0000 mm, 82.6000 mm): Footprint C16
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(76.0000 mm, 78.0000 mm): Footprint C17
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(79.5000 mm, 57.0000 mm): Footprint C18
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(81.8000 mm, 57.0000 mm): Footprint C19
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(82.1000 mm, 61.8000 mm): Footprint C20
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(80.5000 mm, 61.8000 mm): Footprint C21
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(83.2000 mm, 84.7500 mm): Footprint C22
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(89.5000 mm, 90.5000 mm): Footprint C23
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(89.5000 mm, 84.5000 mm): Footprint C24
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(87.4000 mm, 55.0000 mm): Footprint C25
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(86.1000 mm, 68.4500 mm): Footprint C26
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(91.0500 mm, 68.4500 mm): Footprint C27
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(91.3000 mm, 61.4000 mm): Footprint C28
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(89.5750 mm, 59.5067 mm): Footprint C29
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(80.4000 mm, 53.4000 mm): Footprint C30
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(90.4000 mm, 58.3000 mm): Footprint L1
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(85.6750 mm, 56.7067 mm): Footprint L2
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: 'https://www.vishay.com/docs/68741/si2301cd.pdf')
+    Local override; warning
+    @(83.3000 mm, 53.2000 mm): Footprint Q2
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(92.4000 mm, 77.4000 mm): Footprint R1
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(92.4000 mm, 74.3000 mm): Footprint R2
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(90.8000 mm, 77.4000 mm): Footprint R3
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(90.8000 mm, 74.4000 mm): Footprint R4
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(81.3000 mm, 59.5000 mm): Footprint R5
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(80.8000 mm, 85.5000 mm): Footprint R6
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(86.2000 mm, 88.0000 mm): Footprint R7
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(86.7000 mm, 90.5000 mm): Footprint R8
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(85.1000 mm, 90.5000 mm): Footprint R9
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(84.2125 mm, 58.2375 mm): Footprint R10
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(87.2000 mm, 57.1000 mm): Footprint R11
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(86.2000 mm, 70.3500 mm): Footprint R12
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(86.0000 mm, 53.6000 mm): Footprint R13
+[footprint_symbol_field_mismatch]: Field 'Datasheet' differs (PCB: '~', Schematic: '')
+    Local override; warning
+    @(89.3750 mm, 56.7067 mm): Footprint R14
+[footprint_symbol_field_mismatch]: Missing symbol field 'Manufacturer' in footprint
+    Local override; warning
+    @(89.5000 mm, 87.5000 mm): Footprint U2
+
+** Ignored checks **
+    - Footprint has no courtyard defined
+    - Track endpoint not centered on via
+    - Tuning profile track geometries
+    - Footprint doesn't match symbol's footprint filters
+    - PTH inside courtyard
+    - NPTH inside courtyard
+    - Footprint component type doesn't match footprint pads
+
+** End of Report **
